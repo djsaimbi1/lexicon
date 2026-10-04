@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LEXICON</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#fafafa;--sf:#fff;--tx:#1a1a1a;--sb:#6b6b6b;--mu:#9a9a9a;--ln:#e6e6e6;--l2:#efefef;--hv:#f4f4f4;--nv:#ececec;--sh:0 4px 14px rgba(0,0,0,.07)}
+html.dk{--bg:#141414;--sf:#1e1e1e;--tx:#e8e8e8;--sb:#a0a0a0;--mu:#777;--ln:#2a2a2a;--l2:#222;--hv:#262626;--nv:rgba(255,255,255,.16);--sh:0 4px 14px rgba(0,0,0,.35)}
+body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;-webkit-tap-highlight-color:transparent}
+button{font-family:inherit;outline:none;-webkit-tap-highlight-color:transparent}
+button:focus{outline:none}
+#sp{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--bg);display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:opacity .6s}
+#sp.off{opacity:0;visibility:hidden;pointer-events:none}
+.spo{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--mu);margin-bottom:1.2rem;animation:fi .8s both}
+.spl{font-family:Georgia,serif;font-size:3rem;letter-spacing:10px;text-transform:uppercase;font-weight:600;margin-bottom:1.2rem;animation:fi .8s .2s both}
+.spr{width:60px;height:1px;background:var(--tx);margin:0 auto 1.2rem;animation:fi .8s .5s both}
+.spq{font-family:Georgia,serif;font-style:italic;font-size:1.05rem;line-height:1.7;color:var(--sb);max-width:430px;margin:0 auto 1.4rem;animation:fi .8s .8s both}
+.spc{font-size:.58rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--mu);animation:fi .8s 1.1s both}
+.spt{position:absolute;bottom:2rem;left:0;right:0;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--mu)}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+header{position:fixed;top:0;left:0;right:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--l2)}
+.hi{max-width:1100px;margin:0 auto;padding:0 1rem;height:58px;display:flex;align-items:center;justify-content:space-between}
+.lg{font-family:Georgia,serif;font-size:1.25rem;font-weight:600;letter-spacing:4px;text-transform:uppercase}
+nav{display:flex;align-items:center}
+.nb{background:none;border:none;padding:.5rem .6rem;font-size:.66rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--mu);cursor:pointer;border-radius:8px}
+.nb.on{background:var(--nv);color:var(--tx)}
+#th{width:32px;height:32px;border:none;background:none;border-radius:9px;cursor:pointer;color:var(--mu);margin-left:.4rem;font-size:1rem}
+#th:hover{background:var(--hv);color:var(--tx)}
+main{max-width:1100px;margin:0 auto;padding:86px 1rem 4rem}
+.pg{display:none}.pg.on{display:block;animation:fi .3s}
+.pt{font-family:Georgia,serif;font-size:2rem;margin-bottom:.3rem}
+.ps{color:var(--mu);font-size:.83rem;margin-bottom:1.6rem}
+.he{text-align:center;padding:.8rem 0 1.2rem}
+.he h1{font-family:Georgia,serif;font-size:2.3rem;font-weight:300;margin-bottom:.4rem}
+.he p{color:var(--mu);font-size:.85rem}
+.st{display:flex;justify-content:center;gap:2.5rem;padding:.4rem 0 1.6rem}
+.st>div{text-align:center}
+.sn{font-family:Georgia,serif;font-size:1.7rem;font-weight:600}
+.sl{font-size:.56rem;letter-spacing:2px;text-transform:uppercase;color:var(--mu);font-weight:600}
+.ca{display:flex;justify-content:center;perspective:1200px}
+#fc{width:100%;max-width:520px;height:380px;position:relative;cursor:pointer;transform-style:preserve-3d;transition:transform .55s}
+#fc.fl{transform:rotateY(180deg)}
+.fa{position:absolute;top:0;left:0;right:0;bottom:0;backface-visibility:hidden;background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;box-shadow:var(--sh)}
+.fb{transform:rotateY(180deg)}
+.wl{display:flex;align-items:center;gap:.6rem}
+.bw{font-family:Georgia,serif;font-size:2.5rem;font-weight:600}
+.ib{background:none;border:none;color:var(--mu);cursor:pointer;padding:6px;border-radius:8px;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.ib:hover{color:var(--tx)}
+.ib.fv{color:var(--tx)}
+.ib svg{width:18px;height:18px;display:block}
+.ph{font-size:.78rem;color:var(--mu);font-style:italic;margin:.3rem 0 .7rem}
+.po{padding:.2rem .7rem;background:var(--hv);border-radius:5px;font-size:.58rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--sb);margin-bottom:.8rem}
+.th{font-size:.74rem;color:var(--mu)}
+.df{font-size:.92rem;line-height:1.65;margin-bottom:1rem;max-width:400px}
+.ex{font-size:.78rem;color:var(--sb);font-style:italic;padding:.8rem 1rem;background:var(--bg);border-radius:10px;border-left:2px solid var(--ln);max-width:400px}
+.sy{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;margin-top:1rem}
+.sy span{padding:.24rem .6rem;background:var(--hv);border-radius:20px;font-size:.66rem;color:var(--sb)}
+.ct{display:flex;justify-content:center;gap:.8rem;padding:1.5rem 0 .9rem}
+.cb{background:var(--sf);border:1px solid var(--ln);color:var(--sb);font-size:.72rem;padding:.6rem 1.3rem;border-radius:22px;cursor:pointer}
+.cb.pr{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.cb.ks{background:var(--hv);color:var(--sb)}
+.prg{max-width:520px;margin:0 auto;display:flex;align-items:center;gap:.8rem}
+.trk{flex:1;height:2px;background:var(--l2)}
+.fil{height:100%;background:var(--tx);width:0}
+.ptx{font-size:.6rem;color:var(--mu);font-weight:600}
+.bt{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.8rem;margin-bottom:1.2rem}
+.si{padding:.55rem .9rem;border:1px solid var(--ln);border-radius:10px;font-size:.8rem;background:var(--sf);color:var(--tx);width:200px;outline:none}
+.ch{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.8rem}
+.cc{padding:.35rem .8rem;border:1px solid var(--ln);background:var(--sf);border-radius:18px;font-size:.66rem;color:var(--sb);cursor:pointer}
+.cc.on{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.gr{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem}
+.wc{background:var(--sf);border:1px solid var(--l2);border-radius:12px;padding:1.2rem;cursor:pointer;position:relative}
+.wc .w{font-family:Georgia,serif;font-size:1.3rem;font-weight:600}
+.wc .p{font-size:.56rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--mu);font-weight:600;margin:.15rem 0 .5rem}
+.wc .d{font-size:.74rem;color:var(--sb);line-height:1.5}
+.km{position:absolute;top:.8rem;right:.8rem;width:18px;height:18px;border-radius:50%;background:var(--tx);color:var(--bg);font-size:.6rem;display:flex;align-items:center;justify-content:center}
+.qz{max-width:560px;margin:0 auto}
+.qs{display:flex;justify-content:center;gap:2.5rem;margin-bottom:1.4rem}
+.qb{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:1.8rem;text-align:center;margin-bottom:1rem;box-shadow:var(--sh)}
+.qb .ql{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--mu);font-weight:600;margin-bottom:.9rem}
+.qb .qw{font-family:Georgia,serif;font-size:2.2rem;font-weight:600}
+.qb .qp{font-size:.75rem;color:var(--mu)}
+.qo{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.qi{padding:.9rem;background:var(--sf);border:1px solid var(--ln);border-radius:10px;font-size:.76rem;text-align:left;cursor:pointer;color:var(--tx)}
+.qi.ok{border-color:#888;background:var(--hv);font-weight:600}
+.qi.no{color:var(--mu);text-decoration:line-through}
+.qn{display:block;margin:1.2rem auto 0;padding:.6rem 1.8rem;background:var(--tx);color:var(--bg);border:none;border-radius:10px;font-size:.72rem;cursor:pointer}
+.qr{text-align:center;padding:2.2rem;background:var(--sf);border:1px solid var(--ln);border-radius:14px}
+.qr .pc{font-family:Georgia,serif;font-size:3rem;font-weight:600;margin:.5rem 0}
+.fe{text-align:center;padding:3rem 1rem;color:var(--mu);font-size:.85rem}
+.fg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem}
+.fvi{background:var(--sf);border:1px solid var(--l2);border-radius:12px;padding:1rem 1.2rem;display:flex;justify-content:space-between;cursor:pointer}
+.fvi .fw{font-family:Georgia,serif;font-size:1.2rem;font-weight:600}
+.fvi .fd{font-size:.72rem;color:var(--sb)}
+.fvi .fx{background:none;border:none;color:var(--mu);cursor:pointer}
+#rb{position:fixed;bottom:1rem;left:1rem;width:32px;height:32px;border-radius:50%;background:var(--sf);border:1px solid var(--ln);color:var(--mu);cursor:pointer;opacity:.5;z-index:40}
+@media(max-width:700px){.qo,.gr,.fg{grid-template-columns:1fr}.bw{font-size:2rem}#fc{height:400px}.spl{font-size:2.2rem;letter-spacing:6px}.st{gap:1.5rem}.si{width:100%}}
+</style>
+</head>
+<body>
+<div id="sp">
+<div>
+<div class="spo">A Vocabulary Atelier</div>
+<div class="spl">Lexicon</div>
+<div class="spr"></div>
+<p class="spq">&ldquo;Ready for English? A new word is a small key &mdash; collect enough of them, and every door in the world is yours.&rdquo;</p>
+<div class="spc">created by Qwen &middot; html &middot; css &middot; js</div>
+</div>
+<div class="spt">tap anywhere to enter</div>
+</div>
+<header><div class="hi">
+<div class="lg">Lexicon</div>
+<nav>
+<button class="nb on" id="nL">Learn</button>
+<button class="nb" id="nB">Browse</button>
+<button class="nb" id="nQ">Quiz</button>
+<button class="nb" id="nF">Saved</button>
+<button id="th">&#9728;&#xFE0E;</button>
+</nav>
+</div></header>
+<main>
+<section class="pg on" id="pL">
+<div class="he"><h1>Word of the Moment</h1><p>Click the card to reveal its meaning</p></div>
+<div class="st"><div><div class="sn" id="sL">0</div><div class="sl">Learned</div></div><div><div class="sn" id="sT">0</div><div class="sl">Total</div></div><div><div class="sn" id="sS">0</div><div class="sl">Saved</div></div></div>
+<div class="ca"><div id="fc">
+<div class="fa">
+<div class="wl"><div class="bw" id="cw"></div><button class="ib" id="csp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button><button class="ib" id="cfv">&#9825;&#xFE0E;</button></div>
+<div class="ph" id="cph"></div>
+<div class="po" id="cpo"></div>
+<div class="th">Tap to reveal <b>definition &amp; examples</b></div>
+</div>
+<div class="fa fb">
+<div class="df" id="cdf"></div>
+<div class="ex" id="cex"></div>
+<div class="sy" id="csy"></div>
+</div>
+</div></div>
+<div class="ct">
+<button class="cb" id="bp">&#8592; Prev</button>
+<button class="cb pr" id="bk">I know this</button>
+<button class="cb" id="bn">Next &#8594;</button>
+</div>
+<div class="prg"><div class="trk"><div class="fil" id="pf"></div></div><div class="ptx" id="ptx">0/0</div></div>
+</section>
+<section class="pg" id="pB">
+<div class="bt"><div><h2 class="pt">Word Collection</h2><p class="ps">Explore the full lexicon</p></div><input class="si" id="bq" placeholder="Search words..."></div>
+<div class="ch" id="cbx"></div>
+<div class="gr" id="gb"></div>
+</section>
+<section class="pg" id="pQ"><div class="qz" id="qb"></div></section>
+<section class="pg" id="pF"><h2 class="pt">Saved Words</h2><p class="ps">Your personal collection</p><div id="fb"></div></section>
+</main>
+<button id="rb">&#8634;</button>
+<script src="words1.js"></script>
+<script src="words2.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
