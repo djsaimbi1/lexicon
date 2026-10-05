@@ -159,4 +159,348 @@ main{max-width:1100px;margin:0 auto;padding:86px 1rem 4rem}
 <div class="ch" id="cbx"></div>
 <div class="gr" id="gb"></div>
 </section>
-<section class="
+<section class="pg" id="pQ"><div class="qz" id="qb"></div></section>
+<section class="pg" id="pF"><h2 class="pt">Saved Words</h2><p class="ps">Your personal collection</p><div id="fb"></div></section>
+</main>
+<button id="rb">&#8634;</button>
+<script>
+function $(i){return document.getElementById(i)}
+function A(x,f){for(var i=0;i<x.length;i++)f(x[i],i)}
+var store=(function(){var m={},ok=true;try{localStorage.setItem('_t','1');localStorage.removeItem('_t')}catch(e){ok=false}return{get:function(k){if(ok){try{return localStorage.getItem(k)}catch(e){}}return m[k]||null},set:function(k,v){if(ok){try{localStorage.setItem(k,v);return}catch(e){}}m[k]=v}}})();
+var RAW=[
+"Ephemeral|/ɪˈfɛm.ər.əl/|a|Time|lasting a very short time|the ephemeral glow of dawn faded quickly|fleeting,brief",
+"Serendipity|/ˌsɛr.ənˈdɪp..ti/|n|Fortune|finding good things by happy chance|our meeting was pure serendipity|luck,fortune",
+"Eloquent|/ˈɛl.ə.kwənt/|a|Speech|fluent and persuasive in speaking|her eloquent plea moved the jury|articulate,fluent",
+"Luminous|/ˈluː.mɪ.nəs/|a|Light|giving off light; bright|the luminous moon lit the path|radiant,glowing",
+"Ubiquitous|/juːˈbɪk.w.təs/|a|Presence|present everywhere|smartphones are ubiquitous today|omnipresent,common",
+"Petrichor|/ˈpɛt.rɪ.kɔːr/|n|Nature|earthy smell after rain|the petrichor refreshed the dry town|scent,smell",
+"Ineffable|/ɪnˈɛf.ə.bəl/|a|Emotion|too great for words|the ineffable calm of the lake|indescribable,unspeakable",
+"Resilience|/rɪˈzɪl.i.əns/|n|Strength|recovering quickly from hardship|her resilience carried her through|toughness,grit",
+"Ethereal|/ɪˈθɪə.ri.əl/|a|Beauty|delicate; otherworldly|the ethereal mist veiled the hills|heavenly,delicate",
+"Halcyon|/ˈhæl.si.ən/|a|Time|happy and peaceful past|the halcyon days of youth|idyllic,golden",
+"Melancholy|/ˈmɛl.ən.kɒl.i/|n|Emotion|deep lasting sadness|a quiet melancholy filled the room|sorrow,gloom",
+"Wanderlust|/ˈwɒn.də.lʌst/|n|Motion|strong desire to travel|wanderlust pulled him abroad|restlessness,urge",
+"Nostalgia|/nɒˈstæl.dʒə/|n|Emotion|longing for the past|the song filled her with nostalgia|longing,yearning",
+"Euphoria|/juːˈfɔː.ri.ə/|n|Emotion|intense excitement and happiness|the win brought pure euphoria|bliss,elation",
+"Solitude|/ˈsɒl..tjuːd/|n|State|peaceful being alone|he prized his morning solitude|seclusion,quiet",
+"Sanguine|/ˈsæŋ.ɡwɪn/|a|Emotion|optimistic in difficulty|she stayed sanguine despite losses|hopeful,confident",
+"Perspicacious|/ˌpɜː.spɪˈkeɪ.ʃəs/|a|Mind|shrewd and perceptive|a perspicacious judge of character|astute,shrewd",
+"Redolent|/ˈrɛd.əl.ənt/|a|Sensation|fragrant; suggestive of|the hall was redolent of cedar|fragrant,aromatic",
+"Verisimilitude|/ˌvɛr.ɪ.sɪˈmɪl.ɪ.tjuːd/|n|Truth|appearance of being true|the novel has striking verisimilitude|realism,plausibility",
+"Languid|/ˈlæ.ɡwɪd/|a|Motion|slow and relaxed|a languid afternoon by the river|leisurely,unhurried",
+"Aplomb|/əˈplɒm/|n|Strength|self-confidence under pressure|she answered with aplomb|poise,composure",
+"Elysian|/ɪˈlɪʒ.ən/|a|Beauty|heavenly; blissful|an elysian garden in spring|paradisiacal,divine",
+"Cacophony|/kəˈkɒf.ə.ni/|n|Sound|harsh mixture of sounds|the market was a cacophony of calls|discord,din",
+"Quintessential|/ˌkwɪn.tɪˈsɛn.əl/|a|Style|perfect example of a class|the quintessential gentleman|typical,classic",
+"Sonder|/ˈsɒn.dər/|n|Mind|realizing each passerby has a rich life|crowds filled him with sonder|empathy,awareness",
+"Aberration|/ˌæb.əˈreɪ.ən/|n|Truth|deviation from the normal|the warm day was an aberration|anomaly,deviation",
+"Abjure|/əbˈdʒʊər/|v|Speech|renounce formally|he abjured his old habits|renounce,reject",
+"Acrimony|/ˈæk.rɪ.mə.ni/|n|Social|bitterness of feeling|the divorce ended in acrimony|bitterness,hostility",
+"Adroit|/əˈdrɔɪt/|a|Mind|clever and skillful|an adroit negotiator|skillful,deft",
+"Alacrity|/əˈlæk.rɪ.ti/|n|Motion|brisk readiness|she accepted with alacrity|eagerness,speed",
+"Altruism|/ˈæl.tru.ɪ.zəm/|n|Social|selfless concern for others|his altruism fed the hungry|selflessness,charity",
+"Ambivalent|/æmˈbɪv.ə.lənt/|a|Emotion|having mixed feelings|she felt ambivalent about moving|unsure,torn",
+"Anachronism|/əˈnæk.rə.nɪ.zəm/|n|Time|thing out of its time|the dial phone is an anachronism|relic,throwback",
+"Anomaly|/əˈnɒm.ə.li/|n|Truth|something deviating from norm|the data anomaly puzzled scientists|oddity,exception",
+"Antipathy|/ænˈtɪp.ə.θi/|n|Emotion|deep dislike|the two felt mutual antipathy|aversion,hostility",
+"Apathy|/ˈæp.ə.θi/|n|Emotion|lack of interest|voter apathy lowered turnout|indifference,lethargy",
+"Arbiter|/ˈɑː.bɪ.tər/|n|Social|one who judges|the arbiter of good taste|judge,authority",
+"Arduous|/ˈɑː.dju.əs/|a|Strength|hard and tiring|the arduous climb tested them|grueling,hard",
+"Ascetic|/əˈsɛt.ɪk/|a|Style|practicing severe self-denial|the ascetic monk owned little|austere,sparing",
+"Assiduous|/əˈsɪd.ju.əs/|a|Craft|showing steady hard work|an assiduous researcher|diligent,careful",
+"Audacious|/ɔːˈdeɪ.ʃəs/|a|Style|bold and daring|an audacious plan to climb|bold,daring",
+"Auspicious|/ɔːˈspɪʃ.əs/|a|Fortune|favorable; promising|an auspicious start to the year|promising,favorable",
+"Avarice|/ˈæv.ər.ɪs/|n|Emotion|extreme greed|avarice drove the miser|greed,covetousness",
+"Banal|/bəˈnɑːl/|a|Style|boring and unoriginal|the banal remark added nothing|trite,dull",
+"Benevolent|/bəˈnɛv.əl.ənt/|a|Social|kind and generous|a benevolent donor|kind,generous",
+"Blithe|/blaɪð/|a|Emotion|lighthearted and casual|a blithe disregard for rules|carefree,light",
+"Boisterous|/ˈbɔɪs.tər.əs/|a|Sound|noisy and energetic|the boisterous crowd cheered|rowdy,lively",
+"Bolster|/ˈbəʊl.stər/|v|Strength|to support or strengthen|evidence bolstered her claim|support,boost",
+"Bombastic|/bɒmˈbæs.tɪk/|a|Speech|high-sounding but empty|the bombastic speech bored us|pompous,grandiose",
+"Buoyant|/ˈbɔɪ.ənt/|a|Emotion|cheerful and optimistic|a buoyant mood at the fair|cheerful,upbeat",
+"Burgeon|/ˈbɜː.dʒən/|v|Nature|to grow rapidly|the burgeoning startup scene|flourish,expand",
+"Cadence|/ˈkeɪ.dəns/|n|Sound|rhythmic flow of sound|the cadence of the rain|rhythm,beat",
+"Cajole|/kəˈdʒəʊl/|v|Speech|coax with flattery|he cajoled her into singing|coax,wheedle",
+"Candid|/ˈkæn.dɪd/|a|Speech|open and honest|a candid account of events|frank,honest",
+"Capricious|/kəˈprɪʃ.əs/|a|Style|impulsive and unpredictable|the capricious weather ruined plans|fickle,volatile",
+"Captivate|/ˈkæp.tɪ.veɪt/|v|Emotion|attract and hold interest|the story captivated the children|charm,enthrall",
+"Catalyst|/ˈkæt.əl.ɪst/|n|Motion|a cause of change|the speech was a catalyst for reform|spark,stimulus",
+"Caustic|/ˈkɔːs.tk/|a|Speech|sarcastic and biting|a caustic remark|biting,scathing",
+"Celerity|/sɪˈlɛr..ti/|n|Motion|swiftness of movement|the troops moved with celerity|speed,haste",
+"Charisma|/kəˈrɪz.mə/|n|Social|compelling charm|the leader radiated charisma|charm,magnetism",
+"Chicanery|/ʃɪkeɪ.nər.i/|n|Truth|deception by trickery|the deal reeked of chicanery|trickery,deceit",
+"Clandestine|/klænˈdɛs.tɪn/|a|Style|kept secret|a clandestine meeting|secret,covert",
+"Coalesce|/ˌkəʊ.əˈlɛs/|v|Motion|come together to form one|the groups coalesced into a party|merge,unite",
+"Cogent|/ˈkəʊ.dʒənt/|a|Speech|clear and convincing|a cogent argument|convincing,compelling",
+"Comely|/ˈkʌm.li/|a|Beauty|attractive in appearance|a comely young artist|pretty,handsome",
+"Complacent|/kəmˈpleɪ.sənt/|a|Mind|smugly self-satisfied|do not grow complacent|smug,self-satisfied",
+"Conundrum|/kəˈnʌn.drəm/|n|Mind|confusing difficult problem|the puzzle was a conundrum|riddle,puzzle",
+"Convivial|/kənˈvɪv.i.əl/|a|Social|friendly and lively|a convivial dinner party|festive,sociable",
+"Copious|/ˈkəʊ.pi.əs/|a|Style|abundant in supply|copious notes filled the desk|abundant,plentiful",
+"Cursory|/ˈkɜː.sər.i/|a|Craft|hasty and without detail|a cursory glance at the report|brief,superficial",
+"Dapper|/ˈdæp.ər/|a|Style|neat and stylish in dress|a dapper host|dashing,neat",
+"Dauntless|/ˈdɔːnt.ləs/|a|Strength|fearless|a dauntless explorer|brave,bold",
+"Deference|/ˈdɛf.ər.əns/|n|Social|respectful submission|she bowed in deference|respect,homage",
+"Deft|/dɛft/|a|Craft|skillful and quick|a deft touch with the brush|skillful,adroit",
+"Demure|/dɪˈmjʊər/|a|Style|quiet and modest|a demure smile|modest,reserved",
+"Desolate|/ˈdɛs.əl.ət/|a|Place|empty and bleak|the desolate plain|bleak,barren",
+"Dexterous|/ˈdɛk.stər.əs/|a|Craft|skillful with hands|a dexterous surgeon|agile,skillful",
+"Didactic|/daɪˈdæk.tɪk/|a|Speech|intended to teach|a didactic fable|instructive,educational",
+"Diligent|/ˈdɪl.ɪ.dʒənt/|a|Craft|hardworking|a diligent student|industrious,careful",
+"Disparage|/dɪˈspær.ɪdʒ/|v|Speech|regard as worthless|do not disparage her work|belittle,devalue",
+"Dissemble|/dɪˈsɛm.bəl/|v|Truth|conceal the truth|he dissembled his motives|pretend,mask",
+"Dogmatic|/dɒɡˈmæt.ɪk/|a|Mind|asserting opinions as facts|a dogmatic tone|opinionated,rigid",
+"Dour|/dʊər/|a|Emotion|stern and gloomy|a dour expression|gloomy,stern",
+"Ebullient|/ɪˈbʌl.i.ənt/|a|Emotion|full of eager excitement|her ebullient laugh|exuberant,animated",
+"Eclectic|/ɪˈklɛk.tk/|a|Style|drawing from many sources|an eclectic taste in music|diverse,varied",
+"Edify|/ˈɛd.ɪ.faɪ/|v|Mind|instruct and improve|the lecture edified the crowd|enlighten,instruct",
+"Efficacy|/ˈɛf..kə.si/|n|Truth|power to produce results|the efficacy of the vaccine|effectiveness,potency",
+"Effervescent|/ˌɛf.əˈvɛs.ənt/|a|Emotion|bubbly and vivacious|an effervescent performer|vivacious,bubbly",
+"Egregious|/ɪˈɡri.dʒəs/|a|Style|outstandingly bad|an egregious error|flagrant,glaring",
+"Elegy|/ˈɛl.ɪ.dʒi/|n|Speech|poem of mourning|an elegy for the fallen|lament,requiem",
+"Elucidate|/ɪˈluː.sɪ.deɪt/|v|Speech|make clear|please elucidate your point|clarify,explain",
+"Enigma|/ɪˈnɪɡ.mə/|n|Mind|mysterious person or thing|the origin remains an enigma|mystery,puzzle",
+"Ennui|/ɒnˈwiː/|n|Emotion|listless boredom|the ennui of long Sundays|boredom,tedium",
+"Equanimity|/ˌɛk.wəˈnɪm.ɪ.ti/|n|Strength|calm composure|she faced it with equanimity|composure,calm",
+"Erudite|/ˈɛr.ʊ.daɪt/|a|Mind|having great knowledge|an erudite professor|learned,scholarly",
+"Esoteric|/ˌɛs.əˈtɛr.k/|a|Mind|understood by few|esoteric knowledge|obscure,arcane",
+"Eulogy|/ˈjuː.lə.dʒi/|n|Speech|speech praising the dead|a moving eulogy|tribute,praise",
+"Evanescent|/ˌɛv.əˈnɛs.ənt/|a|Time|quickly fading from sight|the evanescent rainbow|fading,fleeting",
+"Exalt|/ɪɡˈzɔːlt/|v|Speech|praise highly|they exalted the hero|praise,glorify",
+"Exemplary|/ɪɡˈzɛm.plər.i/|a|Style|serving as a model|exemplary conduct|model,ideal",
+"Exhort|/ɪɡˈzɔːt/|v|Speech|strongly encourage|she exhorted the team|urge,encourage",
+"Exonerate|/ɪɡˈzɒn.ə.reɪt/|v|Truth|absolve from blame|the report exonerated the officer|acquit,absolve",
+"Expedient|/ɪkˈspiː.di.ənt/|a|Craft|convenient but perhaps improper|an expedient shortcut|practical,convenient",
+"Exquisite|/ɪkˈskwɪz.ɪt/|a|Beauty|extremely beautiful|exquisite craftsmanship|beautiful,delicate",
+"Extol|/ɪkˈstəʊl/|v|Speech|praise enthusiastically|critics extolled the film|praise,laud",
+"Exuberant|/ɪɡˈzjuː.bər.ənt/|a|Emotion|full of energy|exuberant celebrations|ebullient,lively",
+"Facetious|/fəˈsiː.ʃəs/|a|Speech|flippantly humorous|a facetious comment|flippant,joking",
+"Fallible|/ˈfæl.ɪ.bəl/|a|Mind|capable of error|all humans are fallible|imperfect,weak",
+"Fastidious|/fæˈstɪd.i.əs/|a|Craft|very attentive to detail|fastidious about grammar|meticulous,fussy",
+"Fathom|/ˈfæð.əm/|v|Mind|understand deeply|I cannot fathom his choice|understand,grasp",
+"Felicity|/fɪˈlɪs..ti/|n|Emotion|intense happiness|the felicity of the moment|bliss,joy",
+"Fervent|/ˈfɜː.vənt/|a|Emotion|intensely passionate|a fervent supporter|passionate,ardent",
+"Fiasco|/fiˈæs.kəʊ/|n|Fortune|ridiculous failure|the event became a fiasco|debacle,failure",
+"Flippant|/ˈflɪp.ənt/|a|Speech|not showing respect|a flippant answer|irreverent,cavalier",
+"Flourish|/ˈflʌr.ɪʃ/|v|Nature|grow vigorously|the garden flourished|thrive,prosper",
+"Foible|/ˈfɔɪ.bəl/|n|Mind|minor weakness|his charming foibles|fault,quirk",
+"Foresight|/ˈfɔː.saɪt/|n|Mind|planning for the future|the foresight to save early|prudence,vision",
+"Fortitude|/ˈfɔː.tɪ.tjuːd/|n|Strength|courage in pain|she bore it with fortitude|courage,stamina",
+"Frugal|/ˈfruː.ɡəl/|a|Style|sparing and economical|a frugal meal|thrifty,sparing",
+"Garrulous|/ˈɡær.ʊ.ləs/|a|Speech|excessively talkative|a garrulous taxi driver|chatty,loquacious",
+"Gaunt|/ɡɔːnt/|a|Style|thin and bony|a gaunt face|haggard,thin",
+"Germane|/dʒəˈmeɪn/|a|Mind|relevant to the subject|a germane observation|relevant,pertinent",
+"Glib|/ɡlɪb/|a|Speech|fluent but insincere|a glib excuse|smooth,superficial",
+"Gossamer|/ˈɡɒs.ə.mər/|a|Beauty|light and delicate|gossamer spider silk|delicate,fine",
+"Gregarious|/ɡrɪˈɡɛə.ri.əs/|a|Social|fond of company|a gregarious host|sociable,outgoing",
+"Guile|/ɡaɪl/|n|Mind|sly cunning|guile in negotiation|cunning,craftiness",
+"Hackneyed|/ˈhæk.nid/|a|Style|unoriginal through overuse|a hackneyed plot|trite,clichéd",
+"Harangue|/həˈræŋ/|n|Speech|lengthy scolding|a harangue about punctuality|tirade,lecture",
+"Haphazard|/hæpˈhæz.əd/|a|Craft|lacking organization|a haphazard arrangement|random,chaotic",
+"Hilarity|/hɪˈlær.ɪ.ti/|n|Emotion|amusement and laughter|the hilarity of the party|laughter,mirth",
+"Humility|/hjuːˈmɪl..ti/|n|Social|modest view of oneself|she accepted praise with humility|modesty,meekness",
+"Hyperbole|/haɪˈpɜː.bəl.i/|n|Speech|exaggerated statement|saying I waited forever is hyperbole|exaggeration,overstatement",
+"Idyllic|/ɪˈdɪl.ɪk/|a|Place|happy and peaceful|an idyllic village|picturesque,peaceful",
+"Immaculate|/ɪˈmæk.jʊ.lət/|a|Style|perfectly clean|an immaculate kitchen|spotless,pristine",
+"Immutable|/ɪˈmjuː.tə.bəl/|a|Time|unchanging over time|the immutable laws of physics|fixed,unchanging",
+"Impeccable|/ɪmˈpɛk.ə.bəl/|a|Craft|faultless|impeccable manners|flawless,perfect",
+"Impervious|/ɪmˈpɜː.vi.əs/|a|Strength|not affected by|impervious to criticism|immune,resistant",
+"Incisive|/ɪnˈsaɪ.sɪv/|a|Mind|sharply perceptive|an incisive analysis|penetrating,sharp",
+"Incongruous|/ɪnˈkɒŋ.ɡru.əs/|a|Style|out of place|the tie was incongruous with the suit|inconsistent,jarring",
+"Indolent|/ˈɪn.dəl.ənt/|a|Style|lazy|an indolent afternoon|lazy,idle",
+"Indomitable|/ɪnˈdɒm.ɪ.tə.bəl/|a|Strength|impossible to subdue|an indomitable spirit|unconquerable,resolute",
+"Inexorable|/ɪnˈɛk.sər.ə.bəl/|a|Time|impossible to stop|the inexorable march of time|relentless,unstoppable",
+"Ingenious|/ɪnˈdʒiː.ni.əs/|a|Mind|cleverly inventive|an ingenious device|inventive,clever",
+"Inimitable|/ɪnˈɪm.ɪ.tə.bəl/|a|Style|too good to imitate|her inimitable style|unique,matchless",
+"Insipid|/ɪnˈsɪp.ɪd/|a|Style|lacking flavor or interest|an insipid soup|bland,dull",
+"Intrepid|/ɪnˈtrɛp.ɪd/|a|Strength|fearless and adventurous|an intrepid reporter|brave,fearless",
+"Irascible|/ɪˈræs.ɪ.bəl/|a|Emotion|easily angered|an irascible old man|irritable,cranky",
+"Itinerant|/aɪˈtɪn.ər.ənt/|a|Motion|traveling from place to place|an itinerant musician|traveling,roving",
+"Jaunty|/ˈdʒɔːn.ti/|a|Style|lively and cheerful|a jaunty hat|sprightly,cheerful",
+"Jocular|/ˈdʒɒk.j.lər/|a|Speech|fond of joking|a jocular uncle|humorous,playful",
+"Jovial|/ˈdʒəʊ.vi.əl/|a|Emotion|cheerful and friendly|a jovial host|jolly,merry",
+"Jubilant|/ˈdʒuː.bɪ.lənt/|a|Emotion|triumphantly happy|the jubilant crowd|elated,triumphant",
+"Judicious|/dʒuːˈdɪʃ.əs/|a|Mind|showing good judgment|a judicious use of funds|wise,sensible",
+"Labyrinth|/ˈlæb.ə.rɪnθ/|n|Place|complicated maze|the old town is a labyrinth|maze,tangle",
+"Laconic|/ləˈkɒn.ɪk/|a|Speech|using few words|a laconic reply|terse,concise",
+"Lament|/ləˈmɛnt/|v|Emotion|mourn deeply|they lamented the loss|grieve,mourn",
+"Laud|/lɔːd/|v|Speech|praise|critics lauded the actor|praise,extol",
+"Legacy|/ˈlɛɡ.ə.si/|n|Time|something handed down|her legacy lives on|heritage,inheritance",
+"Levity|/ˈlɛv.ɪ.ti/|n|Emotion|lightness and humor|a moment of levity|humor,lightness",
+"Limpid|/ˈlɪm.pɪd/|a|Beauty|clear and transparent|limpid water|clear,transparent",
+"Loquacious|/ləˈkweɪ.ʃəs/|a|Speech|very talkative|a loquacious guide|talkative,garrulous",
+"Lustrous|/ˈlʌs.trəs/|a|Light|shining and glossy|lustrous hair|glossy,shining",
+"Magnanimous|/mæɡˈnæn.ɪ.məs/|a|Social|generous and forgiving|a magnanimous victor|generous,noble",
+"Malaise|/mæˈleɪz/|n|Emotion|general feeling of unease|a national malaise|unease,discomfort",
+"Malleable|/ˈmæl.i.ə.bəl/|a|Style|easily shaped|the malleable clay|pliable,flexible",
+"Meander|/miˈæn.dər/|v|Motion|wander aimlessly|the river meanders|wander,drift",
+"Meticulous|/məˈtɪk.j.ləs/|a|Craft|very careful and precise|meticulous records|careful,thorough",
+"Mettle|/ˈmɛt.əl/|n|Strength|spirit and courage|the race tested their mettle|spirit,courage",
+"Mirth|/mɜːθ/|n|Emotion|amusement and laughter|eyes full of mirth|laughter,glee",
+"Momentum|/məˈmɛn.təm/|n|Motion|impetus gained by movement|the campaign gained momentum|impetus,drive",
+"Monotonous|/məˈnɒt.ən.əs/|a|Sound|dull through sameness|a monotonous voice|tedious,repetitive",
+"Mundane|/mʌnˈdeɪn/|a|Style|ordinary and boring|mundane chores|ordinary,banal",
+"Nemesis|/ˈnɛm.ə.sɪs/|n|Social|longstanding rival|his old nemesis returned|rival,opponent",
+"Nimble|/ˈnɪm.bəl/|a|Motion|quick and light in movement|nimble fingers|agile,quick",
+"Nonchalant|/ˈnɒn.ʃəl.ənt/|a|Style|calm and unbothered|a nonchalant shrug|casual,cool",
+"Notorious|/nəʊˈtɔː.ri.əs/|a|Social|famous for something bad|a notorious smuggler|infamous,disreputable",
+"Nuance|/ˈnjuː.ɑːns/|n|Mind|subtle difference|the nuances of meaning|subtlety,shade",
+"Oblivion|/əˈblɪv.i.ən/|n|State|state of being forgotten|the band faded into oblivion|obscurity,forgetfulness",
+"Obstinate|/ˈɒb.stɪ.nət/|a|Mind|stubborn|an obstinate child|stubborn,headstrong",
+"Omen|/ˈəʊ.mɛn/|n|Fortune|sign of things to come|the dove was a good omen|sign,portent",
+"Opulent|/ˈɒp.jʊ.lənt/|a|Style|rich and luxurious|an opulent palace|luxurious,wealthy",
+"Oracle|/ˈɒr.ə.kəl/|n|Mind|source of wise advice|the oracle of the village|sage,prophet",
+"Ostentatious|/ˌɒs.tɛnˈteɪ.ʃəs/|a|Style|showy and pretentious|an ostentatious car|showy,flashy",
+"Outwit|/aʊtˈwɪt/|v|Mind|defeat by cleverness|she outwitted the trickster|outsmart,trick",
+"Palatable|/ˈpæl.ə.tə.bəl/|a|Sensation|pleasant to taste|a palatable dish|tasty,agreeable",
+"Pallid|/ˈpæl.ɪd/|a|Style|pale|a pallid complexion|pale,wan",
+"Panacea|/ˌpæn.əˈsiː.ə/|n|Truth|cure-all|no panacea for all problems|cure-all,remedy",
+"Paradox|/ˈpær.ə.dɒks/|n|Mind|seemingly contradictory statement|the paradox of choice|contradiction,puzzle",
+"Paramount|/ˈpær.ə.maʊnt/|a|Style|more important than anything|safety is paramount|supreme,chief",
+"Pensive|/ˈpɛn.sɪv/|a|Emotion|deeply thoughtful|a pensive mood|reflective,meditative",
+"Perpetual|/pəˈpɛt.jʊ.əl/|a|Time|never ending|perpetual snow|endless,continuous",
+"Pinnacle|/ˈpɪn.ə.kəl/|n|Place|highest point|the pinnacle of her career|summit,peak",
+"Piquant|/ˈpiː.kənt/|a|Sensation|pleasantly sharp taste|a piquant sauce|spicy,tangy",
+"Placid|/ˈplæs.ɪd/|a|Emotion|calm and peaceful|a placid lake|calm,tranquil",
+"Ponder|/ˈpɒn.dər/|v|Mind|think carefully|she pondered the offer|consider,reflect",
+"Pristine|/ˈprɪs.tiːn/|a|Style|in original condition|the pristine beach|unspoiled,pure",
+"Profound|/prəˈfaʊnd/|a|Mind|very deep|a profound insight|deep,intense",
+"Prolific|/prəˈlɪf.ɪk/|a|Craft|producing much|a prolific writer|productive,fertile",
+"Prudent|/ˈpruː.dənt/|a|Mind|acting with care|a prudent decision|wise,careful",
+"Pungent|/ˈpʌŋ.dʒənt/|a|Sensation|strong sharp smell|a pungent cheese|sharp,acrid",
+"Quaint|/kweɪnt/|a|Place|attractively unusual|a quaint cottage|charming,old-fashioned",
+"Quench|/kwɛntʃ/|v|Motion|satisfy thirst|quench your thirst|satisfy,extinguish",
+"Radiant|/ˈreɪ.di.ənt/|a|Light|sending out light|a radiant smile|glowing,bright",
+"Rapture|/ˈræp.tʃər/|n|Emotion|great pleasure|she listened in rapture|ecstasy,delight",
+"Reverie|/ˈrɛv.ər.i/|n|Mind|pleasant daydream|lost in a reverie|daydream,trance",
+"Vigor|/ˈvɪɡ.ər/|n|Strength|physical strength and energy|the vigor of youth|energy,vitality",
+"Vivid|/ˈvɪv.ɪd/|a|Light|strong bright color|a vivid memory|bright,striking",
+"Zeal|/ziːl/|n|Emotion|great enthusiasm|the zeal of a convert|passion,ardor",
+"Zenith|/ˈzɛn.ɪθ/|n|Time|highest point in time|the zenith of the empire|peak,apex",
+"Zest|/zɛst/|n|Emotion|eager enjoyment|a zest for life|enthusiasm,relish",
+"Kindle|/ˈkɪn.dəl/|v|Motion|light a fire; arouse|kindle a flame of hope|ignite,arouse",
+"Marvel|/ˈmɑ.vəl/|v|Emotion|be filled with wonder|we marveled at the view|wonder,admire",
+"Haven|/ˈheɪ.vən/|n|Place|safe place|a haven from the storm|refuge,sanctuary",
+"Chronicle|/ˈkrɒn.ɪ.kəl/|n|Time|record of events|a chronicle of the war|record,history",
+"Beacon|/ˈbiː.kən/|n|Light|guiding light|a beacon of hope|signal,lighthouse",
+"Bloom|/bluːm/|v|Nature|produce flowers|the roses bloomed|blossom,flower",
+"Cascade|/kæˈskeɪd/|n|Nature|small waterfall|a cascade of water|waterfall,torrent",
+"Dawn|/dɔːn/|n|Time|first light of day|the dawn broke softly|daybreak,sunrise",
+"Dusk|/dʌsk/|n|Time|the darker part of evening|the dusk settled|twilight,sundown",
+"Ember|/ˈɛm.bər/|n|Nature|glowing coal|the embers glowed|coal,spark",
+"Gale|/ɡeɪl/|n|Nature|very strong wind|the gale shook the roof|wind,storm",
+"Haze|/heɪz/|n|Nature|thin mist|a haze over the valley|mist,fog",
+"Keen|/kiːn/|a|Mind|sharp and eager|a keen observer|sharp,eager",
+"Lull|/lʌl/|n|Time|temporary calm|a lull in the storm|pause,break",
+"Sage|/seɪdʒ/|n|Mind|wise person|the village sage|wise man,philosopher",
+"Yonder|/ˈjɒn.dər/|r|Place|at a distance|the yonder hills|distant,far",
+"Azure|/ˈæʒ.ər/|a|Light|bright blue like sky|the azure sky|blue,sky-blue",
+"Brisk|/brɪsk/|a|Motion|quick and energetic|a brisk walk|quick,lively",
+"Crisp|/krɪsp/|a|Sensation|firm and dry|the crisp autumn air|fresh,sharp",
+"Dimple|/ˈdɪm.pəl/|n|Beauty|small hollow in cheek|a smile with dimples|hollow,indent",
+"Elite|/eɪˈliːt/|n|Social|the best of a group|the elite of the field|best,cream",
+"Fable|/ˈfeɪ.bəl/|n|Speech|short moral story|the fable of the tortoise|tale,story",
+"Gleam|/ɡliːm/|n|Light|a faint light|a gleam of silver|glint,sparkle",
+"Hush|/hʌʃ/|n|Sound|silence and quiet|a hush fell over the room|silence,quiet",
+"Ivory|/ˈaɪ.vər.i/|n|Style|creamy white|an ivory gown|white,cream",
+"Jolly|/ˈdʒɒl.i/|a|Emotion|happy and cheerful|a jolly song|merry,cheerful",
+"Karma|/ˈkɑ.mə/|n|Fortune|actions shaping fate|karma caught up with him|fate,destiny",
+"Lilt|/lɪlt/|n|Sound|pleasant rhythm in voice|a lilt in her voice|rhythm,bounce",
+"Happiness|/ˈhæp.i.nəs/|n|Emotion|the state of being happy|her happiness lit the room|joy,delight",
+"Sadness|/ˈsæd.nəs/|n|Emotion|the state of being sad|a quiet sadness in his eyes|sorrow,gloom",
+"Joy|/dʒɔɪ/|n|Emotion|great pleasure and happiness|the joy of a reunion|elation,bliss",
+"Sorrow|/ˈsɒr.əʊ/|n|Emotion|deep distress caused by loss|sorrow at the farewell|grief,sadness",
+"Anger|/ˈæŋ.ɡər/|n|Emotion|strong feeling of displeasure|his anger faded by evening|fury,rage",
+"Fear|/fɪər/|n|Emotion|unease caused by danger|fear of the dark|dread,fright",
+"Hope|/həʊp/|n|Emotion|desire and expectation for good|hope for a better year|optimism,trust",
+"Despair|/dɪˈspeər/|n|Emotion|complete loss of hope|moments of deep despair|hopelessness,gloom",
+"Delight|/dɪˈlaɪt/|n|Emotion|great pleasure and joy|the children squealed with delight|pleasure,joy",
+"Anxiety|/æŋˈzaɪ.ə.ti/|n|Emotion|worry and uneasy feelings|exam anxiety kept him awake|worry,unease",
+"Serenity|/sɪˈrɛn.ɪ.ti/|n|Emotion|calm and peaceful state|the serenity of the lake|calm,peace",
+"Grief|/ɡriːf/|n|Emotion|deep sorrow from loss|grief softened into memory|sorrow,heartache"
+];
+var EM=[
+["Happy","joyful,elated,delighted,jubilant,euphoric,blissful,cheerful,content,ecstatic,gleeful,merry,upbeat"],
+["Sad","sorrowful,gloomy,mournful,dejected,despondent,heartbroken,downcast,forlorn,woeful,dolorous,tearful,blue"],
+["Angry","furious,irate,livid,incensed,enraged,wrathful,seething,hostile,resentful,bitter,outraged,vexed"],
+["Fear","dread,terror,panic,anxious,frightened,alarmed,apprehensive,horrified,trepid,foreboding,paranoid,dismayed"],
+["Calm","serene,tranquil,placid,composed,relaxed,peaceful,soothing,mellow,unruffled,collected,poised,settled"],
+["Love","adoring,devoted,tender,affectionate,fond,smitten,enamored,infatuated,passionate,warm,cherishing,ardent"],
+["Excited","thrilled,exhilarated,eager,enthusiastic,animated,electrified,energized,rapturous,avid,stoked,pumped,keen"],
+["Surprised","astonished,amazed,stunned,startled,astounded,awed,bewildered,dumbfounded,flabbergasted,shocked,open-mouthed,taken-aback"],
+["Disgusted","revolted,repulsed,sickened,nauseated,appalled,offended,loathing,queasy,horrified,fed-up,averse,icky"],
+["Ashamed","guilty,embarrassed,humiliated,mortified,remorseful,contrite,abashed,disgraced,dishonored,chagrined,penitent,exposed"]
+];
+var EMW=[];A(EM,function(e){A(e[1].split(','),function(w){EMW.push({w:w,e:e[0]})})});
+var POS={a:'adjective',n:'noun',v:'verb',r:'adverb'};
+var W=[];A(RAW,function(l){var f=l.split('|');if(f.length>=7)W.push({w:f[0],p:f[1],t:POS[f[2]]||f[2],c:f[3],d:f[4],e:f[5],s:f[6].split(',')})});
+if(!W.length)W=[{w:'Hope',p:'/həʊp/',t:'noun',c:'Emotion',d:'desire and expectation for good',e:'hope for a better year',s:['optimism','trust']}];
+var S={i:0,kn:{},sv:{},fl:false,qi:0,qs:0,qq:[],qa:false,qd:false,be:'all',q:'',bt:0};
+function load(){try{var x=JSON.parse(store.get('lex_s'));if(x){S.kn=x.k||{};S.sv=x.v||{}}}catch(e){}}
+function save(){store.set('lex_s',JSON.stringify({k:S.kn,v:S.sv}))}
+function cnt(o){var n=0;for(var k in o)n++;return n}
+function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t}return b}
+function say(t){try{if(window.speechSynthesis){speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.rate=.85;speechSynthesis.speak(u)}}catch(e){}}
+$('sp').onclick=function(){this.className='off'};
+function setT(d){document.documentElement.className=d?'dk':'';$('th').innerHTML=d?'&#9790;&#xFE0E;':'&#9728;&#xFE0E;';store.set('lex_th',d?'1':'')}
+$('th').onclick=function(){setT(document.documentElement.className!=='dk')};
+if(store.get('lex_th')==='1')setT(true);
+var NV=[['nL','pL'],['nB','pB'],['nQ','pQ'],['nF','pF']];
+function goP(p){A(NV,function(m){$(m[0]).className='nb'+(m[1]===p?' on':'');$(m[1]).className='pg'+(m[1]===p?' on':'')});if(p==='pB')rB();if(p==='pQ')sQ();if(p==='pF')rF();if(p==='pL')rL()}
+A(NV,function(n){$(n[0]).onclick=function(){goP(n[1])}});
+function goW(ix){S.i=ix;S.fl=true;$('fc').className='fl';rL();goP('pL')}
+$('fc').onclick=function(e){var t=e.target;while(t&&t.nodeType===1){if(t.classList&&t.classList.contains('ib'))return;t=t.parentNode}S.fl=!S.fl;this.className=S.fl?'fl':''};
+$('csp').onclick=function(e){e.stopPropagation();say(W[S.i].w)};
+$('cfv').onclick=function(e){e.stopPropagation();tSv(W[S.i].w)};
+$('bp').onclick=function(){S.i=(S.i-1+W.length)%W.length;S.fl=false;$('fc').className='';rL()};
+$('bn').onclick=function(){S.i=(S.i+1)%W.length;S.fl=false;$('fc').className='';rL()};
+$('bk').onclick=function(){var w=W[S.i].w;if(S.kn[w]){delete S.kn[w];save();rL()}else{S.kn[w]=1;save();S.i=(S.i+1)%W.length;S.fl=false;$('fc').className='';rL()}};
+function tSv(w){if(S.sv[w])delete S.sv[w];else S.sv[w]=1;save();rL();rF()}
+function rL(){var w=W[S.i];$('cw').textContent=w.w;$('cph').textContent=w.p;$('cpo').textContent=w.t;$('cdf').textContent=w.d;$('cex').textContent='\u201C'+w.e+'\u201D';$('csy').innerHTML=w.s.map(function(x){return '<span>'+x+'</span>'}).join('');$('cfv').innerHTML=S.sv[w.w]?'&#9829;&#xFE0E;':'&#9825;&#xFE0E;';$('cfv').className='ib'+(S.sv[w.w]?' fv':'');$('bk').textContent=S.kn[w.w]?'\u2713 Known':'I know this';$('bk').className='cb '+(S.kn[w.w]?'ks':'pr');$('pf').style.width=((S.i+1)/W.length*100)+'%';$('ptx').textContent=(S.i+1)+'/'+W.length;$('sL').textContent=cnt(S.kn);$('sT').textContent=W.length;$('sS').textContent=cnt(S.sv)}
+function fetchD(w){return fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(w)).then(function(r){return r.ok?r.json().then(function(d){return{w:w,d:d}}):null}).catch(function(){return null})}
+function noD(q){$('dcb').innerHTML='<div class="dc"><div class="dw">No entry for \u201C'+q+'\u201D</div><div class="dn">Check the spelling or try another word.</div></div>'}
+function renderD(res,q){var e=res.d[0]||{};var ph=e.phonetic||'';var au='';
+if(e.phonetics)A(e.phonetics,function(p){if(!au&&p.audio)au=p.audio});
+var h='<div class="dc"><div class="wl2"><div class="dw">'+res.w+'</div>'+(au?'<button class="ib dap" data-au="'+au+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button>':'')+'</div>';
+if(ph)h+='<div class="dp">'+ph+'</div>';
+if(q&&q!==res.w.toLowerCase())h+='<div class="dn">Showing nearest match for \u201C'+q+'\u201D</div>';
+A((e.meanings||[]).slice(0,3),function(m){h+='<div class="dm">'+(m.partOfSpeech||'')+'</div>';A((m.definitions||[]).slice(0,2),function(d){h+='<div class="dd">\u2022 '+d.definition+'</div>';if(d.example)h+='<div class="de">\u201C'+d.example+'\u201D</div>'});if(m.synonyms&&m.synonyms.length){h+='<div class="ds">';A(m.synonyms.slice(0,5),function(s){h+='<span>'+s+'</span>'});h+='</div>'}});
+h+='</div>';$('dcb').innerHTML=h;
+var ab=$('dcb').querySelector('.dap');if(ab)ab.onclick=function(){try{new Audio(ab.getAttribute('data-au')).play()}catch(err){}}}
+function lookup(q){var b=$('dcb');b.style.display='block';b.innerHTML='<div class="dc"><div class="dw">Looking up \u201C'+q+'\u201D\u2026</div></div>';
+fetchD(q).then(function(res){if(res){renderD(res,q)}else{fetch('https://api.datamuse.com/words?sp='+encodeURIComponent(q)+'&max=1').then(function(r){return r.json()}).then(function(j){if(j&&j.length){fetchD(j[0].word).then(function(r2){if(r2)renderD(r2,q);else noD(q)})}else noD(q)}).catch(function(){noD(q)})}}).catch(function(){noD(q)})}
+$('bq').oninput=function(){S.q=this.value.trim().toLowerCase();clearTimeout(S.bt);S.bt=setTimeout(rB,400)};
+function bindGrid(){A($('gb').children,function(c){c.onclick=function(){var em=c.getAttribute('data-em');if(em){lookup(em);$('dcb').scrollIntoView({behavior:'smooth'})}else{goW(+c.getAttribute('data-i'))}}})}
+function rB(){var q=S.q;
+if(!q){$('dcb').style.display='none';$('dcb').innerHTML='';$('cbx').style.display='flex';
+var h='<button class="cc'+(S.be==='all'?' on':'')+'" data-e="all">All Emotions</button>';
+A(EM,function(e){h+='<button class="cc'+(S.be===e[0]?' on':'')+'" data-e="'+e[0]+'">'+e[0]+'</button>'});
+$('cbx').innerHTML=h;
+var list=S.be==='all'?EMW:EMW.filter(function(x){return x.e===S.be});
+var g='';A(list,function(x){g+='<div class="wc" data-em="'+x.w+'"><div class="w">'+x.w+'</div><div class="p">synonym of '+x.e+'</div></div>'});
+$('gb').innerHTML=g;
+A($('cbx').children,function(b){b.onclick=function(){S.be=b.getAttribute('data-e');rB()}});
+bindGrid();
+}else{$('cbx').style.display='none';lookup(q);
+var m=[];A(EMW,function(x){if(x.w.indexOf(q)>-1)m.push({em:x.w,lb:'synonym of '+x.e})});
+A(W,function(w,idx){if(w.w.toLowerCase().indexOf(q)>-1)m.push({i:idx,em:'',lb:w.d})});
+var g='';A(m,function(x){g+=x.em?'<div class="wc" data-em="'+x.em+'"><div class="w">'+x.em+'</div><div class="p">'+x.lb+'</div></div>':'<div class="wc" data-i="'+x.i+'"><div class="w">'+W[x.i].w+'</div><div class="d">'+x.lb+'</div></div>'});
+if(!m.length)g='<p style="color:var(--mu);font-size:.85rem;padding:.5rem 0">No saved word matches \u2014 see the dictionary result above.</p>';
+$('gb').innerHTML=g;bindGrid()}}
+function sQ(){S.qi=0;S.qs=0;S.qd=false;S.qa=false;S.qq=shuf(W).slice(0,10).map(function(w){var wr=shuf(W.filter(function(x){return x.w!==w.w})).slice(0,3).map(function(x){return x.d});return{w:w,o:shuf([w.d].concat(wr)),c:w.d}});rQ()}
+function rQ(){if(S.qd){var pc=Math.round(S.qs/S.qq.length*100);$('qb').innerHTML='<div class="qr"><h3 class="pt">Quiz Complete</h3><div class="pc">'+pc+'%</div><p class="ps">'+(pc>=70?'Outstanding! Your vocabulary shines.':'Keep practicing \u2014 every word counts.')+'</p><button class="qn" id="qa">Try Again</button></div>';$('qa').onclick=sQ;return}
+var q=S.qq[S.qi];S.qa=false;
+var h='<div class="qs"><div style="text-align:center"><div class="sn">'+S.qs+'</div><div class="sl">Score</div></div><div style="text-align:center"><div class="sn">'+(S.qi+1)+'/'+S.qq.length+'</div><div class="sl">Question</div></div></div><div class="qb"><div class="ql">What is the meaning of</div><div class="qw">'+q.w.w+'</div><div class="qp">'+q.w.p+'</div></div><div class="qo">';
+A(q.o,function(o){h+='<button class="qi">'+o+'</button>'});
+$('qb').innerHTML=h;
+A($('qb').querySelectorAll('.qi'),function(b){b.onclick=function(){if(S.qa)return;S.qa=true;var ok=b.textContent===q.c;if(ok)S.qs++;A($('qb').querySelectorAll('.qi'),function(x){x.style.pointerEvents='none';if(x.textContent===q.c)x.className='qi ok';else if(x===b&&!ok)x.className='qi no'});var last=S.qi>=S.qq.length-1;var nb=document.createElement('button');nb.className='qn';nb.textContent=last?'See Results':'Next \u2192';nb.onclick=function(){if(last)S.qd=true;else S.qi++;rQ()};$('qb').appendChild(nb)}})}
+function rF(){var f=W.filter(function(w){return !!S.sv[w.w]});if(!f.length){$('fb').innerHTML='<div class="fe">&#9825;&#xFE0E;<br>No saved words yet.<br>Tap the heart on a flashcard to save one.</div>';return}
+var h='<div class="fg">';A(f,function(w){h+='<div class="fvi" data-w="'+w.w+'"><div><div class="fw">'+w.w+'</div><div class="fd">'+w.d+'</div></div><button class="fx" data-x="'+w.w+'">&#10005;</button></div>'});h+='</div>';$('fb').innerHTML=h;
+A($('fb').querySelectorAll('.fvi'),function(it){it.onclick=function(e){if(e.target.classList&&e.target.classList.contains('fx'))return;for(var i=0;i<W.length;i++)if(W[i].w===it.getAttribute('data-w')){goW(i);break}}});
+A($('fb').querySelectorAll('.fx'),function(b){b.onclick=function(e){e.stopPropagation();delete S.sv[b.getAttribute('data-x')];save();rF();rL()}})}
+var arm=0;
+$('rb').onclick=function(){var rb=this;if(arm){arm=0;S.kn={};S.sv={};S.i=0;S.fl=false;$('fc').className='';save();rL();rF();rb.innerHTML='&#8634;'}else{arm=1;rb.innerHTML='?';setTimeout(function(){arm=0;rb.innerHTML='&#8634;'},2500)}};
+load();rL();
+</script>
+</body>
+</html>
