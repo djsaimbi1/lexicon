@@ -2,505 +2,1039 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>LEXICON</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#fafafa;--sf:#fff;--tx:#1a1a1a;--sb:#6b6b6b;--mu:#9a9a9a;--ln:#e6e6e6;--l2:#efefef;--hv:#f4f4f4;--nv:#ececec;--sh:0 4px 14px rgba(0,0,0,.07)}
-html.dk{--bg:#141414;--sf:#1e1e1e;--tx:#e8e8e8;--sb:#a0a0a0;--mu:#777;--ln:#2a2a2a;--l2:#222;--hv:#262626;--nv:rgba(255,255,255,.16);--sh:0 4px 14px rgba(0,0,0,.35)}
-body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;-webkit-tap-highlight-color:transparent}
-button{font-family:inherit;outline:none;-webkit-tap-highlight-color:transparent}
-button:focus{outline:none}
-#sp{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--bg);display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:opacity .6s}
-#sp.off{opacity:0;visibility:hidden;pointer-events:none}
-.spo{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--mu);margin-bottom:1.2rem;animation:fi .8s both}
-.spl{font-family:Georgia,serif;font-size:3rem;letter-spacing:10px;text-transform:uppercase;font-weight:600;margin-bottom:1.2rem;animation:fi .8s .2s both}
-.spr{width:60px;height:1px;background:var(--tx);margin:0 auto 1.2rem;animation:fi .8s .5s both}
-.spq{font-family:Georgia,serif;font-style:italic;font-size:1.05rem;line-height:1.7;color:var(--sb);max-width:430px;margin:0 auto 1.4rem;animation:fi .8s .8s both}
-.spc{font-size:.58rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--mu);animation:fi .8s 1.1s both}
-.spt{position:absolute;bottom:2rem;left:0;right:0;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--mu)}
-@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
-header{position:fixed;top:0;left:0;right:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--l2)}
-.hi{max-width:1100px;margin:0 auto;padding:0 1rem;height:58px;display:flex;align-items:center;justify-content:space-between}
-.lg{font-family:Georgia,serif;font-size:1.25rem;font-weight:600;letter-spacing:4px;text-transform:uppercase}
-nav{display:flex;align-items:center}
-.nb{background:none;border:none;padding:.5rem .6rem;font-size:.66rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--mu);cursor:pointer;border-radius:8px}
-.nb.on{background:var(--nv);color:var(--tx)}
-#th{width:32px;height:32px;border:none;background:none;border-radius:9px;cursor:pointer;color:var(--mu);margin-left:.4rem;font-size:1rem}
-#th:hover{background:var(--hv);color:var(--tx)}
-main{max-width:1100px;margin:0 auto;padding:86px 1rem 4rem}
-.pg{display:none}.pg.on{display:block;animation:fi .3s}
-.pt{font-family:Georgia,serif;font-size:2rem;margin-bottom:.3rem}
-.ps{color:var(--mu);font-size:.83rem;margin-bottom:1.6rem}
-.he{text-align:center;padding:.8rem 0 1.2rem}
-.he h1{font-family:Georgia,serif;font-size:2.3rem;font-weight:300;margin-bottom:.4rem}
-.he p{color:var(--mu);font-size:.85rem}
-.st{display:flex;justify-content:center;gap:2.5rem;padding:.4rem 0 1.6rem}
-.st>div{text-align:center}
-.sn{font-family:Georgia,serif;font-size:1.7rem;font-weight:600}
-.sl{font-size:.56rem;letter-spacing:2px;text-transform:uppercase;color:var(--mu);font-weight:600}
-.ca{display:flex;justify-content:center;perspective:1200px}
-#fc{width:100%;max-width:520px;height:380px;position:relative;cursor:pointer;transform-style:preserve-3d;transition:transform .55s}
-#fc.fl{transform:rotateY(180deg)}
-.fa{position:absolute;top:0;left:0;right:0;bottom:0;backface-visibility:hidden;background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;box-shadow:var(--sh)}
-.fb{transform:rotateY(180deg)}
-.wl{display:flex;align-items:center;gap:.6rem}
-.bw{font-family:Georgia,serif;font-size:2.5rem;font-weight:600}
-.ib{background:none;border:none;color:var(--mu);cursor:pointer;padding:6px;border-radius:8px;font-size:1rem;display:flex;align-items:center;justify-content:center}
-.ib:hover{color:var(--tx)}
-.ib.fv{color:var(--tx)}
-.ib svg{width:18px;height:18px;display:block}
-.ph{font-size:.78rem;color:var(--mu);font-style:italic;margin:.3rem 0 .7rem}
-.po{padding:.2rem .7rem;background:var(--hv);border-radius:5px;font-size:.58rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--sb);margin-bottom:.8rem}
-.th{font-size:.74rem;color:var(--mu)}
-.df{font-size:.92rem;line-height:1.65;margin-bottom:1rem;max-width:400px}
-.ex{font-size:.78rem;color:var(--sb);font-style:italic;padding:.8rem 1rem;background:var(--bg);border-radius:10px;border-left:2px solid var(--ln);max-width:400px}
-.sy{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;margin-top:1rem}
-.sy span{padding:.24rem .6rem;background:var(--hv);border-radius:20px;font-size:.66rem;color:var(--sb)}
-.ct{display:flex;justify-content:center;gap:.8rem;padding:1.5rem 0 .9rem}
-.cb{background:var(--sf);border:1px solid var(--ln);color:var(--sb);font-size:.72rem;padding:.6rem 1.3rem;border-radius:22px;cursor:pointer}
-.cb.pr{background:var(--tx);color:var(--bg);border-color:var(--tx)}
-.cb.ks{background:var(--hv);color:var(--sb)}
-.prg{max-width:520px;margin:0 auto;display:flex;align-items:center;gap:.8rem}
-.trk{flex:1;height:2px;background:var(--l2)}
-.fil{height:100%;background:var(--tx);width:0}
-.ptx{font-size:.6rem;color:var(--mu);font-weight:600}
-.bt{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.8rem;margin-bottom:1.2rem}
-.si{padding:.55rem .9rem;border:1px solid var(--ln);border-radius:10px;font-size:.8rem;background:var(--sf);color:var(--tx);width:200px;outline:none}
-.ch{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.8rem}
-.cc{padding:.35rem .8rem;border:1px solid var(--ln);background:var(--sf);border-radius:18px;font-size:.66rem;color:var(--sb);cursor:pointer}
-.cc.on{background:var(--tx);color:var(--bg);border-color:var(--tx)}
-.gr{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem}
-.wc{background:var(--sf);border:1px solid var(--l2);border-radius:12px;padding:1.2rem;cursor:pointer;position:relative}
-.wc .w{font-family:Georgia,serif;font-size:1.3rem;font-weight:600}
-.wc .p{font-size:.56rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--mu);font-weight:600;margin:.15rem 0 .5rem}
-.wc .d{font-size:.74rem;color:var(--sb);line-height:1.5}
-.dc{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:1.3rem;margin-bottom:1rem;box-shadow:var(--sh)}
-.wl2{display:flex;align-items:center;gap:.5rem}
-.dw{font-family:Georgia,serif;font-size:1.6rem;font-weight:600}
-.dp{font-size:.75rem;color:var(--mu);font-style:italic;margin:.2rem 0 .4rem}
-.dn{font-size:.7rem;color:var(--mu);margin:.3rem 0 .5rem}
-.dm{font-size:.6rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--sb);font-weight:600;margin:.7rem 0 .3rem}
-.dd{font-size:.8rem;color:var(--sb);line-height:1.5;margin-bottom:.2rem}
-.de{font-size:.72rem;color:var(--mu);font-style:italic;margin-bottom:.3rem}
-.ds{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.4rem}
-.ds span{padding:.2rem .55rem;background:var(--hv);border-radius:16px;font-size:.64rem;color:var(--sb)}
-.qz{max-width:560px;margin:0 auto}
-.qs{display:flex;justify-content:center;gap:2.5rem;margin-bottom:1.4rem}
-.qb{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:1.8rem;text-align:center;margin-bottom:1rem;box-shadow:var(--sh)}
-.qb .ql{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--mu);font-weight:600;margin-bottom:.9rem}
-.qb .qw{font-family:Georgia,serif;font-size:2.2rem;font-weight:600}
-.qb .qp{font-size:.75rem;color:var(--mu)}
-.qo{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
-.qi{padding:.9rem;background:var(--sf);border:1px solid var(--ln);border-radius:10px;font-size:.76rem;text-align:left;cursor:pointer;color:var(--tx)}
-.qi.ok{border-color:#888;background:var(--hv);font-weight:600}
-.qi.no{color:var(--mu);text-decoration:line-through}
-.qn{display:block;margin:1.2rem auto 0;padding:.6rem 1.8rem;background:var(--tx);color:var(--bg);border:none;border-radius:10px;font-size:.72rem;cursor:pointer}
-.qr{text-align:center;padding:2.2rem;background:var(--sf);border:1px solid var(--ln);border-radius:14px}
-.qr .pc{font-family:Georgia,serif;font-size:3rem;font-weight:600;margin:.5rem 0}
-.fe{text-align:center;padding:3rem 1rem;color:var(--mu);font-size:.85rem}
-.fg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem}
-.fvi{background:var(--sf);border:1px solid var(--l2);border-radius:12px;padding:1rem 1.2rem;display:flex;justify-content:space-between;cursor:pointer}
-.fvi .fw{font-family:Georgia,serif;font-size:1.2rem;font-weight:600}
-.fvi .fd{font-size:.72rem;color:var(--sb)}
-.fvi .fx{background:none;border:none;color:var(--mu);cursor:pointer}
-#rb{position:fixed;bottom:1rem;left:1rem;width:32px;height:32px;border-radius:50%;background:var(--sf);border:1px solid var(--ln);color:var(--mu);cursor:pointer;opacity:.5;z-index:40}
-@media(max-width:700px){.qo,.gr,.fg{grid-template-columns:1fr}.spl{font-size:2.2rem;letter-spacing:6px}.si{width:100%}main{padding:66px .8rem .6rem}.he{padding:.2rem 0 .4rem}.he h1{font-size:1.45rem;margin-bottom:.15rem}.he p{font-size:.7rem}.st{gap:1.6rem;padding:.1rem 0 .7rem}.sn{font-size:1.25rem}#fc{height:calc(100vh - 262px);min-height:215px;max-height:430px}.bw{font-size:1.9rem}.ph{font-size:.7rem;margin:.2rem 0 .5rem}.po{margin-bottom:.5rem}.df{font-size:.8rem;margin-bottom:.6rem}.ex{font-size:.7rem;padding:.6rem .8rem}.sy{margin-top:.5rem}.ct{padding:.7rem 0 .4rem;gap:.5rem}.cb{padding:.5rem 1rem;font-size:.66rem}}
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: #666666;
+  --pill: #ececec;
+  --card-bg: #f9f9f9;
+  --border: #e0e0e0;
+}
+[data-theme="dark"] {
+  --bg: #111111;
+  --text: #f0f0f0;
+  --muted: #999999;
+  --pill: rgba(255,255,255,0.16);
+  --card-bg: #1a1a1a;
+  --border: #333333;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+body { 
+  margin: 0; 
+  font-family: system-ui, -apple-system, sans-serif; 
+  background: var(--bg); 
+  color: var(--text); 
+  transition: background 0.3s, color 0.3s; 
+  height: 100vh; 
+  display: flex; 
+  flex-direction: column; 
+  overflow: hidden; /* Prevents whole-page scrolling */
+}
+h1, h2, h3 { font-family: Georgia, serif; font-weight: normal; margin: 0; }
+button { font-family: inherit; background: none; border: none; color: inherit; cursor: pointer; padding: 8px 12px; border-radius: 6px; }
+button:active { opacity: 0.6; }
+
+#splash { position: fixed; inset: 0; background: var(--bg); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; cursor: pointer; }
+#splash h1 { font-size: 3rem; letter-spacing: 2px; margin-bottom: 24px; }
+#splash p { color: var(--muted); line-height: 1.6; max-width: 400px; font-size: 1.1rem; }
+#splash .sub { margin-top: 40px; font-size: 0.85rem; opacity: 0.7; }
+#splash .tap { margin-top: 24px; font-size: 0.9rem; color: var(--muted); }
+
+header { 
+  display: flex; 
+  flex-direction: column; 
+  padding: 8px 12px; 
+  border-bottom: 1px solid var(--border); 
+  position: sticky; 
+  top: 0; 
+  background: var(--bg); 
+  z-index: 100; 
+  flex-shrink: 0;
+}
+.header-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.logo { font-family: Georgia, serif; font-size: 1.3rem; letter-spacing: 1px; font-weight: bold; }
+.theme-toggle { padding: 6px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+.theme-toggle svg { width: 20px; height: 20px; stroke: var(--text); fill: none; stroke-width: 2; }
+
+nav { 
+  display: flex; 
+  gap: 4px; 
+  width: 100%; 
+  justify-content: space-between; 
+  margin-top: 8px; 
+  overflow-x: auto; 
+  scrollbar-width: none; 
+}
+nav::-webkit-scrollbar { display: none; }
+nav button { 
+  flex: 1; 
+  text-align: center; 
+  font-size: 0.75rem; 
+  color: var(--muted); 
+  border-radius: 16px; 
+  padding: 6px 2px; 
+  white-space: nowrap; 
+  min-width: 0;
+  transition: all 0.2s; 
+}
+nav button.active { background: var(--pill); color: var(--text); font-weight: 600; }
+
+@media (min-width: 700px) {
+  header { flex-direction: row; justify-content: space-between; align-items: center; padding: 12px 24px; }
+  .header-row { width: auto; margin-top: 0; }
+  nav { width: auto; margin-top: 0; gap: 8px; justify-content: flex-start; }
+  nav button { flex: 0 0 auto; padding: 6px 14px; font-size: 0.85rem; }
+}
+
+main { 
+  flex: 1; 
+  padding: 12px; 
+  max-width: 600px; 
+  margin: 0 auto; 
+  width: 100%; 
+  overflow: hidden; 
+  display: flex; 
+  flex-direction: column; 
+}
+.tab { display: none; flex: 1; flex-direction: column; overflow: hidden; height: 100%; }
+.tab.active { display: flex; }
+
+#learn { 
+  height: calc(100vh - 240px); 
+  min-height: 0; 
+  display: flex; 
+  flex-direction: column; 
+}
+.stats { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; flex-shrink: 0; }
+.progress-bar { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 8px; overflow: hidden; flex-shrink: 0; }
+.progress-fill { height: 100%; background: var(--text); width: 0%; transition: width 0.3s; }
+
+.card-container { 
+  flex: 1; 
+  perspective: 1000px; 
+  position: relative; 
+  cursor: pointer; 
+  min-height: 0; 
+  margin-bottom: 8px; 
+}
+.card { 
+  width: 100%; 
+  height: 100%; 
+  position: relative; 
+  transform-style: preserve-3d; 
+  transition: transform 0.6s; 
+  border-radius: 12px; 
+}
+.card.flipped { transform: rotateY(180deg); }
+.card-face { 
+  position: absolute; 
+  inset: 0; 
+  backface-visibility: hidden; 
+  background: var(--card-bg); 
+  border: 1px solid var(--border); 
+  border-radius: 12px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 16px; 
+  text-align: center; 
+  overflow: hidden; 
+}
+.card-back { 
+  transform: rotateY(180deg); 
+  justify-content: flex-start; 
+  overflow-y: auto; 
+  -webkit-overflow-scrolling: touch; 
+}
+.word-title { font-size: 2.2rem; margin-bottom: 4px; line-height: 1.1; }
+.phonetic { color: var(--muted); font-size: 1rem; margin-bottom: 8px; }
+.pos-pill { background: var(--pill); padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; margin-bottom: 12px; }
+.card-actions { display: flex; gap: 16px; margin-top: 8px; }
+.icon-btn { color: var(--muted); padding: 8px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+.icon-btn.saved { color: var(--text); }
+.icon-btn svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
+.icon-btn.saved svg { fill: currentColor; }
+.def-text { font-size: 1.05rem; line-height: 1.4; margin-bottom: 12px; }
+.example-text { font-style: italic; color: var(--muted); margin-bottom: 12px; font-size: 0.95rem; }
+.syn-chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.chip { background: var(--pill); padding: 4px 8px; border-radius: 10px; font-size: 0.8rem; }
+
+.learn-controls { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-top: 4px; 
+  flex-shrink: 0; 
+}
+.learn-controls button { 
+  background: var(--pill); 
+  padding: 10px 12px; 
+  border-radius: 8px; 
+  font-size: 0.85rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 4px; 
+}
+.learn-controls button svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+.known-btn { background: var(--text) !important; color: var(--bg) !important; }
+.reset-btn { position: fixed; bottom: 12px; left: 12px; font-size: 0.7rem; color: var(--muted); opacity: 0.5; background: none; border: none; z-index: 50; }
+
+.search-box { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font-size: 1rem; margin-bottom: 12px; flex-shrink: 0; }
+.emotion-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; flex-shrink: 0; }
+.emotion-chips button { background: var(--card-bg); border: 1px solid var(--border); padding: 6px 10px; border-radius: 16px; font-size: 0.8rem; }
+.emotion-chips button.active { background: var(--text); color: var(--bg); }
+.browse-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; overflow-y: auto; flex: 1; padding-bottom: 20px; }
+.browse-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; cursor: pointer; }
+.browse-card h3 { font-size: 1rem; margin-bottom: 4px; }
+.browse-card p { font-size: 0.75rem; color: var(--muted); }
+.dict-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-top: 12px; overflow-y: auto; flex: 1; }
+.dict-card h2 { margin-bottom: 8px; display: flex; align-items: center; gap: 12px; font-size: 1.5rem; }
+.dict-meaning { margin-bottom: 12px; }
+.dict-meaning h4 { font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; font-family: system-ui; }
+
+.quiz-header { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 0.9rem; color: var(--muted); flex-shrink: 0; }
+.quiz-question { font-size: 1.5rem; text-align: center; margin: 24px 0; font-family: Georgia, serif; flex-shrink: 0; }
+.quiz-options { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; flex: 1; padding-bottom: 20px; }
+.quiz-opt { padding: 14px; border: 1px solid var(--border); border-radius: 8px; text-align: left; background: var(--card-bg); font-size: 0.95rem; }
+.quiz-opt.correct { background: #d4edda; border-color: #c3e6cb; color: #155724; }
+.quiz-opt.wrong { background: #f8d7da; border-color: #f5c6cb; color: #721c24; }
+.quiz-result { text-align: center; padding: 40px 20px; overflow-y: auto; flex: 1; }
+.quiz-result h2 { font-size: 2rem; margin-bottom: 16px; }
+
+.saved-list { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; flex: 1; padding-bottom: 20px; }
+.saved-item { display: flex; justify-content: space-between; align-items: center; padding: 14px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; }
+.saved-item .remove { color: var(--muted); padding: 4px 8px; display: flex; }
+.saved-item .remove svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; }
 </style>
 </head>
 <body>
-<div id="sp">
-<div>
-<div class="spo">A Vocabulary Atelier</div>
-<div class="spl">Lexicon</div>
-<div class="spr"></div>
-<p class="spq">&ldquo;Ready for English? A new word is a small key &mdash; collect enough of them, and every door in the world is yours.&rdquo;</p>
-<div class="spc">created by Qwen &middot; html &middot; css &middot; js</div>
+
+<div id="splash" onclick="enterApp()">
+  <h1>LEXICON</h1>
+  <p>"Ready for English? A new word is a small key — collect enough of them, and every door in the world is yours."</p>
+  <div class="sub">created by Qwen · html · css · js</div>
+  <div class="tap">tap anywhere to enter</div>
 </div>
-<div class="spt">tap anywhere to enter</div>
+
+<div id="app" style="display:none;">
+  <header>
+    <nav>
+      <button class="active" onclick="showTab('learn', this)">LEARN</button>
+      <button onclick="showTab('browse', this)">BROWSE</button>
+      <button onclick="showTab('quiz', this)">QUIZ</button>
+      <button onclick="showTab('saved', this)">SAVED</button>
+    </nav>
+    <div class="header-row">
+      <div class="logo">LEXICON</div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="learn" class="tab active">
+      <div class="stats">
+        <span id="learned-stat">Learned: 0</span>
+        <span id="saved-stat">Saved: 0</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="card-container" onclick="flipCard()">
+        <div class="card" id="learn-card">
+          <div class="card-face card-front">
+            <div class="word-title" id="card-word">Word</div>
+            <div class="phonetic" id="card-phonetic">/phonetic/</div>
+            <div class="pos-pill" id="card-pos">noun</div>
+            <div class="card-actions">
+              <button class="icon-btn" onclick="event.stopPropagation(); speakWord()" aria-label="Speak">
+                <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+              </button>
+              <button class="icon-btn" id="card-save-btn" onclick="event.stopPropagation(); toggleSave()" aria-label="Save">
+                <svg id="heart-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              </button>
+            </div>
+          </div>
+          <div class="card-face card-back">
+            <div class="def-text" id="card-def">Definition goes here.</div>
+            <div class="example-text" id="card-ex">"Example sentence goes here."</div>
+            <div class="syn-chips" id="card-syn"></div>
+          </div>
+        </div>
+      </div>
+      <div class="learn-controls">
+        <button onclick="prevWord()">
+          <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Prev
+        </button>
+        <button class="known-btn" id="known-btn" onclick="toggleKnown()">I know this</button>
+        <button onclick="nextWord()">
+          Next <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+      <button class="reset-btn" id="reset-btn" onclick="confirmReset()">Reset Progress</button>
+    </section>
+
+    <section id="browse" class="tab">
+      <input type="text" class="search-box" id="search-input" placeholder="Search any word..." oninput="handleSearch(this.value)">
+      <div class="emotion-chips" id="emotion-chips"></div>
+      <div id="browse-content" class="browse-grid"></div>
+      <div id="dict-result" class="dict-card" style="display:none;"></div>
+    </section>
+
+    <section id="quiz" class="tab">
+      <div id="quiz-area" style="display:flex; flex-direction:column; height:100%;">
+        <div class="quiz-header">
+          <span id="quiz-score">Score: 0</span>
+          <span id="quiz-progress">1/10</span>
+        </div>
+        <div class="quiz-question" id="quiz-question">Word</div>
+        <div class="quiz-options" id="quiz-options"></div>
+      </div>
+      <div id="quiz-result" class="quiz-result" style="display:none;">
+        <h2 id="final-score">0%</h2>
+        <p id="final-msg">Great job!</p>
+        <button class="known-btn" onclick="startQuiz()" style="margin-top:24px;">Try Again</button>
+      </div>
+    </section>
+
+    <section id="saved" class="tab">
+      <div class="saved-list" id="saved-list"></div>
+    </section>
+  </main>
 </div>
-<header><div class="hi">
-<div class="lg">Lexicon</div>
-<nav>
-<button class="nb on" id="nL">Learn</button>
-<button class="nb" id="nB">Browse</button>
-<button class="nb" id="nQ">Quiz</button>
-<button class="nb" id="nF">Saved</button>
-<button id="th">&#9728;&#xFE0E;</button>
-</nav>
-</div></header>
-<main>
-<section class="pg on" id="pL">
-<div class="he"><h1>Word of the Moment</h1><p>Click the card to reveal its meaning</p></div>
-<div class="st"><div><div class="sn" id="sL">0</div><div class="sl">Learned</div></div><div><div class="sn" id="sT">0</div><div class="sl">Total</div></div><div><div class="sn" id="sS">0</div><div class="sl">Saved</div></div></div>
-<div class="ca"><div id="fc">
-<div class="fa">
-<div class="wl"><div class="bw" id="cw"></div><button class="ib" id="csp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button><button class="ib" id="cfv">&#9825;&#xFE0E;</button></div>
-<div class="ph" id="cph"></div>
-<div class="po" id="cpo"></div>
-<div class="th">Tap to reveal <b>definition &amp; examples</b></div>
-</div>
-<div class="fa fb">
-<div class="df" id="cdf"></div>
-<div class="ex" id="cex"></div>
-<div class="sy" id="csy"></div>
-</div>
-</div></div>
-<div class="ct">
-<button class="cb" id="bp">&#8592; Prev</button>
-<button class="cb pr" id="bk">I know this</button>
-<button class="cb" id="bn">Next &#8594;</button>
-</div>
-<div class="prg"><div class="trk"><div class="fil" id="pf"></div></div><div class="ptx" id="ptx">0/0</div></div>
-</section>
-<section class="pg" id="pB">
-<div class="bt"><div><h2 class="pt">Feel the Word</h2><p class="ps">Pick an emotion to see its synonyms, or search ANY word like a dictionary</p></div><input class="si" id="bq" placeholder="Search any word..."></div>
-<div id="dcb" style="display:none"></div>
-<div class="ch" id="cbx"></div>
-<div class="gr" id="gb"></div>
-</section>
-<section class="pg" id="pQ"><div class="qz" id="qb"></div></section>
-<section class="pg" id="pF"><h2 class="pt">Saved Words</h2><p class="ps">Your personal collection</p><div id="fb"></div></section>
-</main>
-<button id="rb">&#8634;</button>
+
 <script>
-function $(i){return document.getElementById(i)}
-function A(x,f){for(var i=0;i<x.length;i++)f(x[i],i)}
-var store=(function(){var m={},ok=true;try{localStorage.setItem('_t','1');localStorage.removeItem('_t')}catch(e){ok=false}return{get:function(k){if(ok){try{return localStorage.getItem(k)}catch(e){}}return m[k]||null},set:function(k,v){if(ok){try{localStorage.setItem(k,v);return}catch(e){}}m[k]=v}}})();
+var currentIdx = 0;
+var learned = JSON.parse(localStorage.getItem('lex_learned') || '[]');
+var saved = JSON.parse(localStorage.getItem('lex_saved') || '[]');
+var resetTap = 0;
+var quizState = { q: 0, score: 0, questions: [] };
+
 var RAW=[
-"Ephemeral|/ɪˈfɛm.ər.əl/|a|Time|lasting a very short time|the ephemeral glow of dawn faded quickly|fleeting,brief",
-"Serendipity|/ˌsɛr.ənˈdɪp..ti/|n|Fortune|finding good things by happy chance|our meeting was pure serendipity|luck,fortune",
-"Eloquent|/ˈɛl.ə.kwənt/|a|Speech|fluent and persuasive in speaking|her eloquent plea moved the jury|articulate,fluent",
-"Luminous|/ˈluː.mɪ.nəs/|a|Light|giving off light; bright|the luminous moon lit the path|radiant,glowing",
-"Ubiquitous|/juːˈbɪk.w.təs/|a|Presence|present everywhere|smartphones are ubiquitous today|omnipresent,common",
-"Petrichor|/ˈpɛt.rɪ.kɔːr/|n|Nature|earthy smell after rain|the petrichor refreshed the dry town|scent,smell",
-"Ineffable|/ɪnˈɛf.ə.bəl/|a|Emotion|too great for words|the ineffable calm of the lake|indescribable,unspeakable",
-"Resilience|/rɪˈzɪl.i.əns/|n|Strength|recovering quickly from hardship|her resilience carried her through|toughness,grit",
-"Ethereal|/ɪˈθɪə.ri.əl/|a|Beauty|delicate; otherworldly|the ethereal mist veiled the hills|heavenly,delicate",
-"Halcyon|/ˈhæl.si.ən/|a|Time|happy and peaceful past|the halcyon days of youth|idyllic,golden",
-"Melancholy|/ˈmɛl.ən.kɒl.i/|n|Emotion|deep lasting sadness|a quiet melancholy filled the room|sorrow,gloom",
-"Wanderlust|/ˈwɒn.də.lʌst/|n|Motion|strong desire to travel|wanderlust pulled him abroad|restlessness,urge",
-"Nostalgia|/nɒˈstæl.dʒə/|n|Emotion|longing for the past|the song filled her with nostalgia|longing,yearning",
-"Euphoria|/juːˈfɔː.ri.ə/|n|Emotion|intense excitement and happiness|the win brought pure euphoria|bliss,elation",
-"Solitude|/ˈsɒl..tjuːd/|n|State|peaceful being alone|he prized his morning solitude|seclusion,quiet",
-"Sanguine|/ˈsæŋ.ɡwɪn/|a|Emotion|optimistic in difficulty|she stayed sanguine despite losses|hopeful,confident",
-"Perspicacious|/ˌpɜː.spɪˈkeɪ.ʃəs/|a|Mind|shrewd and perceptive|a perspicacious judge of character|astute,shrewd",
-"Redolent|/ˈrɛd.əl.ənt/|a|Sensation|fragrant; suggestive of|the hall was redolent of cedar|fragrant,aromatic",
-"Verisimilitude|/ˌvɛr.ɪ.sɪˈmɪl.ɪ.tjuːd/|n|Truth|appearance of being true|the novel has striking verisimilitude|realism,plausibility",
-"Languid|/ˈlæ.ɡwɪd/|a|Motion|slow and relaxed|a languid afternoon by the river|leisurely,unhurried",
-"Aplomb|/əˈplɒm/|n|Strength|self-confidence under pressure|she answered with aplomb|poise,composure",
-"Elysian|/ɪˈlɪʒ.ən/|a|Beauty|heavenly; blissful|an elysian garden in spring|paradisiacal,divine",
-"Cacophony|/kəˈkɒf.ə.ni/|n|Sound|harsh mixture of sounds|the market was a cacophony of calls|discord,din",
-"Quintessential|/ˌkwɪn.tɪˈsɛn.əl/|a|Style|perfect example of a class|the quintessential gentleman|typical,classic",
-"Sonder|/ˈsɒn.dər/|n|Mind|realizing each passerby has a rich life|crowds filled him with sonder|empathy,awareness",
-"Aberration|/ˌæb.əˈreɪ.ən/|n|Truth|deviation from the normal|the warm day was an aberration|anomaly,deviation",
-"Abjure|/əbˈdʒʊər/|v|Speech|renounce formally|he abjured his old habits|renounce,reject",
-"Acrimony|/ˈæk.rɪ.mə.ni/|n|Social|bitterness of feeling|the divorce ended in acrimony|bitterness,hostility",
-"Adroit|/əˈdrɔɪt/|a|Mind|clever and skillful|an adroit negotiator|skillful,deft",
-"Alacrity|/əˈlæk.rɪ.ti/|n|Motion|brisk readiness|she accepted with alacrity|eagerness,speed",
-"Altruism|/ˈæl.tru.ɪ.zəm/|n|Social|selfless concern for others|his altruism fed the hungry|selflessness,charity",
-"Ambivalent|/æmˈbɪv.ə.lənt/|a|Emotion|having mixed feelings|she felt ambivalent about moving|unsure,torn",
-"Anachronism|/əˈnæk.rə.nɪ.zəm/|n|Time|thing out of its time|the dial phone is an anachronism|relic,throwback",
-"Anomaly|/əˈnɒm.ə.li/|n|Truth|something deviating from norm|the data anomaly puzzled scientists|oddity,exception",
-"Antipathy|/ænˈtɪp.ə.θi/|n|Emotion|deep dislike|the two felt mutual antipathy|aversion,hostility",
-"Apathy|/ˈæp.ə.θi/|n|Emotion|lack of interest|voter apathy lowered turnout|indifference,lethargy",
-"Arbiter|/ˈɑː.bɪ.tər/|n|Social|one who judges|the arbiter of good taste|judge,authority",
-"Arduous|/ˈɑː.dju.əs/|a|Strength|hard and tiring|the arduous climb tested them|grueling,hard",
-"Ascetic|/əˈsɛt.ɪk/|a|Style|practicing severe self-denial|the ascetic monk owned little|austere,sparing",
-"Assiduous|/əˈsɪd.ju.əs/|a|Craft|showing steady hard work|an assiduous researcher|diligent,careful",
-"Audacious|/ɔːˈdeɪ.ʃəs/|a|Style|bold and daring|an audacious plan to climb|bold,daring",
-"Auspicious|/ɔːˈspɪʃ.əs/|a|Fortune|favorable; promising|an auspicious start to the year|promising,favorable",
-"Avarice|/ˈæv.ər.ɪs/|n|Emotion|extreme greed|avarice drove the miser|greed,covetousness",
-"Banal|/bəˈnɑːl/|a|Style|boring and unoriginal|the banal remark added nothing|trite,dull",
-"Benevolent|/bəˈnɛv.əl.ənt/|a|Social|kind and generous|a benevolent donor|kind,generous",
-"Blithe|/blaɪð/|a|Emotion|lighthearted and casual|a blithe disregard for rules|carefree,light",
-"Boisterous|/ˈbɔɪs.tər.əs/|a|Sound|noisy and energetic|the boisterous crowd cheered|rowdy,lively",
-"Bolster|/ˈbəʊl.stər/|v|Strength|to support or strengthen|evidence bolstered her claim|support,boost",
-"Bombastic|/bɒmˈbæs.tɪk/|a|Speech|high-sounding but empty|the bombastic speech bored us|pompous,grandiose",
-"Buoyant|/ˈbɔɪ.ənt/|a|Emotion|cheerful and optimistic|a buoyant mood at the fair|cheerful,upbeat",
-"Burgeon|/ˈbɜː.dʒən/|v|Nature|to grow rapidly|the burgeoning startup scene|flourish,expand",
-"Cadence|/ˈkeɪ.dəns/|n|Sound|rhythmic flow of sound|the cadence of the rain|rhythm,beat",
-"Cajole|/kəˈdʒəʊl/|v|Speech|coax with flattery|he cajoled her into singing|coax,wheedle",
-"Candid|/ˈkæn.dɪd/|a|Speech|open and honest|a candid account of events|frank,honest",
-"Capricious|/kəˈprɪʃ.əs/|a|Style|impulsive and unpredictable|the capricious weather ruined plans|fickle,volatile",
-"Captivate|/ˈkæp.tɪ.veɪt/|v|Emotion|attract and hold interest|the story captivated the children|charm,enthrall",
-"Catalyst|/ˈkæt.əl.ɪst/|n|Motion|a cause of change|the speech was a catalyst for reform|spark,stimulus",
-"Caustic|/ˈkɔːs.tk/|a|Speech|sarcastic and biting|a caustic remark|biting,scathing",
-"Celerity|/sɪˈlɛr..ti/|n|Motion|swiftness of movement|the troops moved with celerity|speed,haste",
-"Charisma|/kəˈrɪz.mə/|n|Social|compelling charm|the leader radiated charisma|charm,magnetism",
-"Chicanery|/ʃɪkeɪ.nər.i/|n|Truth|deception by trickery|the deal reeked of chicanery|trickery,deceit",
-"Clandestine|/klænˈdɛs.tɪn/|a|Style|kept secret|a clandestine meeting|secret,covert",
-"Coalesce|/ˌkəʊ.əˈlɛs/|v|Motion|come together to form one|the groups coalesced into a party|merge,unite",
-"Cogent|/ˈkəʊ.dʒənt/|a|Speech|clear and convincing|a cogent argument|convincing,compelling",
-"Comely|/ˈkʌm.li/|a|Beauty|attractive in appearance|a comely young artist|pretty,handsome",
-"Complacent|/kəmˈpleɪ.sənt/|a|Mind|smugly self-satisfied|do not grow complacent|smug,self-satisfied",
-"Conundrum|/kəˈnʌn.drəm/|n|Mind|confusing difficult problem|the puzzle was a conundrum|riddle,puzzle",
-"Convivial|/kənˈvɪv.i.əl/|a|Social|friendly and lively|a convivial dinner party|festive,sociable",
-"Copious|/ˈkə.pi.əs/|a|Style|abundant in supply|copious notes filled the desk|abundant,plentiful",
-"Cursory|/ˈkɜː.sər.i/|a|Craft|hasty and without detail|a cursory glance at the report|brief,superficial",
-"Dapper|/ˈdæp.ər/|a|Style|neat and stylish in dress|a dapper host|dashing,neat",
-"Dauntless|/ˈdɔːnt.ləs/|a|Strength|fearless|a dauntless explorer|brave,bold",
-"Deference|/ˈdɛf.ər.əns/|n|Social|respectful submission|she bowed in deference|respect,homage",
-"Deft|/dɛft/|a|Craft|skillful and quick|a deft touch with the brush|skillful,adroit",
-"Demure|/dɪˈmjʊər/|a|Style|quiet and modest|a demure smile|modest,reserved",
-"Desolate|/ˈdɛs.əl.ət/|a|Place|empty and bleak|the desolate plain|bleak,barren",
-"Dexterous|/ˈdɛk.stər.əs/|a|Craft|skillful with hands|a dexterous surgeon|agile,skillful",
-"Didactic|/daɪˈdæk.tɪk/|a|Speech|intended to teach|a didactic fable|instructive,educational",
-"Diligent|/ˈdɪl.ɪ.dʒənt/|a|Craft|hardworking|a diligent student|industrious,careful",
-"Disparage|/dɪˈspær.ɪdʒ/|v|Speech|regard as worthless|do not disparage her work|belittle,devalue",
-"Dissemble|/dɪˈsɛm.bəl/|v|Truth|conceal the truth|he dissembled his motives|pretend,mask",
-"Dogmatic|/dɒɡˈmæt.ɪk/|a|Mind|asserting opinions as facts|a dogmatic tone|opinionated,rigid",
-"Dour|/dʊər/|a|Emotion|stern and gloomy|a dour expression|gloomy,stern",
-"Ebullient|/ɪˈbʌl.i.ənt/|a|Emotion|full of eager excitement|her ebullient laugh|exuberant,animated",
-"Eclectic|/ɪˈklɛk.tk/|a|Style|drawing from many sources|an eclectic taste in music|diverse,varied",
-"Edify|/ˈɛd.ɪ.faɪ/|v|Mind|instruct and improve|the lecture edified the crowd|enlighten,instruct",
-"Efficacy|/ˈɛf..kə.si/|n|Truth|power to produce results|the efficacy of the vaccine|effectiveness,potency",
-"Effervescent|/ˌɛf.əˈvɛs.ənt/|a|Emotion|bubbly and vivacious|an effervescent performer|vivacious,bubbly",
-"Egregious|/ɪˈɡri.dʒəs/|a|Style|outstandingly bad|an egregious error|flagrant,glaring",
-"Elegy|/ˈɛl.ɪ.dʒi/|n|Speech|poem of mourning|an elegy for the fallen|lament,requiem",
-"Elucidate|/ɪˈluː.sɪ.deɪt/|v|Speech|make clear|please elucidate your point|clarify,explain",
-"Enigma|/ɪˈnɪɡ.mə/|n|Mind|mysterious person or thing|the origin remains an enigma|mystery,puzzle",
-"Ennui|/ɒnˈwiː/|n|Emotion|listless boredom|the ennui of long Sundays|boredom,tedium",
-"Equanimity|/ˌɛk.wəˈnɪm.ɪ.ti/|n|Strength|calm composure|she faced it with equanimity|composure,calm",
-"Erudite|/ˈɛr..daɪt/|a|Mind|having great knowledge|an erudite professor|learned,scholarly",
-"Esoteric|/ˌɛs.əˈtɛr.k/|a|Mind|understood by few|esoteric knowledge|obscure,arcane",
-"Eulogy|/ˈjuː.lə.dʒi/|n|Speech|speech praising the dead|a moving eulogy|tribute,praise",
-"Evanescent|/ˌɛv.əˈnɛs.ənt/|a|Time|quickly fading from sight|the evanescent rainbow|fading,fleeting",
-"Exalt|/ɪɡˈzɔːlt/|v|Speech|praise highly|they exalted the hero|praise,glorify",
-"Exemplary|/ɪɡˈzɛm.plər.i/|a|Style|serving as a model|exemplary conduct|model,ideal",
-"Exhort|/ɪɡˈzɔːt/|v|Speech|strongly encourage|she exhorted the team|urge,encourage",
-"Exonerate|/ɪɡˈzɒn.ə.reɪt/|v|Truth|absolve from blame|the report exonerated the officer|acquit,absolve",
-"Expedient|/ɪkˈspiː.di.ənt/|a|Craft|convenient but perhaps improper|an expedient shortcut|practical,convenient",
-"Exquisite|/ɪkˈskwɪz.ɪt/|a|Beauty|extremely beautiful|exquisite craftsmanship|beautiful,delicate",
-"Extol|/ɪkˈstəʊl/|v|Speech|praise enthusiastically|critics extolled the film|praise,laud",
-"Exuberant|/ɪɡˈzjuː.bər.ənt/|a|Emotion|full of energy|exuberant celebrations|ebullient,lively",
-"Facetious|/fəˈsiː.ʃəs/|a|Speech|flippantly humorous|a facetious comment|flippant,joking",
-"Fallible|/ˈfæl.ɪ.bəl/|a|Mind|capable of error|all humans are fallible|imperfect,weak",
-"Fastidious|/fæˈstɪd.i.əs/|a|Craft|very attentive to detail|fastidious about grammar|meticulous,fussy",
-"Fathom|/ˈfæð.əm/|v|Mind|understand deeply|I cannot fathom his choice|understand,grasp",
-"Felicity|/fɪˈlɪs..ti/|n|Emotion|intense happiness|the felicity of the moment|bliss,joy",
-"Fervent|/ˈfɜː.vənt/|a|Emotion|intensely passionate|a fervent supporter|passionate,ardent",
-"Fiasco|/fiˈæs.kəʊ/|n|Fortune|ridiculous failure|the event became a fiasco|debacle,failure",
-"Flippant|/ˈflɪp.ənt/|a|Speech|not showing respect|a flippant answer|irreverent,cavalier",
-"Flourish|/ˈflʌr.ɪʃ/|v|Nature|grow vigorously|the garden flourished|thrive,prosper",
-"Foible|/ˈfɔɪ.bəl/|n|Mind|minor weakness|his charming foibles|fault,quirk",
-"Foresight|/ˈfɔː.saɪt/|n|Mind|planning for the future|the foresight to save early|prudence,vision",
-"Fortitude|/ˈfɔː.tɪ.tjuːd/|n|Strength|courage in pain|she bore it with fortitude|courage,stamina",
-"Frugal|/ˈfruː.ɡəl/|a|Style|sparing and economical|a frugal meal|thrifty,sparing",
-"Garrulous|/ˈɡær.ʊ.ləs/|a|Speech|excessively talkative|a garrulous taxi driver|chatty,loquacious",
-"Gaunt|/ɡɔːnt/|a|Style|thin and bony|a gaunt face|haggard,thin",
-"Germane|/dʒəˈmeɪn/|a|Mind|relevant to the subject|a germane observation|relevant,pertinent",
-"Glib|/ɡlɪb/|a|Speech|fluent but insincere|a glib excuse|smooth,superficial",
-"Gossamer|/ˈɡɒs.ə.mər/|a|Beauty|light and delicate|gossamer spider silk|delicate,fine",
-"Gregarious|/ɡrɪˈɡɛə.ri.əs/|a|Social|fond of company|a gregarious host|sociable,outgoing",
-"Guile|/ɡaɪl/|n|Mind|sly cunning|guile in negotiation|cunning,craftiness",
-"Hackneyed|/ˈhæk.nid/|a|Style|unoriginal through overuse|a hackneyed plot|trite,clichéd",
-"Harangue|/həˈræ/|n|Speech|lengthy scolding|a harangue about punctuality|tirade,lecture",
-"Haphazard|/hæpˈhæz.əd/|a|Craft|lacking organization|a haphazard arrangement|random,chaotic",
-"Hilarity|/hɪˈlær.ɪ.ti/|n|Emotion|amusement and laughter|the hilarity of the party|laughter,mirth",
-"Humility|/hjuːˈmɪl..ti/|n|Social|modest view of oneself|she accepted praise with humility|modesty,meekness",
-"Hyperbole|/haɪˈpɜː.bəl.i/|n|Speech|exaggerated statement|saying I waited forever is hyperbole|exaggeration,overstatement",
-"Idyllic|/ɪˈdɪl.ɪk/|a|Place|happy and peaceful|an idyllic village|picturesque,peaceful",
-"Immaculate|/ɪˈmæk.jʊ.lət/|a|Style|perfectly clean|an immaculate kitchen|spotless,pristine",
-"Immutable|/ɪˈmjuː.tə.bəl/|a|Time|unchanging over time|the immutable laws of physics|fixed,unchanging",
-"Impeccable|/ɪmˈpɛk.ə.bəl/|a|Craft|faultless|impeccable manners|flawless,perfect",
-"Impervious|/ɪmˈpɜː.vi.əs/|a|Strength|not affected by|impervious to criticism|immune,resistant",
-"Incisive|/ɪnˈsaɪ.sɪv/|a|Mind|sharply perceptive|an incisive analysis|penetrating,sharp",
-"Incongruous|/ɪnˈkɒŋ.ɡru.əs/|a|Style|out of place|the tie was incongruous with the suit|inconsistent,jarring",
-"Indolent|/ˈɪn.dəl.ənt/|a|Style|lazy|an indolent afternoon|lazy,idle",
-"Indomitable|/ɪnˈdɒm.ɪ.tə.bəl/|a|Strength|impossible to subdue|an indomitable spirit|unconquerable,resolute",
-"Inexorable|/ɪnˈɛk.sər.ə.bəl/|a|Time|impossible to stop|the inexorable march of time|relentless,unstoppable",
-"Ingenious|/ɪnˈdʒiː.ni.əs/|a|Mind|cleverly inventive|an ingenious device|inventive,clever",
-"Inimitable|/ɪnˈɪm..tə.bəl/|a|Style|too good to imitate|her inimitable style|unique,matchless",
-"Insipid|/ɪnˈsɪp.ɪd/|a|Style|lacking flavor or interest|an insipid soup|bland,dull",
-"Intrepid|/ɪnˈtrɛp.ɪd/|a|Strength|fearless and adventurous|an intrepid reporter|brave,fearless",
-"Irascible|/ɪˈræs.ɪ.bəl/|a|Emotion|easily angered|an irascible old man|irritable,cranky",
-"Itinerant|/aɪˈtɪn.ər.ənt/|a|Motion|traveling from place to place|an itinerant musician|traveling,roving",
-"Jaunty|/ˈdʒɔːn.ti/|a|Style|lively and cheerful|a jaunty hat|sprightly,cheerful",
-"Jocular|/ˈdʒɒk.j.lər/|a|Speech|fond of joking|a jocular uncle|humorous,playful",
-"Jovial|/ˈdʒəʊ.vi.əl/|a|Emotion|cheerful and friendly|a jovial host|jolly,merry",
-"Jubilant|/ˈdʒuː.bɪ.lənt/|a|Emotion|triumphantly happy|the jubilant crowd|elated,triumphant",
-"Judicious|/dʒuːˈdɪʃ.əs/|a|Mind|showing good judgment|a judicious use of funds|wise,sensible",
-"Labyrinth|/ˈlæb.ə.rɪnθ/|n|Place|complicated maze|the old town is a labyrinth|maze,tangle",
-"Laconic|/ləˈkɒn.k/|a|Speech|using few words|a laconic reply|terse,concise",
-"Lament|/ləˈmɛnt/|v|Emotion|mourn deeply|they lamented the loss|grieve,mourn",
-"Laud|/lɔːd/|v|Speech|praise|critics lauded the actor|praise,extol",
-"Legacy|/ˈlɛɡ.ə.si/|n|Time|something handed down|her legacy lives on|heritage,inheritance",
-"Levity|/ˈlɛv.ɪ.ti/|n|Emotion|lightness and humor|a moment of levity|humor,lightness",
-"Limpid|/ˈlɪm.pɪd/|a|Beauty|clear and transparent|limpid water|clear,transparent",
-"Loquacious|/ləˈkweɪ.ʃəs/|a|Speech|very talkative|a loquacious guide|talkative,garrulous",
-"Lustrous|/ˈlʌs.trəs/|a|Light|shining and glossy|lustrous hair|glossy,shining",
-"Magnanimous|/mæɡˈnæn.ɪ.məs/|a|Social|generous and forgiving|a magnanimous victor|generous,noble",
-"Malaise|/mæˈleɪz/|n|Emotion|general feeling of unease|a national malaise|unease,discomfort",
-"Malleable|/ˈmæl.i.ə.bəl/|a|Style|easily shaped|the malleable clay|pliable,flexible",
-"Meander|/miˈæn.dər/|v|Motion|wander aimlessly|the river meanders|wander,drift",
-"Meticulous|/məˈtɪk.j.ləs/|a|Craft|very careful and precise|meticulous records|careful,thorough",
-"Mettle|/ˈmɛt.əl/|n|Strength|spirit and courage|the race tested their mettle|spirit,courage",
-"Mirth|/mɜːθ/|n|Emotion|amusement and laughter|eyes full of mirth|laughter,glee",
-"Momentum|/məˈmɛn.təm/|n|Motion|impetus gained by movement|the campaign gained momentum|impetus,drive",
-"Monotonous|/məˈnɒt.ən.əs/|a|Sound|dull through sameness|a monotonous voice|tedious,repetitive",
-"Mundane|/mʌnˈdeɪn/|a|Style|ordinary and boring|mundane chores|ordinary,banal",
-"Nemesis|/ˈnɛm.ə.sɪs/|n|Social|longstanding rival|his old nemesis returned|rival,opponent",
-"Nimble|/ˈnɪm.bəl/|a|Motion|quick and light in movement|nimble fingers|agile,quick",
-"Nonchalant|/ˈnɒn.ʃəl.ənt/|a|Style|calm and unbothered|a nonchalant shrug|casual,cool",
-"Notorious|/nəʊˈtɔː.ri.əs/|a|Social|famous for something bad|a notorious smuggler|infamous,disreputable",
-"Nuance|/ˈnjuː.ɑːns/|n|Mind|subtle difference|the nuances of meaning|subtlety,shade",
-"Oblivion|/əˈblɪv.i.ən/|n|State|state of being forgotten|the band faded into oblivion|obscurity,forgetfulness",
-"Obstinate|/ˈɒb.stɪ.nət/|a|Mind|stubborn|an obstinate child|stubborn,headstrong",
-"Omen|/ˈəʊ.mɛn/|n|Fortune|sign of things to come|the dove was a good omen|sign,portent",
-"Opulent|/ˈɒp.jʊ.lənt/|a|Style|rich and luxurious|an opulent palace|luxurious,wealthy",
-"Oracle|/ˈɒr.ə.kəl/|n|Mind|source of wise advice|the oracle of the village|sage,prophet",
-"Ostentatious|/ˌɒs.tɛnˈteɪ.ʃəs/|a|Style|showy and pretentious|an ostentatious car|showy,flashy",
-"Outwit|/aʊtˈwɪt/|v|Mind|defeat by cleverness|she outwitted the trickster|outsmart,trick",
-"Palatable|/ˈpæl.ə.tə.bəl/|a|Sensation|pleasant to taste|a palatable dish|tasty,agreeable",
-"Pallid|/ˈpæl.ɪd/|a|Style|pale|a pallid complexion|pale,wan",
-"Panacea|/ˌpæn.əˈsiː.ə/|n|Truth|cure-all|no panacea for all problems|cure-all,remedy",
-"Paradox|/ˈpær.ə.dɒks/|n|Mind|seemingly contradictory statement|the paradox of choice|contradiction,puzzle",
-"Paramount|/ˈpær.ə.maʊnt/|a|Style|more important than anything|safety is paramount|supreme,chief",
-"Pensive|/ˈpɛn.sɪv/|a|Emotion|deeply thoughtful|a pensive mood|reflective,meditative",
-"Perpetual|/pəˈpɛt.j.əl/|a|Time|never ending|perpetual snow|endless,continuous",
-"Pinnacle|/ˈpɪn.ə.kəl/|n|Place|highest point|the pinnacle of her career|summit,peak",
-"Piquant|/ˈpiː.kənt/|a|Sensation|pleasantly sharp taste|a piquant sauce|spicy,tangy",
-"Placid|/ˈplæs.ɪd/|a|Emotion|calm and peaceful|a placid lake|calm,tranquil",
-"Ponder|/ˈpɒn.dər/|v|Mind|think carefully|she pondered the offer|consider,reflect",
-"Pristine|/ˈprɪs.tiːn/|a|Style|in original condition|the pristine beach|unspoiled,pure",
-"Profound|/prəˈfaʊnd/|a|Mind|very deep|a profound insight|deep,intense",
-"Prolific|/prəˈlɪf.ɪk/|a|Craft|producing much|a prolific writer|productive,fertile",
-"Prudent|/ˈpruː.dənt/|a|Mind|acting with care|a prudent decision|wise,careful",
-"Pungent|/ˈpʌŋ.dʒənt/|a|Sensation|strong sharp smell|a pungent cheese|sharp,acrid",
-"Quaint|/kweɪnt/|a|Place|attractively unusual|a quaint cottage|charming,old-fashioned",
-"Quench|/kwɛntʃ/|v|Motion|satisfy thirst|quench your thirst|satisfy,extinguish",
-"Radiant|/ˈreɪ.di.ənt/|a|Light|sending out light|a radiant smile|glowing,bright",
-"Rapture|/ˈræp.tʃər/|n|Emotion|great pleasure|she listened in rapture|ecstasy,delight",
-"Reverie|/ˈrɛv.ər.i/|n|Mind|pleasant daydream|lost in a reverie|daydream,trance",
-"Vigor|/ˈvɪɡ.ər/|n|Strength|physical strength and energy|the vigor of youth|energy,vitality",
-"Vivid|/ˈvɪv.ɪd/|a|Light|strong bright color|a vivid memory|bright,striking",
-"Zeal|/ziːl/|n|Emotion|great enthusiasm|the zeal of a convert|passion,ardor",
-"Zenith|/ˈzɛn.ɪθ/|n|Time|highest point in time|the zenith of the empire|peak,apex",
-"Zest|/zɛst/|n|Emotion|eager enjoyment|a zest for life|enthusiasm,relish",
-"Kindle|/ˈkɪn.dəl/|v|Motion|light a fire; arouse|kindle a flame of hope|ignite,arouse",
-"Marvel|/ˈmɑ.vəl/|v|Emotion|be filled with wonder|we marveled at the view|wonder,admire",
-"Haven|/ˈheɪ.vən/|n|Place|safe place|a haven from the storm|refuge,sanctuary",
-"Chronicle|/ˈkrɒn.ɪ.kəl/|n|Time|record of events|a chronicle of the war|record,history",
-"Beacon|/ˈbiː.kən/|n|Light|guiding light|a beacon of hope|signal,lighthouse",
-"Bloom|/bluːm/|v|Nature|produce flowers|the roses bloomed|blossom,flower",
-"Cascade|/kæˈskeɪd/|n|Nature|small waterfall|a cascade of water|waterfall,torrent",
-"Dawn|/dɔːn/|n|Time|first light of day|the dawn broke softly|daybreak,sunrise",
-"Dusk|/dʌsk/|n|Time|the darker part of evening|the dusk settled|twilight,sundown",
-"Ember|/ˈɛm.bər/|n|Nature|glowing coal|the embers glowed|coal,spark",
-"Gale|/ɡeɪl/|n|Nature|very strong wind|the gale shook the roof|wind,storm",
-"Haze|/heɪz/|n|Nature|thin mist|a haze over the valley|mist,fog",
-"Keen|/kiːn/|a|Mind|sharp and eager|a keen observer|sharp,eager",
-"Lull|/lʌl/|n|Time|temporary calm|a lull in the storm|pause,break",
-"Sage|/seɪdʒ/|n|Mind|wise person|the village sage|wise man,philosopher",
-"Yonder|/ˈjɒn.dər/|r|Place|at a distance|the yonder hills|distant,far",
-"Azure|/ˈæʒ.ər/|a|Light|bright blue like sky|the azure sky|blue,sky-blue",
-"Brisk|/brɪsk/|a|Motion|quick and energetic|a brisk walk|quick,lively",
-"Crisp|/krɪsp/|a|Sensation|firm and dry|the crisp autumn air|fresh,sharp",
-"Dimple|/ˈdɪm.pəl/|n|Beauty|small hollow in cheek|a smile with dimples|hollow,indent",
-"Elite|/eɪˈliːt/|n|Social|the best of a group|the elite of the field|best,cream",
-"Fable|/ˈfeɪ.bəl/|n|Speech|short moral story|the fable of the tortoise|tale,story",
-"Gleam|/ɡliːm/|n|Light|a faint light|a gleam of silver|glint,sparkle",
-"Hush|/hʌʃ/|n|Sound|silence and quiet|a hush fell over the room|silence,quiet",
-"Ivory|/ˈaɪ.vər.i/|n|Style|creamy white|an ivory gown|white,cream",
-"Jolly|/ˈdʒɒl.i/|a|Emotion|happy and cheerful|a jolly song|merry,cheerful",
-"Karma|/ˈkɑ.mə/|n|Fortune|actions shaping fate|karma caught up with him|fate,destiny",
-"Lilt|/lɪlt/|n|Sound|pleasant rhythm in voice|a lilt in her voice|rhythm,bounce",
-"Happiness|/ˈhæp.i.nəs/|n|Emotion|the state of being happy|her happiness lit the room|joy,delight",
-"Sadness|/ˈsæd.nəs/|n|Emotion|the state of being sad|a quiet sadness in his eyes|sorrow,gloom",
-"Joy|/dʒɔɪ/|n|Emotion|great pleasure and happiness|the joy of a reunion|elation,bliss",
-"Sorrow|/ˈsɒr.əʊ/|n|Emotion|deep distress caused by loss|sorrow at the farewell|grief,sadness",
-"Anger|/ˈæŋ.ɡər/|n|Emotion|strong feeling of displeasure|his anger faded by evening|fury,rage",
-"Fear|/fɪər/|n|Emotion|unease caused by danger|fear of the dark|dread,fright",
-"Hope|/həʊp/|n|Emotion|desire and expectation for good|hope for a better year|optimism,trust",
-"Despair|/dɪˈspeər/|n|Emotion|complete loss of hope|moments of deep despair|hopelessness,gloom",
-"Delight|/dɪˈlaɪt/|n|Emotion|great pleasure and joy|the children squealed with delight|pleasure,joy",
-"Anxiety|/æŋˈzaɪ.ə.ti/|n|Emotion|worry and uneasy feelings|exam anxiety kept him awake|worry,unease",
-"Serenity|/sɪˈrɛn..ti/|n|Emotion|calm and peaceful state|the serenity of the lake|calm,peace",
-"Grief|/ɡriːf/|n|Emotion|deep sorrow from loss|grief softened into memory|sorrow,heartache"
+"Euphoria|juːˈfɔːriə|noun|Happy|A feeling or state of intense excitement and happiness.|The euphoria of winning the championship was unforgettable.|elation,bliss",
+"Jubilant|ˈdʒuːbɪlənt|adjective|Happy|Feeling or expressing great happiness and triumph.|The jubilant crowd filled the streets after the victory.|triumphant,exultant",
+"Exhilaration|ɪɡˌzɪləˈreɪʃən|noun|Excited|A feeling of excitement, happiness, or elation.|The exhilaration of skydiving is unmatched by any other sport.|thrill,elation",
+"Radiant|ˈreɪdiənt|adjective|Happy|Sending out light; shining or glowing brightly; clearly happy.|She looked radiant in her wedding dress.|glowing,beaming",
+"Elation|ɪˈleɪʃən|noun|Happy|Great happiness and exhilaration.|His elation was evident when he received the acceptance letter.|joy,exultation",
+"Blissful|ˈblɪsfʊl|adjective|Happy|Extremely happy; full of joy.|They spent a blissful weekend at the countryside cabin.|joyful,serene",
+"Exuberant|ɪɡˈzuːbərənt|adjective|Excited|Filled with or characterized by a lively energy and excitement.|The exuberant children ran around the playground.|energetic,vivacious",
+"Ecstatic|ɪkˈstætɪk|adjective|Excited|Feeling or expressing overwhelming happiness or joyful excitement.|She was ecstatic about her promotion at work.|overjoyed,thrilled",
+"Ebullient|ɪˈbʊliənt|adjective|Excited|Cheerful and full of energy.|His ebullient personality made him the life of the party.|buoyant,exuberant",
+"Mirth|mɜːθ|noun|Happy|Amusement, especially as expressed in laughter.|The comedian's jokes filled the room with mirth.|glee,jollity",
+"Glee|ɡliː|noun|Happy|Great delight, especially from one's own good fortune or another's misfortune.|He couldn't hide his glee when his rival made a mistake.|delight,joy",
+"Rapture|ˈræptʃə|noun|Happy|A feeling of intense pleasure or joy.|She listened to the symphony with absolute rapture.|ecstasy,bliss",
+"Jovial|ˈdʒəʊviəl|adjective|Happy|Cheerful and friendly.|The jovial host made sure everyone felt welcome at the dinner party.|cheerful,convivial",
+"Lighthearted|ˈlaɪthɑːtɪd|adjective|Happy|Amusing and entertaining; not serious.|We enjoyed a lighthearted conversation over coffee.|carefree,cheerful",
+"Sanguine|ˈsæŋɡwɪn|adjective|Happy|Optimistic or positive, especially in an apparently bad or difficult situation.|Despite the setbacks, he remained sanguine about the future.|optimistic,hopeful",
+"Melancholy|ˈmɛlənkɒli|noun|Sad|A deep, pensive, and long-lasting sadness.|A sense of melancholy washed over him as he left his hometown.|sadness,gloom",
+"Despondent|dɪˈspɒndənt|adjective|Sad|In low spirits from loss of hope or courage.|She felt despondent after failing the crucial exam.|hopeless,dejected",
+"Sorrow|ˈsɒrəʊ|noun|Sad|A feeling of deep distress caused by loss, disappointment, or other misfortune.|The sorrow of losing a loved one is profound.|grief,sadness",
+"Lugubrious|ləˈɡuːbriəs|adjective|Sad|Looking or sounding sad and dismal.|The lugubrious tone of the cello matched the rainy day.|mournful,doleful",
+"Doleful|ˈdəʊlfʊl|adjective|Sad|Expressing sorrow; mournful.|The doleful howl of the wind echoed through the valley.|mournful,melancholy",
+"Woeful|ˈwəʊfʊl|adjective|Sad|Characterized by, expressive of, or causing sorrow or misery.|The team's performance was truly woeful this season.|miserable,dismal",
+"Grief|ɡriːf|noun|Sad|Deep sorrow, especially that caused by someone's death.|The family was overwhelmed by grief after the tragedy.|sorrow,mourning",
+"Anguish|ˈæŋɡwɪʃ|noun|Sad|Severe mental or physical pain or suffering.|She felt intense anguish when she heard the devastating news.|agony,torment",
+"Forlorn|fəˈlɔːn|adjective|Sad|Pitifully sad and abandoned or lonely.|The forlorn puppy waited by the door for its owner.|lonely,desolate",
+"Somber|ˈsɒmbə|adjective|Sad|Oppressively solemn or sober in mood; grave.|The somber atmosphere of the memorial demanded respect.|gloomy,grave",
+"Dismal|ˈdɪzməl|adjective|Sad|Depressing; dreary.|The dismal weather ruined our outdoor plans.|dreary,bleak",
+"Bleak|bliːk|adjective|Sad|Lacking vegetation and exposed to the elements; cold and miserable.|The future of the company looks bleak without new investment.|grim,hopeless",
+"Mournful|ˈmɔːnfʊl|adjective|Sad|Feeling, expressing, or inducing sorrow or grief.|The mournful sound of the bagpipes filled the air.|sorrowful,grieving",
+"Dejected|dɪˈdʒɛktɪd|adjective|Sad|Sad and depressed; dispirited.|He looked dejected after being turned down for the job.|downcast,disheartened",
+"Wistful|ˈwɪstfʊl|adjective|Sad|Having or showing a feeling of vague or regretful longing.|She gave a wistful smile as she looked at the old photographs.|nostalgic,longing",
+"Furious|ˈfjʊəriəs|adjective|Angry|Extremely angry.|He was furious when he discovered the betrayal.|enraged,irate",
+"Irate|aɪˈreɪt|adjective|Angry|Feeling or characterized by great anger.|The irate customer demanded to speak to the manager.|furious,outraged",
+"Indignant|ɪnˈdɪɡnənt|adjective|Angry|Feeling or showing anger or annoyance at what is perceived as unfair treatment.|She was indignant at the false accusations.|outraged,resentful",
+"Wrath|rɒθ|noun|Angry|Extreme anger.|The king's wrath was feared by all in the kingdom.|fury,anger",
+"Incensed|ɪnˈsɛnst|adjective|Angry|Very angry; enraged.|The community was incensed by the proposed cuts to local services.|enraged,furious",
+"Livid|ˈlɪvɪd|adjective|Angry|Furiously angry.|She was livid when she found out they had lied to her.|furious,irate",
+"Outraged|ˈaʊtreɪdʒd|adjective|Angry|An intense reaction of anger, shock, or indignation.|The public was outraged by the corrupt politician's actions.|indignant,appalled",
+"Belligerent|bəˈlɪdʒərənt|adjective|Angry|Hostile and aggressive.|The belligerent fan was ejected from the stadium.|aggressive,combative",
+"Hostile|ˈhɒstaɪl|adjective|Angry|Unfriendly; antagonistic.|The local population was hostile to the new developments.|antagonistic,unwelcoming",
+"Resentful|rɪˈzɛntfʊl|adjective|Angry|Feeling or expressing bitterness or indignation at having been treated unfairly.|He remained resentful of his brother's success.|bitter,indignant",
+"Vengeful|ˈvɛndʒfʊl|adjective|Angry|Seeking to harm someone in return for a perceived injury.|The vengeful spirit haunted the old castle.|revengeful,retaliatory",
+"Infuriated|ɪnˈfjʊəriˌeɪtɪd|adjective|Angry|Made extremely angry and impatient.|She was infuriated by the constant delays.|enraged,maddened",
+"Seething|ˈsiːðɪŋ|adjective|Angry|Filled with intense but unexpressed anger.|He was seething with rage after the insult.|fuming,boiling",
+"Irascible|ɪˈræsɪbəl|adjective|Angry|Having or showing a tendency to be easily angered.|The irascible old man yelled at the children to keep off his lawn.|irritable,cranky",
+"Piqued|piːkt|adjective|Angry|Feeling resentful or angry, especially at a slight to one's pride.|His pride was piqued by the dismissive comment.|offended,annoyed",
+"Trepidation|ˌtrɛpɪˈdeɪʃən|noun|Fear|A feeling of fear or agitation about something that may happen.|She approached the interview with some trepidation.|apprehension,dread",
+"Apprehensive|ˌæprɪˈhɛnsɪv|adjective|Fear|Anxious or fearful that something bad or unpleasant will happen.|He was apprehensive about the upcoming surgery.|anxious,fearful",
+"Dread|drɛd|noun|Fear|Great fear or apprehension.|The thought of public speaking filled her with dread.|terror,fear",
+"Petrified|ˈpɛtrɪfaɪd|adjective|Fear|So frightened that one is unable to move; terrified.|She was petrified of the dark.|terrified,paralyzed",
+"Terrified|ˈtɛrɪfaɪd|adjective|Fear|Feeling extreme fear.|The child was terrified of the loud thunder.|petrified,horrified",
+"Phobia|ˈfəʊbiə|noun|Fear|An extreme or irrational fear of or aversion to something.|His arachnophobia is a severe phobia of spiders.|fear,aversion",
+"Panicked|ˈpænɪkt|adjective|Fear|Feeling or showing sudden, overwhelming fear or anxiety.|The panicked crowd rushed for the exits.|alarmed,frenzied",
+"Horrified|ˈhɒrɪfaɪd|adjective|Fear|Shocked and disgusted or fearful.|She was horrified by the gruesome scene.|shocked,appalled",
+"Daunted|dɔːntɪd|adjective|Fear|Made to feel intimidated or apprehensive.|He felt daunted by the sheer size of the project.|intimidated,discouraged",
+"Intimidated|ɪnˈtɪmɪdeɪtɪd|adjective|Fear|Frightened or overawed, especially into doing something.|The new employee felt intimidated by the strict boss.|daunted,frightened",
+"Spooked|spuːkt|adjective|Fear|Frightened or alarmed.|The horse was spooked by the sudden noise.|startled,frightened",
+"Terror|ˈtɛrə|noun|Fear|Extreme fear.|The explosion filled the neighborhood with terror.|dread,panic",
+"Alarm|əˈlɑːm|noun|Fear|An anxious awareness of danger.|The sudden drop in stock prices caused widespread alarm.|panic,concern",
+"Fright|fraɪt|noun|Fear|A sudden intense feeling of fear.|The loud bang gave her a terrible fright.|shock,scare",
+"Uneasy|ʌnˈiːzi|adjective|Fear|Causing or feeling anxiety; troubled or uncomfortable.|He felt uneasy walking home alone at night.|anxious,unsettled",
+"Serene|sɪˈriːn|adjective|Calm|Calm, peaceful, and untroubled; tranquil.|The serene lake reflected the mountains perfectly.|tranquil,peaceful",
+"Tranquil|ˈtræŋkwɪl|adjective|Calm|Free from disturbance; calm.|They found a tranquil spot in the garden to read.|serene,peaceful",
+"Placid|ˈplasɪd|adjective|Calm|Not easily upset or excited; calm and peaceful.|The placid baby slept through the entire night.|calm,tranquil",
+"Composed|kəmˈpəʊzd|adjective|Calm|Having one's feelings and expression under control; calm.|She remained composed during the crisis.|calm,collected",
+"Equanimity|ˌɛkwəˈnɪmɪti|noun|Calm|Mental calmness, composure, and evenness of temper, especially in a difficult situation.|He accepted the bad news with remarkable equanimity.|composure,poise",
+"Tranquility|træŋˈkwɪlɪti|noun|Calm|The quality or state of being tranquil; calm.|The tranquility of the forest was deeply restorative.|peace,serenity",
+"Mellifluous|mɪˈlɪfluəs|adjective|Calm|(Of a voice or words) sweet or musical; pleasant to hear.|The mellifluous tones of the singer captivated the audience.|sweet,soothing",
+"Halcyon|ˈhælsiən|adjective|Calm|Denoting a period of time in the past that was idyllically happy and peaceful.|She remembered the halcyon days of her childhood.|peaceful,idyllic",
+"Unflappable|ʌnˈflæpəbəl|adjective|Calm|Having or showing calmness in a crisis.|The unflappable pilot landed the plane safely despite the engine failure.|composed,cool",
+"Stoic|ˈstəʊɪk|adjective|Calm|Enduring pain or hardship without showing feelings or complaining.|He remained stoic in the face of great adversity.|unemotional,resolute",
+"Placate|ˈplækeɪt|verb|Calm|Make (someone) less angry or hostile.|He tried to placate the angry customer with a refund.|appease,soothe",
+"Soothe|suːð|verb|Calm|Gently calm (a person or their feelings).|The mother tried to soothe the crying child.|calm,comfort",
+"Lull|lʌl|verb|Calm|Calm or send to sleep, typically with soothing sounds or movements.|The gentle rocking of the boat lulled him to sleep.|calm,quiet",
+"Tranquillize|ˈtræŋkwɪlaɪz|verb|Calm|Make (someone or something) tranquil or calm.|The medication was designed to tranquillize the anxious patient.|calm,sedate",
+"Stillness|ˈstɪlnəs|noun|Calm|Complete absence of sound or movement.|The stillness of the night was broken only by an owl.|quiet,calm",
+"Affection|əˈfɛkʃən|noun|Love|A gentle feeling of fondness or liking.|She had a deep affection for her grandmother.|fondness,tenderness",
+"Devotion|dɪˈvəʊʃən|noun|Love|Love, loyalty, or enthusiasm for a person, activity, or cause.|His devotion to his family was evident in everything he did.|dedication,loyalty",
+"Adoration|ˌædəˈreɪʃən|noun|Love|Deep love and respect.|The fans' adoration for the rock star was overwhelming.|worship,love",
+"Infatuation|ɪnˌfætʃuˈeɪʃən|noun|Love|An intense but short-lived passion or admiration for someone.|His infatuation with the actress faded after a few months.|obsession,crush",
+"Amorous|ˈæmərəs|adjective|Love|Showing, feeling, or relating to sexual desire.|He sent her amorous letters every week.|romantic,passionate",
+"Tender|ˈtɛndə|adjective|Love|Showing gentleness and concern or sympathy.|She gave him a tender smile.|gentle,loving",
+"Fondness|ˈfɒndnəs|noun|Love|Affection or liking for someone or something.|He had a fondness for classical music.|affection,preference",
+"Endearment|ɪnˈdɪəmənt|noun|Love|A word or phrase expressing love or affection.|'Darling' is a common term of endearment.|affection,love",
+"Passion|ˈpæʃən|noun|Love|Strong and barely controllable emotion; intense desire.|She pursued her art with fierce passion.|desire,ardor",
+"Cherish|ˈtʃɛrɪʃ|verb|Love|Protect and care for (someone) lovingly.|He cherished the memories of his late wife.|treasure,value",
+"Enamored|ɪˈnæməd|adjective|Love|Be filled with a feeling of love for.|She was enamored with the quaint little village.|captivated,smitten",
+"Smitten|ˈsmɪtən|adjective|Love|Seriously affected by love or infatuation.|He was completely smitten with his new colleague.|infatuated,captivated",
+"Yearning|ˈjɜːnɪŋ|noun|Love|A feeling of intense longing for something.|She felt a deep yearning for her homeland.|longing,desire",
+"Compassion|kəmˈpæʃən|noun|Love|Sympathetic pity and concern for the sufferings or misfortunes of others.|The nurse treated the patients with great compassion.|empathy,mercy",
+"Empathy|ˈɛmpəθi|noun|Love|The ability to understand and share the feelings of another.|His empathy made him an excellent counselor.|compassion,understanding",
+"Astonished|əˈstɒnɪʃt|adjective|Surprised|Greatly surprised or impressed; amazed.|She was astonished by the magnitude of the gift.|amazed,astounded",
+"Astounded|əˈstaʊndɪd|adjective|Surprised|Shocked or greatly surprised.|He was astounded by the complexity of the puzzle.|astonished,flabbergasted",
+"Flabbergasted|ˈflæbəɡɑːstɪd|adjective|Surprised|Surprised (someone) greatly; astonish.|I was absolutely flabbergasted by the news.|astounded,shocked",
+"Stupefied|ˈstjuːpɪfaɪd|adjective|Surprised|Astonished and shocked into a state of near-unconsciousness or inability to think clearly.|The audience was stupefied by the magician's trick.|dumbfounded,amazed",
+"Dumbfounded|dʌmˈfaʊndɪd|adjective|Surprised|Greatly astonished or amazed.|She was dumbfounded when she won the lottery.|astounded,shocked",
+"Startled|ˈstɑːtəld|adjective|Surprised|Feeling or showing sudden shock or alarm.|The loud noise startled the sleeping cat.|surprised,alarmed",
+"Bewildered|bɪˈwɪldəd|adjective|Surprised|Perplexed and confused; very puzzled.|He was bewildered by the complex instructions.|confused,perplexed",
+"Perplexed|pəˈplɛkst|adjective|Surprised|Completely baffled; very puzzled.|The detective was perplexed by the lack of evidence.|confused,baffled",
+"Stunned|stʌnd|adjective|Surprised|So shocked that one is temporarily unable to react; astonished.|The crowd was stunned by the sudden announcement.|shocked,amazed",
+"Dumbstruck|ˈdʌmstrʌk|adjective|Surprised|So shocked or surprised as to be unable to speak.|He was dumbstruck by the sheer beauty of the landscape.|dumbfounded,speechless",
+"Thunderstruck|ˈθʌndəstrʌk|adjective|Surprised|Extremely surprised or shocked.|She was thunderstruck by the sudden turn of events.|astounded,shocked",
+"Agape|əˈɡeɪp|adjective|Surprised|(Of a person's mouth) wide open, typically in amazement or wonder.|He stood agape as the magic trick unfolded.|open-mouthed,astonished",
+"Jolt|dʒəʊlt|noun|Surprised|A sudden rough movement or shock.|The news came as a severe jolt to the community.|shock,surprise",
+"Disbelief|ˌdɪsbɪˈliːf|noun|Surprised|Inability or refusal to accept that something is true or real.|She stared at the screen in utter disbelief.|incredulity,doubt",
+"Aghast|əˈɡɑːst|adjective|Surprised|Filled with horror or shock.|They were aghast at the terrible conditions in the factory.|horrified,appalled",
+"Repulsed|rɪˈpʌlst|adjective|Disgusted|Caused to feel intense distaste or aversion.|She was repulsed by the foul odor.|disgusted,revolted",
+"Revolted|rɪˈvəʊltɪd|adjective|Disgusted|Feeling intense distaste or disgust.|He was revolted by the cruelty of the act.|disgusted,repulsed",
+"Appalled|əˈpɔːld|adjective|Disgusted|Greatly dismayed or horrified.|We were appalled by the lack of hygiene in the kitchen.|horrified,disgusted",
+"Loathing|ˈləʊðɪŋ|noun|Disgusted|A feeling of intense dislike or disgust.|He felt nothing but loathing for his former boss.|hatred,disgust",
+"Abhor|əbˈhɔː|verb|Disgusted|Regard with disgust and hatred.|She abhors violence in any form.|detest,loathe",
+"Remorse|rɪˈmɔːs|noun|Ashamed|Deep regret or guilt for a wrong committed.|He felt deep remorse for his harsh words.|regret,guilt",
+"Contrite|kənˈtraɪt|adjective|Ashamed|Feeling or expressing remorse or penitence; affected by guilt.|She was contrite after realizing she had hurt his feelings.|remorseful,penitent",
+"Ashamed|əˈʃeɪmd|adjective|Ashamed|Embarrassed or guilty because of one's actions, characteristics, or associations.|He was ashamed of his rude behavior.|guilty,humiliated",
+"Humiliated|hjuːˈmɪlieɪtɪd|adjective|Ashamed|Made to feel ashamed and foolish by injuring one's dignity and pride.|She felt utterly humiliated by the public criticism.|embarrassed,degraded",
+"Mortified|ˈmɔːtɪfaɪd|adjective|Ashamed|Extremely embarrassed or ashamed.|He was mortified when he tripped on stage.|embarrassed,humiliated",
+"Chagrined|ʃəˈɡrɪnd|adjective|Ashamed|Distressed or embarrassed at having failed or been humiliated.|She was chagrined to discover she had made a simple error.|embarrassed,disappointed",
+"Disgraced|dɪsˈɡreɪst|adjective|Ashamed|Having lost the respect of others through bad behavior.|The disgraced politician resigned from office.|dishonored,shamed",
+"Ignominy|ˈɪɡnəmɪni|noun|Ashamed|Public shame or disgrace.|The team's defeat was a moment of pure ignominy.|disgrace,shame",
+"Penitent|ˈpɛnɪtənt|adjective|Ashamed|Feeling or showing sorrow and regret for having done wrong; repentant.|The penitent thief asked for forgiveness.|remorseful,contrite",
+"Guilt|ɡɪlt|noun|Ashamed|The fact or state of having committed an offense, crime, violation, or wrong.|A wave of guilt washed over her after the lie.|remorse,culpability",
+"Ephemeral|ɪˈfɛmərəl|adjective|Calm|Lasting for a very short time.|Fashions are ephemeral, changing with every season.|transient,fleeting",
+"Resilient|rɪˈzɪliənt|adjective|Calm|Able to withstand or recover quickly from difficult conditions.|Children are often more resilient than adults.|tough,adaptable",
+"Apathy|ˈæpəθi|noun|Sad|Lack of interest, enthusiasm, or concern.|Voter apathy is a growing concern in modern democracies.|indifference,lethargy",
+"Ennui|ɒnˈwiː|noun|Sad|A feeling of listlessness and dissatisfaction arising from a lack of occupation or excitement.|The long summer holiday was filled with ennui.|boredom,lethargy",
+"Catharsis|kəˈθɑːsɪs|noun|Happy|The process of releasing, and thereby providing relief from, strong or repressed emotions.|Writing in her journal provided a much-needed catharsis.|release,relief",
+"Thrilled|θrɪld|adjective|Excited|Feeling a sudden surge of excitement and pleasure.|She was thrilled to receive the award.|excited,elated",
+"Elated|ɪˈleɪtɪd|adjective|Excited|Ecstatically happy.|He was elated after passing his driving test.|overjoyed,thrilled",
+"Exhilarated|ɪɡˈzɪləreɪtɪd|adjective|Excited|Feeling very happy and excited.|The riders were exhilarated by the roller coaster.|thrilled,elated",
+"Animated|ˈænɪmeɪtɪd|adjective|Excited|Full of life or excitement; lively.|She became very animated when talking about her trip.|lively,energetic",
+"Spirited|ˈspɪrɪtɪd|adjective|Excited|Full of energy enthusiasm and determination.|The team put up a spirited fight until the final whistle.|energetic,enthusiastic",
+"Vivacious|vɪˈveɪʃəs|adjective|Excited|Attractively lively and animated.|Her vivacious personality lit up the room.|lively,animated",
+"Dynamic|daɪˈnæmɪk|adjective|Excited|Characterized by constant change activity or progress.|The dynamic marketing team came up with brilliant ideas.|energetic,active",
+"Buoyant|ˈbɔɪənt|adjective|Excited|Cheerful and optimistic.|He remained buoyant despite the challenging circumstances.|cheerful,optimistic",
+"Effervescent|ˌɛfəˈvɛsənt|adjective|Excited|Vivacious and enthusiastic.|The effervescent host kept the guests entertained all night.|vivacious,enthusiastic",
+"Zealous|ˈzɛləs|adjective|Excited|Having or showing great energy or enthusiasm in pursuit of a cause.|The zealous volunteers worked tirelessly to clean the beach.|passionate,fervent",
+"Fervent|ˈfɜːvənt|adjective|Excited|Having or displaying a passionate intensity.|He made a fervent plea for peace.|passionate,ardent",
+"Ardent|ˈɑːdənt|adjective|Excited|Enthusiastic or passionate.|She was an ardent supporter of the environmental campaign.|passionate,zealous",
+"Impassioned|ɪmˈpæʃənd|adjective|Excited|Filled with or showing great emotion.|The lawyer delivered an impassioned closing statement.|passionate,fervent",
+"Enthusiastic|ɪnˌθjuːziˈæstɪk|adjective|Excited|Having or showing intense and eager enjoyment interest or approval.|The enthusiastic crowd cheered loudly.|eager,passionate",
+"Eager|ˈiːɡə|adjective|Excited|Strongly wanting to do or have something.|The eager students raised their hands to answer.|keen,enthusiastic",
+"Keen|kiːn|adjective|Excited|Having or showing eagerness or enthusiasm.|He has a keen interest in ancient history.|eager,enthusiastic",
+"Avid|ˈævɪd|adjective|Excited|Having or showing a keen interest or enthusiasm for something.|She is an avid reader of mystery novels.|enthusiastic,keen",
+"Rapturous|ˈræptʃərəs|adjective|Excited|Characterized by feeling or expressing full of delight or ecstasy.|The play received rapturous applause from the audience.|ecstatic,delighted",
+"Rhapsodic|ræpˈsɒdɪk|adjective|Excited|Enthusiastically extravagantly expressive.|He was rhapsodic in his praise of the new restaurant.|enthusiastic,ecstatic",
+"Intoxicated|ɪnˈtɒksɪkeɪtɪd|adjective|Excited|Overcome with a particular emotion especially excitement or happiness.|She was intoxicated with joy when she heard the news.|elated,thrilled",
+"Electrified|ɪˈlɛktrɪfaɪd|adjective|Excited|Suddenly filled with excitement or shock.|The audience was electrified by the singer's performance.|thrilled,excited",
+"Galvanized|ˈɡælvənaɪzd|adjective|Excited|Shocked or excited into taking action.|The community was galvanized into action by the local crisis.|motivated,stimulated",
+"Invigorated|ɪnˈvɪɡəreɪtɪd|adjective|Excited|Given new energy or strength.|He felt invigorated after his morning run in the crisp air.|energized,refreshed",
+"Exultant|ɪɡˈzʌltənt|adjective|Excited|Triumphantly happy.|The exultant team celebrated their championship win.|triumphant,jubilant",
+"Amazed|əˈmeɪzd|adjective|Surprised|Greatly surprised; astonished.|She was amazed by the beautiful view from the top.|astonished,astounded",
+"Shocked|ʃɒkt|adjective|Surprised|Surprised and upset; horrified.|He was shocked to see the mess in the kitchen.|surprised,appalled",
+"Speechless|ˈspiːtʃlɪs|adjective|Surprised|Unable to speak especially due to shock or emotion.|She was speechless when she received the unexpected gift.|dumbfounded,astonished",
+"Gobsmacked|ˈɡɒbsmækt|adjective|Surprised|Utterly astonished; astounded.|I was absolutely gobsmacked by the news of his resignation.|astonished,flabbergasted",
+"Nonplussed|nɒnˈplʌst|adjective|Surprised|Surprised and confused so much that one is unsure how to react.|He was completely nonplussed by her strange question.|bewildered,baffled",
+"Baffled|ˈbæfəld|adjective|Surprised|Totally bewildered or perplexed.|The police were baffled by the lack of clues.|perplexed,confused",
+"Mystified|ˈmɪstɪfaɪd|adjective|Surprised|Completely puzzled or bewildered.|She was mystified by the strange noises in the attic.|baffled,perplexed",
+"Confounded|kənˈfaʊndɪd|adjective|Surprised|Surprised and confused; bewildered.|The teacher was confounded by the student's unusual answer.|baffled,perplexed",
+"Puzzled|ˈpʌzəld|adjective|Surprised|Unable to understand or explain something.|He looked puzzled when he read the complicated instructions.|confused,baffled",
+"Staggered|ˈstæɡəd|adjective|Surprised|Deeply shocked or astonished.|She was staggered by the sheer cost of the repairs.|shocked,astounded",
+"Awestruck|ˈɔːstrʌk|adjective|Surprised|Filled with awe and wonder.|The children were awestruck by the massive dinosaur skeleton.|amazed,astonished",
+"Wonderstruck|ˈwʌndəstrʌk|adjective|Surprised|Filled with amazement and wonder.|He stood wonderstruck before the magnificent painting.|amazed,awestruck",
+"Flustered|ˈflʌstəd|adjective|Surprised|Agitated or confused.|He became flustered when asked a difficult question on the spot.|confused,agitated",
+"Disconcerted|ˌdɪskənˈsɜːtɪd|adjective|Surprised|Annoyed or unsettled; surprised in an uncomfortable way.|She was disconcerted by his blunt remarks.|unsettled,unnerved",
+"Unnerved|ˌʌnˈnɜːvd|adjective|Surprised|Deprived of courage or self-confidence; made anxious.|The strange noise unnerved him as he walked alone.|anxious,unsettled",
+"Taken aback|teɪkən əˈbæk|adjective|Surprised|Surprised or shocked often in a way that causes one to pause.|He was taken aback by her sudden change of mood.|surprised,shocked",
+"Caught off guard|kɔːt ɒf ɡɑːd|adjective|Surprised|Surprised because one was not expecting something.|The question caught her completely off guard.|surprised,unprepared",
+"Jaw-dropping|ˈdʒɔːˌdrɒpɪŋ|adjective|Surprised|Extremely surprising or impressive.|The view from the penthouse was simply jaw-dropping.|astonishing,amazing",
+"Mind-boggling|ˈmaɪndˌbɒɡlɪŋ|adjective|Surprised|Impossible to understand or comprehend; astonishing.|The amount of data processed was mind-boggling.|astonishing,astounding",
+"Unbelievable|ˌʌnbɪˈliːvəbəl|adjective|Surprised|Not able to be believed; incredible.|The story of his survival was unbelievable.|incredible,astonishing",
+"Incredible|ɪnˈkrɛdɪbəl|adjective|Surprised|Impossible or very difficult to believe; amazing.|The athlete made an incredible comeback after his injury.|amazing,astonishing",
+"Phenomenal|fɪˈnɒmɪnəl|adjective|Surprised|Very remarkable; extraordinary.|She has a phenomenal memory for faces.|extraordinary,remarkable",
+"Extraordinary|ɪkˈstrɔːdnri|adjective|Surprised|Very unusual or remarkable.|The detective solved an extraordinary number of cases.|remarkable,unusual",
+"Remarkable|rɪˈmɑːkəbəl|adjective|Surprised|Worthy of attention; striking.|She made a remarkable recovery from the illness.|striking,extraordinary",
+"Striking|ˈstraɪkɪŋ|adjective|Surprised|Attracting attention or notice; unusual or noticeable.|He has striking blue eyes.|noticeable,remarkable",
+"Disgusted|dɪsˈɡʌstɪd|adjective|Disgusted|Feeling a strong revulsion or profound disapproval.|She was disgusted by the lack of cleanliness in the hotel.|revolted,repulsed",
+"Nauseated|ˈnɔːziˌeɪtɪd|adjective|Disgusted|Feeling sick or having the urge to vomit; disgusted.|The graphic violence in the movie left him feeling nauseated.|sickened,disgusted",
+"Sickened|ˈsɪkənd|adjective|Disgusted|Disgusted or horrified.|We were sickened by the reports of animal cruelty.|disgusted,horrified",
+"Repelled|rɪˈpɛld|adjective|Disgusted|Arousing intense distaste or disgust.|She was repelled by his arrogant behavior.|disgusted,repulsed",
+"Revolting|rɪˈvəʊltɪŋ|adjective|Disgusted|Causing intense disgust; repulsive.|The smell from the garbage was absolutely revolting.|disgusting,repulsive",
+"Odious|ˈəʊdiəs|adjective|Disgusted|Extremely unpleasant; repulsive.|He was known for his odious behavior at parties.|repulsive,disgusting",
+"Repugnant|rɪˈpʌɡnənt|adjective|Disgusted|Extremely unacceptable; in conflict with.|The idea of cheating was completely repugnant to her.|repulsive,disgusting",
+"Vile|vaɪl|adjective|Disgusted|Extremely unpleasant; morally bad; wicked.|The criminal committed a vile and senseless act.|wicked,disgusting",
+"Foul|faʊl|adjective|Disgusted|Offensive to the senses especially through a disgusting smell or taste.|The milk had gone bad and smelled foul.|disgusting,offensive",
+"Nasty|ˈnɑːsti|adjective|Disgusted|Highly unpleasant especially in behavior; malicious.|He made a nasty comment about her appearance.|unpleasant,mean",
+"Grotesque|ɡrəʊˈtɛsk|adjective|Disgusted|Comically or grotesquely ugly or distorted.|The gargoyle had a grotesque face.|ugly,bizarre",
+"Macabre|məˈkɑːbə|adjective|Disgusted|Disturbing because concerned with or causing a horror of death and injury.|The artist had a fascination with macabre themes.|gruesome,ghastly",
+"Gruesome|ˈɡruːsəm|adjective|Disgusted|Causing an intense feeling of repulsion or disgust; horrifying.|The detective examined the gruesome crime scene.|horrifying,ghastly",
+"Ghastly|ˈɡɑːstli|adjective|Disgusted|Causing great horror or fear; gruesome or macabre.|The ghost story had a ghastly ending.|horrifying,gruesome",
+"Hideous|ˈhɪdiəs|adjective|Disgusted|Ugly or disgusting to look at.|The building was considered an eyesore due to its hideous design.|ugly,disgusting",
+"Monstrous|ˈmɒnstrəs|adjective|Disgusted|Having the ugly or frightening appearance of a monster; inhumanely cruel.|The dictator committed monstrous crimes against humanity.|cruel,atrocious",
+"Abominable|əˈbɒmɪnəbəl|adjective|Disgusted|Causing moral revulsion; very unpleasant or bad.|The prisoners were kept in abominable conditions.|atrocious,terrible",
+"Despicable|dɪˈspɪkəbəl|adjective|Disgusted|Deserving hatred and contempt.|Stealing from a charity is a despicable act.|contemptible,wretched",
+"Contemptible|kənˈtɛmptɪbəl|adjective|Disgusted|Deserving contempt; despicable.|His contemptible lies ruined her reputation.|despicable,wretched",
+"Pitiful|ˈpɪtɪfʊl|adjective|Disgusted|Arousing pity especially through vulnerability or sadness; pathetically meager.|The dog was in a pitiful state after being abandoned.|pathetic,miserable",
+"Repulsive|rɪˈpʌlsɪv|adjective|Disgusted|Arousing intense distaste or disgust.|The texture of the overripe fruit was repulsive.|disgusting,revolting",
+"Nauseating|ˈnɔːziˌeɪtɪŋ|adjective|Disgusted|Causing nausea; extremely unpleasant or disgusting.|The nauseating smell of the chemical spill filled the air.|disgusting,sickening",
+"Sickening|ˈsɪkənɪŋ|adjective|Disgusted|Causing disgust or nausea.|The sickening reality of the war was broadcast on the news.|disgusting,nauseating",
+"Distasteful|dɪsˈteɪstfʊl|adjective|Disgusted|Unpleasant or offensive.|He found the crude jokes highly distasteful.|unpleasant,offensive",
+"Unpalatable|ʌnˈpælətəbəl|adjective|Disgusted|Not pleasant to taste; difficult or unpleasant to accept.|The truth was unpalatable but it had to be faced.|unpleasant,offensive",
+"Embarrassed|ɪmˈbærəst|adjective|Ashamed|Feeling or showing embarrassment.|He was embarrassed when he forgot her name.|ashamed,humiliated",
+"Disgraceful|dɪsˈɡreɪsfʊl|adjective|Ashamed|Shameful; scandalous.|The players' disgraceful behavior led to their suspension.|shameful,scandalous",
+"Shameful|ˈʃeɪmfʊl|adjective|Ashamed|Worthy of or causing shame; disgraceful.|It was a shameful way to treat a guest.|disgraceful,ignominious",
+"Ignominious|ˌɪɡnəˈmɪniəs|adjective|Ashamed|Deserving or causing public disgrace or shame.|The team suffered an ignominious defeat in the finals.|shameful,disgraceful",
+"Reprehensible|ˌrɛprɪˈhɛnsɪbəl|adjective|Ashamed|Deserving censure or condemnation.|His reprehensible actions were condemned by the public.|blameworthy,shameful",
+"Deplorable|dɪˈplɔːrəbəl|adjective|Ashamed|Deserving strong condemnation; shockingly bad.|The refugees were living in deplorable conditions.|shameful,appalling",
+"Lamentable|ˈlæməntəbəl|adjective|Ashamed|Bad; regrettable; deplorable.|The state of the roads is truly lamentable.|regrettable,deplorable",
+"Regrettable|rɪˈɡrɛtəbəl|adjective|Ashamed|Giving rise to regret; undesirable; unfortunate.|The incident was a regrettable mistake.|unfortunate,lamentable",
+"Unforgivable|ˌʌnfəˈɡɪvəbəl|adjective|Ashamed|Not able to be forgiven or excused.|His betrayal was an unforgivable offense.|inexcusable,shameful",
+"Inexcusable|ˌɪnɪkˈskjuːzəbəl|adjective|Ashamed|Not justifiable by any argument; unpardonable.|Such rude behavior is simply inexcusable.|unforgivable,unpardonable",
+"Culpable|ˈkʌlpəbəl|adjective|Ashamed|Deserving blame; guilty.|The manager was held culpable for the financial loss.|guilty,blameworthy",
+"Blameworthy|ˈbleɪmˌwɜːði|adjective|Ashamed|Deserving of blame or censure.|The driver was blameworthy for the accident.|culpable,guilty",
+"Guilty|ˈɡɪlti|adjective|Ashamed|Culpable of or responsible for a specified wrongdoing.|He felt guilty for lying to his parents.|culpable,remorseful",
+"Remorseful|rɪˈmɔːsfʊl|adjective|Ashamed|Feeling or expressing deep regret or guilt.|The remorseful thief returned the stolen goods.|contrite,penitent",
+"Penitential|ˌpɛnɪˈtɛnʃəl|adjective|Ashamed|Relating to or expressing penitence or atonement.|The priest assigned a penitential prayer.|penitent,remorseful",
+"Sheepish|ˈʃiːpɪʃ|adjective|Ashamed|Showing embarrassment from shame or a lack of self-confidence.|He gave a sheepish grin when caught eating the last cookie.|embarrassed,ashamed",
+"Flushed|flʌʃt|adjective|Ashamed|Having a red or hot face typically from embarrassment or exertion.|Her face was flushed with embarrassment after the mistake.|red,embarrassed",
+"Red-faced|ˈrɛdˌfeɪst|adjective|Ashamed|Embarrassed or ashamed.|He was left red-faced after his presentation failed.|embarrassed,ashamed",
+"Chastened|ˈtʃeɪsənd|adjective|Ashamed|Having been restrained or tamed by reproof or discipline; humbled.|He returned from the defeat a much chastened man.|humbled,penitent",
+"Humbled|ˈhʌmbəld|adjective|Ashamed|Having a low estimate of one's importance; feeling less proud or confident.|She was humbled by the overwhelming support from the community.|chastened,penitent",
+"Crestfallen|ˈkrɛstfɔːlən|adjective|Ashamed|Sad and disappointed.|He looked crestfallen after not getting the job.|disappointed,dejected",
+"Downcast|ˈdaʊnkɑːst|adjective|Ashamed|Sad and depressed.|She walked away with a downcast expression.|sad,dejected",
+"Disheartened|dɪsˈhɑːtənd|adjective|Ashamed|Having lost determination or confidence; discouraged.|The team was disheartened by the early loss.|discouraged,disappointed",
+"Dispirited|dɪˈspɪrɪtɪd|adjective|Ashamed|Without enthusiasm; depressed or discouraged.|The dispirited soldiers trudged through the mud.|depressed,disheartened",
+"Desolate|ˈdɛsələt|adjective|Ashamed|Feeling or showing misery unhappiness or loneliness.|She felt utterly desolate after the breakup.|lonely,miserable",
+"Nostalgia|nɒˈstældʒə|noun|Sad|A sentimental longing or wistful affection for the past.|He felt a deep nostalgia for his childhood home.|longing,wistfulness",
+"Solitude|ˈsɒlɪtjuːd|noun|Calm|The state or situation of being alone.|She enjoyed the peace and solitude of the mountains.|isolation,seclusion",
+"Euphemism|ˈjuːfəmɪzəm|noun|Calm|A mild or indirect word or expression substituted for one considered to be too harsh or blunt.|'Passed away' is a common euphemism for died.|substitution,softening",
+"Paradigm|ˈpærədaɪm|noun|Calm|A typical example or pattern of something; a model.|The internet created a new paradigm for communication.|model,pattern",
+"Ubiquitous|juːˈbɪkwɪtəs|adjective|Surprised|Present appearing or found everywhere.|Smartphones have become ubiquitous in modern society.|omnipresent,universal",
+"Eloquent|ˈɛləkwənt|adjective|Happy|Fluent or persuasive in speaking or writing.|The lawyer gave an eloquent closing argument.|articulate,expressive",
+"Pragmatic|præɡˈmætɪk|adjective|Calm|Dealing with things sensibly and realistically.|She took a pragmatic approach to solving the budget crisis.|practical,realistic",
+"Meticulous|mɪˈtɪkjʊləs|adjective|Calm|Showing great attention to detail; very careful and precise.|He was meticulous in his research for the thesis.|thorough,precise",
+"Tenacious|tɪˈneɪʃəs|adjective|Excited|Tending to keep a firm hold of something; clinging or adhering closely.|The tenacious reporter refused to give up the story.|persistent,determined",
+"Altruistic|ˌæltruˈɪstɪk|adjective|Love|Showing a disinterested and selfless concern for the well-being of others.|Her altruistic nature led her to volunteer at the shelter.|selfless,charitable",
+"Candid|ˈkændɪd|adjective|Calm|Truthful and straightforward; frank.|I appreciate your candid feedback on my presentation.|frank,honest",
+"Diligent|ˈdɪlɪdʒənt|adjective|Calm|Having or showing care and conscientiousness in one's work or duties.|The diligent student studied every night for the exam.|hardworking,industrious",
+"Gregarious|ɡrɪˈɡɛəriəs|adjective|Happy|Fond of company; sociable.|His gregarious personality made him popular at parties.|sociable,outgoing",
+"Fastidious|fæˈstɪdiəs|adjective|Disgusted|Very attentive to and concerned about accuracy and detail.|The fastidious chef insisted on the freshest ingredients.|particular,fussy",
+"Obsequious|əbˈsiːkwiəs|adjective|Ashamed|Obedient or attentive to an excessive or servile degree.|The obsequious waiter hovered over the VIP guests.|servile,sycophantic",
+"Magnanimous|mæɡˈnænɪməs|adjective|Love|Very generous or forgiving especially toward a rival or less powerful person.|The magnanimous victor offered help to the defeated army.|generous,forgiving",
+"Perspicacious|ˌpɜːspɪˈkeɪʃəs|adjective|Calm|Having a ready insight into and understanding of things.|The perspicacious detective solved the case quickly.|astute,shrewd",
+"Quixotic|kwɪkˈsɒtɪk|adjective|Excited|Extremely idealistic; unrealistic and impractical.|His quixotic plan to end all wars was admired but impractical.|idealistic,romantic",
+"Sycophant|ˈsɪkəfænt|noun|Ashamed|A person who acts obsequiously toward someone important to gain advantage.|The king was surrounded by sycophants who agreed with everything he said.|flatterer,toady",
+"Taciturn|ˈtæsɪtɜːn|adjective|Sad|Reserved or uncommunicative in speech; saying little.|The taciturn old man rarely spoke to his neighbors.|reserved,quiet",
+"Vicarious|vɪˈkɛəriəs|adjective|Happy|Experienced in the imagination through the imaginative participation in another's experience.|She got a vicarious thrill from watching her daughter perform.|indirect,secondhand",
+"Bizarre|bɪˈzɑː|adjective|Surprised|Very strange or unusual.|The artist painted a bizarre landscape with purple skies.|strange,weird",
+"Zenith|ˈzɛnɪθ|noun|Happy|The time at which something is most powerful or successful.|The empire reached its zenith in the 15th century.|peak,apex",
+"Nadir|ˈneɪdɪə|noun|Sad|The lowest point in the fortunes of a person or organization.|The company's stock hit its nadir during the recession.|bottom,lowest",
+"Epiphany|ɪˈpɪfəni|noun|Surprised|A moment of sudden revelation or insight.|She had an epiphany that changed her career path.|revelation,insight"
 ];
-var EM=[
-["Happy","joyful,elated,delighted,jubilant,euphoric,blissful,cheerful,content,ecstatic,gleeful,merry,upbeat"],
-["Sad","sorrowful,gloomy,mournful,dejected,despondent,heartbroken,downcast,forlorn,woeful,dolorous,tearful,blue"],
-["Angry","furious,irate,livid,incensed,enraged,wrathful,seething,hostile,resentful,bitter,outraged,vexed"],
-["Fear","dread,terror,panic,anxious,frightened,alarmed,apprehensive,horrified,trepid,foreboding,paranoid,dismayed"],
-["Calm","serene,tranquil,placid,composed,relaxed,peaceful,soothing,mellow,unruffled,collected,poised,settled"],
-["Love","adoring,devoted,tender,affectionate,fond,smitten,enamored,infatuated,passionate,warm,cherishing,ardent"],
-["Excited","thrilled,exhilarated,eager,enthusiastic,animated,electrified,energized,rapturous,avid,stoked,pumped,keen"],
-["Surprised","astonished,amazed,stunned,startled,astounded,awed,bewildered,dumbfounded,flabbergasted,shocked,open-mouthed,taken-aback"],
-["Disgusted","revolted,repulsed,sickened,nauseated,appalled,offended,loathing,queasy,horrified,fed-up,averse,icky"],
-["Ashamed","guilty,embarrassed,humiliated,mortified,remorseful,contrite,abashed,disgraced,dishonored,chagrined,penitent,exposed"]
-];
-var EMW=[];A(EM,function(e){A(e[1].split(','),function(w){EMW.push({w:w,e:e[0]})})});
-var POS={a:'adjective',n:'noun',v:'verb',r:'adverb'};
-var W=[];A(RAW,function(l){var f=l.split('|');if(f.length>=7)W.push({w:f[0],p:f[1],t:POS[f[2]]||f[2],c:f[3],d:f[4],e:f[5],s:f[6].split(',')})});
-if(!W.length)W=[{w:'Hope',p:'/həʊp/',t:'noun',c:'Emotion',d:'desire and expectation for good',e:'hope for a better year',s:['optimism','trust']}];
-var S={i:0,kn:{},sv:{},fl:false,qi:0,qs:0,qq:[],qa:false,qd:false,be:'all',q:'',bt:0};
-function load(){try{var x=JSON.parse(store.get('lex_s'));if(x){S.kn=x.k||{};S.sv=x.v||{}}}catch(e){}}
-function save(){store.set('lex_s',JSON.stringify({k:S.kn,v:S.sv}))}
-function cnt(o){var n=0;for(var k in o)n++;return n}
-function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t}return b}
-function say(t){try{if(window.speechSynthesis){speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.rate=.85;speechSynthesis.speak(u)}}catch(e){}}
-$('sp').onclick=function(){this.className='off'};
-function setT(d){document.documentElement.className=d?'dk':'';$('th').innerHTML=d?'&#9790;&#xFE0E;':'&#9728;&#xFE0E;';store.set('lex_th',d?'1':'')}
-$('th').onclick=function(){setT(document.documentElement.className!=='dk')};
-if(store.get('lex_th')==='1')setT(true);
-var NV=[['nL','pL'],['nB','pB'],['nQ','pQ'],['nF','pF']];
-function goP(p){A(NV,function(m){$(m[0]).className='nb'+(m[1]===p?' on':'');$(m[1]).className='pg'+(m[1]===p?' on':'')});if(p==='pB')rB();if(p==='pQ')sQ();if(p==='pF')rF();if(p==='pL')rL()}
-A(NV,function(n){$(n[0]).onclick=function(){goP(n[1])}});
-function goW(ix){S.i=ix;S.fl=true;$('fc').className='fl';rL();goP('pL')}
-$('fc').onclick=function(e){var t=e.target;while(t&&t.nodeType===1){if(t.classList&&t.classList.contains('ib'))return;t=t.parentNode}S.fl=!S.fl;this.className=S.fl?'fl':''};
-$('csp').onclick=function(e){e.stopPropagation();say(W[S.i].w)};
-$('cfv').onclick=function(e){e.stopPropagation();tSv(W[S.i].w)};
-$('bp').onclick=function(){S.i=(S.i-1+W.length)%W.length;S.fl=false;$('fc').className='';rL()};
-$('bn').onclick=function(){S.i=(S.i+1)%W.length;S.fl=false;$('fc').className='';rL()};
-$('bk').onclick=function(){var w=W[S.i].w;if(S.kn[w]){delete S.kn[w];save();rL()}else{S.kn[w]=1;save();S.i=(S.i+1)%W.length;S.fl=false;$('fc').className='';rL()}};
-function tSv(w){if(S.sv[w])delete S.sv[w];else S.sv[w]=1;save();rL();rF()}
-function rL(){var w=W[S.i];$('cw').textContent=w.w;$('cph').textContent=w.p;$('cpo').textContent=w.t;$('cdf').textContent=w.d;$('cex').textContent='\u201C'+w.e+'\u201D';$('csy').innerHTML=w.s.map(function(x){return '<span>'+x+'</span>'}).join('');$('cfv').innerHTML=S.sv[w.w]?'&#9829;&#xFE0E;':'&#9825;&#xFE0E;';$('cfv').className='ib'+(S.sv[w.w]?' fv':'');$('bk').textContent=S.kn[w.w]?'\u2713 Known':'I know this';$('bk').className='cb '+(S.kn[w.w]?'ks':'pr');$('pf').style.width=((S.i+1)/W.length*100)+'%';$('ptx').textContent=(S.i+1)+'/'+W.length;$('sL').textContent=cnt(S.kn);$('sT').textContent=W.length;$('sS').textContent=cnt(S.sv)}
-function fetchD(w){return fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(w)).then(function(r){return r.ok?r.json().then(function(d){return{w:w,d:d}}):null}).catch(function(){return null})}
-function noD(q){$('dcb').innerHTML='<div class="dc"><div class="dw">No entry for \u201C'+q+'\u201D</div><div class="dn">Check the spelling or try another word.</div></div>'}
-function renderD(res,q){var e=res.d[0]||{};var ph=e.phonetic||'';var au='';
-if(e.phonetics)A(e.phonetics,function(p){if(!au&&p.audio)au=p.audio});
-var h='<div class="dc"><div class="wl2"><div class="dw">'+res.w+'</div>'+(au?'<button class="ib dap" data-au="'+au+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button>':'')+'</div>';
-if(ph)h+='<div class="dp">'+ph+'</div>';
-if(q&&q!==res.w.toLowerCase())h+='<div class="dn">Showing nearest match for \u201C'+q+'\u201D</div>';
-A((e.meanings||[]).slice(0,3),function(m){h+='<div class="dm">'+(m.partOfSpeech||'')+'</div>';A((m.definitions||[]).slice(0,2),function(d){h+='<div class="dd">\u2022 '+d.definition+'</div>';if(d.example)h+='<div class="de">\u201C'+d.example+'\u201D</div>'});if(m.synonyms&&m.synonyms.length){h+='<div class="ds">';A(m.synonyms.slice(0,5),function(s){h+='<span>'+s+'</span>'});h+='</div>'}});
-h+='</div>';$('dcb').innerHTML=h;
-var ab=$('dcb').querySelector('.dap');if(ab)ab.onclick=function(){try{new Audio(ab.getAttribute('data-au')).play()}catch(err){}}}
-function lookup(q){var b=$('dcb');b.style.display='block';b.innerHTML='<div class="dc"><div class="dw">Looking up \u201C'+q+'\u201D\u2026</div></div>';
-fetchD(q).then(function(res){if(res){renderD(res,q)}else{fetch('https://api.datamuse.com/words?sp='+encodeURIComponent(q)+'&max=1').then(function(r){return r.json()}).then(function(j){if(j&&j.length){fetchD(j[0].word).then(function(r2){if(r2)renderD(r2,q);else noD(q)})}else noD(q)}).catch(function(){noD(q)})}}).catch(function(){noD(q)})}
-$('bq').oninput=function(){S.q=this.value.trim().toLowerCase();clearTimeout(S.bt);S.bt=setTimeout(rB,400)};
-function bindGrid(){A($('gb').children,function(c){c.onclick=function(){var em=c.getAttribute('data-em');if(em){lookup(em);$('dcb').scrollIntoView({behavior:'smooth'})}else{goW(+c.getAttribute('data-i'))}}})}
-function rB(){var q=S.q;
-if(!q){$('dcb').style.display='none';$('dcb').innerHTML='';$('cbx').style.display='flex';
-var h='<button class="cc'+(S.be==='all'?' on':'')+'" data-e="all">All Emotions</button>';
-A(EM,function(e){h+='<button class="cc'+(S.be===e[0]?' on':'')+'" data-e="'+e[0]+'">'+e[0]+'</button>'});
-$('cbx').innerHTML=h;
-var list=S.be==='all'?EMW:EMW.filter(function(x){return x.e===S.be});
-var g='';A(list,function(x){g+='<div class="wc" data-em="'+x.w+'"><div class="w">'+x.w+'</div><div class="p">synonym of '+x.e+'</div></div>'});
-$('gb').innerHTML=g;
-A($('cbx').children,function(b){b.onclick=function(){S.be=b.getAttribute('data-e');rB()}});
-bindGrid();
-}else{$('cbx').style.display='none';lookup(q);
-var m=[];A(EMW,function(x){if(x.w.indexOf(q)>-1)m.push({em:x.w,lb:'synonym of '+x.e})});
-A(W,function(w,idx){if(w.w.toLowerCase().indexOf(q)>-1)m.push({i:idx,em:'',lb:w.d})});
-var g='';A(m,function(x){g+=x.em?'<div class="wc" data-em="'+x.em+'"><div class="w">'+x.em+'</div><div class="p">'+x.lb+'</div></div>':'<div class="wc" data-i="'+x.i+'"><div class="w">'+W[x.i].w+'</div><div class="d">'+x.lb+'</div></div>'});
-if(!m.length)g='<p style="color:var(--mu);font-size:.85rem;padding:.5rem 0">No saved word matches \u2014 see the dictionary result above.</p>';
-$('gb').innerHTML=g;bindGrid()}}
-function sQ(){S.qi=0;S.qs=0;S.qd=false;S.qa=false;S.qq=shuf(W).slice(0,10).map(function(w){var wr=shuf(W.filter(function(x){return x.w!==w.w})).slice(0,3).map(function(x){return x.d});return{w:w,o:shuf([w.d].concat(wr)),c:w.d}});rQ()}
-function rQ(){if(S.qd){var pc=Math.round(S.qs/S.qq.length*100);$('qb').innerHTML='<div class="qr"><h3 class="pt">Quiz Complete</h3><div class="pc">'+pc+'%</div><p class="ps">'+(pc>=70?'Outstanding! Your vocabulary shines.':'Keep practicing \u2014 every word counts.')+'</p><button class="qn" id="qa">Try Again</button></div>';$('qa').onclick=sQ;return}
-var q=S.qq[S.qi];S.qa=false;
-var h='<div class="qs"><div style="text-align:center"><div class="sn">'+S.qs+'</div><div class="sl">Score</div></div><div style="text-align:center"><div class="sn">'+(S.qi+1)+'/'+S.qq.length+'</div><div class="sl">Question</div></div></div><div class="qb"><div class="ql">What is the meaning of</div><div class="qw">'+q.w.w+'</div><div class="qp">'+q.w.p+'</div></div><div class="qo">';
-A(q.o,function(o){h+='<button class="qi">'+o+'</button>'});
-$('qb').innerHTML=h;
-A($('qb').querySelectorAll('.qi'),function(b){b.onclick=function(){if(S.qa)return;S.qa=true;var ok=b.textContent===q.c;if(ok)S.qs++;A($('qb').querySelectorAll('.qi'),function(x){x.style.pointerEvents='none';if(x.textContent===q.c)x.className='qi ok';else if(x===b&&!ok)x.className='qi no'});var last=S.qi>=S.qq.length-1;var nb=document.createElement('button');nb.className='qn';nb.textContent=last?'See Results':'Next \u2192';nb.onclick=function(){if(last)S.qd=true;else S.qi++;rQ()};$('qb').appendChild(nb)}})}
-function rF(){var f=W.filter(function(w){return !!S.sv[w.w]});if(!f.length){$('fb').innerHTML='<div class="fe">&#9825;&#xFE0E;<br>No saved words yet.<br>Tap the heart on a flashcard to save one.</div>';return}
-var h='<div class="fg">';A(f,function(w){h+='<div class="fvi" data-w="'+w.w+'"><div><div class="fw">'+w.w+'</div><div class="fd">'+w.d+'</div></div><button class="fx" data-x="'+w.w+'">&#10005;</button></div>'});h+='</div>';$('fb').innerHTML=h;
-A($('fb').querySelectorAll('.fvi'),function(it){it.onclick=function(e){if(e.target.classList&&e.target.classList.contains('fx'))return;for(var i=0;i<W.length;i++)if(W[i].w===it.getAttribute('data-w')){goW(i);break}}});
-A($('fb').querySelectorAll('.fx'),function(b){b.onclick=function(e){e.stopPropagation();delete S.sv[b.getAttribute('data-x')];save();rF();rL()}})}
-var arm=0;
-$('rb').onclick=function(){var rb=this;if(arm){arm=0;S.kn={};S.sv={};S.i=0;S.fl=false;$('fc').className='';save();rL();rF();rb.innerHTML='&#8634;'}else{arm=1;rb.innerHTML='?';setTimeout(function(){arm=0;rb.innerHTML='&#8634;'},2500)}};
-load();rL();
+var EMOTIONS = ["Happy", "Sad", "Angry", "Fear", "Calm", "Love", "Excited", "Surprised", "Disgusted", "Ashamed"];
+
+var WORDS = [];
+for (var i = 0; i < RAW.length; i++) {
+    var parts = RAW[i].split('|');
+    WORDS.push({
+        word: parts[0], phonetic: parts[1], pos: parts[2],
+        category: parts[3], def: parts[4], ex: parts[5], syns: parts[6].split(',')
+    });
+}
+
+// Theme
+var savedTheme = localStorage.getItem('lex_theme');
+if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+
+function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('lex_theme', next);
+}
+
+// Splash & Tabs
+function enterApp() {
+    document.getElementById('splash').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    initApp();
+}
+
+function showTab(name, btn) {
+    var tabs = document.querySelectorAll('.tab');
+    for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
+    document.getElementById(name).classList.add('active');
+
+    var btns = document.querySelectorAll('nav button');
+    for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+    btn.classList.add('active');
+
+    if (name === 'browse') initBrowse();
+    if (name === 'quiz') startQuiz();
+    if (name === 'saved') renderSaved();
+}
+
+// Learn Logic
+function initApp() {
+    renderCard();
+    updateStats();
+}
+
+function renderCard() {
+    var w = WORDS[currentIdx];
+    document.getElementById('card-word').innerText = w.word;
+    document.getElementById('card-phonetic').innerText = w.phonetic;
+    document.getElementById('card-pos').innerText = w.pos;
+    document.getElementById('card-def').innerText = w.def;
+    document.getElementById('card-ex').innerText = '"' + w.ex + '"';
+
+    var synDiv = document.getElementById('card-syn');
+    synDiv.innerHTML = '';
+    for (var i = 0; i < w.syns.length; i++) {
+        var chip = document.createElement('span');
+        chip.className = 'chip';
+        chip.innerText = w.syns[i];
+        synDiv.appendChild(chip);
+    }
+
+    var card = document.getElementById('learn-card');
+    card.classList.remove('flipped');
+
+    var saveBtn = document.getElementById('card-save-btn');
+    if (saved.indexOf(w.word) !== -1) {
+        saveBtn.classList.add('saved');
+    } else {
+        saveBtn.classList.remove('saved');
+    }
+
+    var knownBtn = document.getElementById('known-btn');
+    if (learned.indexOf(w.word) !== -1) {
+        knownBtn.innerText = '✓ Known';
+    } else {
+        knownBtn.innerText = 'I know this';
+    }
+
+    var progress = ((currentIdx + 1) / WORDS.length) * 100;
+    document.getElementById('progress-fill').style.width = progress + '%';
+}
+
+function updateStats() {
+    document.getElementById('learned-stat').innerText = 'Learned: ' + learned.length;
+    document.getElementById('saved-stat').innerText = 'Saved: ' + saved.length;
+}
+
+function flipCard() {
+    document.getElementById('learn-card').classList.toggle('flipped');
+}
+
+function speakWord() {
+    var w = WORDS[currentIdx];
+    speakText(w.word);
+}
+
+function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var msg = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(msg);
+    }
+}
+
+function toggleSave() {
+    var w = WORDS[currentIdx];
+    var idx = saved.indexOf(w.word);
+    if (idx === -1) {
+        saved.push(w.word);
+    } else {
+        saved.splice(idx, 1);
+    }
+    localStorage.setItem('lex_saved', JSON.stringify(saved));
+    renderCard();
+    updateStats();
+}
+
+function toggleKnown() {
+    var w = WORDS[currentIdx];
+    var idx = learned.indexOf(w.word);
+    if (idx === -1) {
+        learned.push(w.word);
+        nextWord();
+    } else {
+        learned.splice(idx, 1);
+    }
+    localStorage.setItem('lex_learned', JSON.stringify(learned));
+    renderCard();
+    updateStats();
+}
+
+function prevWord() {
+    if (currentIdx > 0) {
+        currentIdx--;
+        renderCard();
+    }
+}
+
+function nextWord() {
+    if (currentIdx < WORDS.length - 1) {
+        currentIdx++;
+        renderCard();
+    }
+}
+
+function confirmReset() {
+    if (resetTap === 0) {
+        resetTap = 1;
+        document.getElementById('reset-btn').innerText = 'Tap again to confirm';
+        setTimeout(function() {
+            resetTap = 0;
+            document.getElementById('reset-btn').innerText = 'Reset Progress';
+        }, 3000);
+    } else {
+        learned = [];
+        saved = [];
+        localStorage.removeItem('lex_learned');
+        localStorage.removeItem('lex_saved');
+        currentIdx = 0;
+        resetTap = 0;
+        document.getElementById('reset-btn').innerText = 'Reset Progress';
+        renderCard();
+        updateStats();
+    }
+}
+
+// Browse Logic
+var activeEmotion = null;
+var searchTimeout;
+
+function initBrowse() {
+    var container = document.getElementById('emotion-chips');
+    container.innerHTML = '';
+    for (var i = 0; i < EMOTIONS.length; i++) {
+        var btn = document.createElement('button');
+        btn.innerText = EMOTIONS[i];
+        btn.setAttribute('data-emotion', EMOTIONS[i]);
+        btn.onclick = function() { selectEmotion(this.getAttribute('data-emotion'), this); };
+        container.appendChild(btn);
+    }
+    document.getElementById('dict-result').style.display = 'none';
+    document.getElementById('browse-content').innerHTML = '<p style="text-align:center;color:var(--muted);grid-column:1/-1;">Select an emotion or search for a word</p>';
+}
+
+function selectEmotion(em, btn) {
+    activeEmotion = em;
+    var btns = document.querySelectorAll('#emotion-chips button');
+    for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+    btn.classList.add('active');
+    document.getElementById('dict-result').style.display = 'none';
+    document.getElementById('search-input').value = '';
+    renderEmotionGrid();
+}
+
+function renderEmotionGrid() {
+    var grid = document.getElementById('browse-content');
+    grid.innerHTML = '';
+    var matches = [];
+    for (var i = 0; i < WORDS.length; i++) {
+        if (WORDS[i].category === activeEmotion) matches.push(WORDS[i]);
+        if (matches.length >= 12) break;
+    }
+    for (var i = 0; i < matches.length; i++) {
+        var card = document.createElement('div');
+        card.className = 'browse-card';
+        card.innerHTML = '<h3>' + matches[i].word + '</h3><p>synonym of ' + activeEmotion + '</p>';
+        card.onclick = (function(w) {
+            return function() { showLocalDict(w); };
+        })(matches[i]);
+        grid.appendChild(card);
+    }
+}
+
+function showLocalDict(w) {
+    var res = document.getElementById('dict-result');
+    res.style.display = 'block';
+    var html = '<h2>' + w.word + ' <button class="icon-btn" onclick="speakText(\'' + w.word + '\')"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></h2>';
+    html += '<div class="dict-meaning"><h4>' + w.pos + '</h4><p>' + w.def + '</p><p style="color:var(--muted);font-style:italic;">"' + w.ex + '"</p></div>';
+    html += '<div class="syn-chips">';
+    for (var i = 0; i < w.syns.length; i++) {
+        html += '<span class="chip">' + w.syns[i] + '</span>';
+    }
+    html += '</div>';
+    res.innerHTML = html;
+}
+
+function handleSearch(val) {
+    clearTimeout(searchTimeout);
+    if (!val.trim()) {
+        document.getElementById('dict-result').style.display = 'none';
+        if (activeEmotion) renderEmotionGrid();
+        else document.getElementById('browse-content').innerHTML = '<p style="text-align:center;color:var(--muted);grid-column:1/-1;">Select an emotion or search for a word</p>';
+        return;
+    }
+    
+    document.getElementById('browse-content').innerHTML = '';
+    var btns = document.querySelectorAll('#emotion-chips button');
+    for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+    activeEmotion = null;
+
+    searchTimeout = setTimeout(function() { fetchDict(val.trim()); }, 500);
+}
+
+function fetchDict(word) {
+    var res = document.getElementById('dict-result');
+    res.style.display = 'block';
+    res.innerHTML = '<p style="text-align:center;color:var(--muted);">Loading...</p>';
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(word), true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+                renderApiDict(data[0]);
+            } else if (xhr.status === 404) {
+                fetchSuggestion(word);
+            } else {
+                res.innerHTML = '<p style="text-align:center;color:var(--muted);">Error fetching definition.</p>';
+            }
+        }
+    };
+    xhr.send();
+}
+
+function fetchSuggestion(word) {
+    var res = document.getElementById('dict-result');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://api.datamuse.com/words?sp=' + encodeURIComponent(word) + '*&max=1', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+                if (data.length > 0 && data[0].word !== word) {
+                    var newWord = data[0].word;
+                    res.innerHTML = '<p style="text-align:center;color:var(--muted);margin-bottom:12px;">Showing nearest match for <b>' + newWord + '</b></p>';
+                    fetchDict(newWord);
+                } else {
+                    res.innerHTML = '<p style="text-align:center;color:var(--muted);">No definitions found.</p>';
+                }
+            } else {
+                res.innerHTML = '<p style="text-align:center;color:var(--muted);">No definitions found.</p>';
+            }
+        }
+    };
+    xhr.send();
+}
+
+function renderApiDict(data) {
+    var res = document.getElementById('dict-result');
+    var html = '<h2>' + data.word + '</h2>';
+
+    var phonetics = data.phonetics || [];
+    var audioUrl = '';
+    var phoneticText = '';
+    for (var p = 0; p < phonetics.length; p++) {
+        if (phonetics[p].audio) audioUrl = phonetics[p].audio;
+        if (phonetics[p].text) phoneticText = phonetics[p].text;
+    }
+    
+    if (audioUrl) {
+        html += '<button class="icon-btn" onclick="new Audio(\'' + audioUrl + '\').play()"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>';
+    } else {
+        html += '<button class="icon-btn" onclick="speakText(\'' + data.word + '\')"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>';
+    }
+    if (phoneticText) html += '<span style="color:var(--muted);margin-left:8px;">' + phoneticText + '</span>';
+
+    var meanings = data.meanings || [];
+    var count = 0;
+    for (var m = 0; m < meanings.length && count < 3; m++) {
+        html += '<div class="dict-meaning"><h4>' + meanings[m].partOfSpeech + '</h4>';
+        var defs = meanings[m].definitions || [];
+        for (var d = 0; d < defs.length && d < 2; d++) {
+            html += '<p>' + (d + 1) + '. ' + defs[d].definition + '</p>';
+            if (defs[d].example) {
+                html += '<p style="color:var(--muted);font-style:italic;">"' + defs[d].example + '"</p>';
+            }
+        }
+        var syns = meanings[m].synonyms || [];
+        if (syns.length > 0) {
+            html += '<div class="syn-chips">';
+            for (var s = 0; s < syns.length && s < 5; s++) {
+                html += '<span class="chip">' + syns[s] + '</span>';
+            }
+            html += '</div>';
+        }
+        html += '</div>';
+        count++;
+    }
+    res.innerHTML = html;
+}
+
+// Quiz Logic
+function startQuiz() {
+    quizState = { q: 0, score: 0, questions: [] };
+    document.getElementById('quiz-area').style.display = 'flex';
+    document.getElementById('quiz-result').style.display = 'none';
+
+    var indices = [];
+    while (indices.length < 10) {
+        var r = Math.floor(Math.random() * WORDS.length);
+        if (indices.indexOf(r) === -1) indices.push(r);
+    }
+
+    for (var i = 0; i < 10; i++) {
+        var correctIdx = indices[i];
+        var correctWord = WORDS[correctIdx];
+        var options = [correctWord.def];
+
+        while (options.length < 4) {
+            var rDef = WORDS[Math.floor(Math.random() * WORDS.length)].def;
+            if (options.indexOf(rDef) === -1) options.push(rDef);
+        }
+
+        for (var j = options.length - 1; j > 0; j--) {
+            var k = Math.floor(Math.random() * (j + 1));
+            var temp = options[j];
+            options[j] = options[k];
+            options[k] = temp;
+        }
+
+        quizState.questions.push({
+            word: correctWord.word,
+            correct: correctWord.def,
+            options: options
+        });
+    }
+    renderQuiz();
+}
+
+function renderQuiz() {
+    var q = quizState.questions[quizState.q];
+    document.getElementById('quiz-score').innerText = 'Score: ' + quizState.score;
+    document.getElementById('quiz-progress').innerText = (quizState.q + 1) + '/10';
+    document.getElementById('quiz-question').innerText = q.word;
+
+    var optDiv = document.getElementById('quiz-options');
+    optDiv.innerHTML = '';
+    for (var i = 0; i < q.options.length; i++) {
+        var btn = document.createElement('button');
+        btn.className = 'quiz-opt';
+        btn.innerText = q.options[i];
+        btn.onclick = (function(opt, btnEl) {
+            return function() { checkAnswer(opt, btnEl); };
+        })(q.options[i], btn);
+        optDiv.appendChild(btn);
+    }
+}
+
+function checkAnswer(opt, btnEl) {
+    var q = quizState.questions[quizState.q];
+    var btns = document.querySelectorAll('.quiz-opt');
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].onclick = null;
+        if (btns[i].innerText === q.correct) btns[i].classList.add('correct');
+    }
+
+    if (opt === q.correct) {
+        quizState.score++;
+    } else {
+        btnEl.classList.add('wrong');
+    }
+
+    setTimeout(function() {
+        quizState.q++;
+        if (quizState.q < 10) {
+            renderQuiz();
+        } else {
+            showQuizResult();
+        }
+    }, 1200);
+}
+
+function showQuizResult() {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.getElementById('quiz-result').style.display = 'block';
+    var pct = (quizState.score / 10) * 100;
+    document.getElementById('final-score').innerText = pct + '%';
+    var msg = pct === 100 ? 'Perfect score!' : pct >= 70 ? 'Great job!' : pct >= 40 ? 'Good effort!' : 'Keep practicing!';
+    document.getElementById('final-msg').innerText = msg;
+}
+
+// Saved Logic
+function renderSaved() {
+    var list = document.getElementById('saved-list');
+    list.innerHTML = '';
+    if (saved.length === 0) {
+        list.innerHTML = '<p style="text-align:center;color:var(--muted);">No saved words yet.</p>';
+        return;
+    }
+    for (var i = 0; i < saved.length; i++) {
+        var w = getWordByName(saved[i]);
+        if (!w) continue;
+        var item = document.createElement('div');
+        item.className = 'saved-item';
+        item.innerHTML = '<span>' + w.word + ' <span style="color:var(--muted);font-size:0.8em;">(' + w.pos + ')</span></span><button class="remove" onclick="event.stopPropagation(); removeSaved(\'' + w.word + '\')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>';
+        item.onclick = (function(idx) {
+            return function() { openSavedInLearn(idx); };
+        })(WORDS.indexOf(w));
+        list.appendChild(item);
+    }
+}
+
+function getWordByName(name) {
+    for (var i = 0; i < WORDS.length; i++) {
+        if (WORDS[i].word === name) return WORDS[i];
+    }
+    return null;
+}
+
+function openSavedInLearn(idx) {
+    currentIdx = idx;
+    showTab('learn', document.querySelectorAll('nav button')[0]);
+    renderCard();
+}
+
+function removeSaved(name) {
+    var idx = saved.indexOf(name);
+    if (idx !== -1) {
+        saved.splice(idx, 1);
+        localStorage.setItem('lex_saved', JSON.stringify(saved));
+        renderSaved();
+        updateStats();
+        renderCard();
+    }
+}
 </script>
 </body>
 </html>
