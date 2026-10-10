@@ -29,6 +29,7 @@ body {
   color: var(--text); 
   transition: background 0.3s, color 0.3s; 
   height: 100vh; 
+  height: 100dvh; 
   display: flex; 
   flex-direction: column; 
   overflow: hidden;
@@ -120,6 +121,7 @@ nav button.active { background: var(--pill); color: var(--text); font-weight: 60
 
 main { 
   flex: 1; 
+  min-height: 0; 
   padding: 12px; 
   max-width: 600px; 
   margin: 0 auto; 
@@ -128,11 +130,11 @@ main {
   display: flex; 
   flex-direction: column; 
 }
-.tab { display: none; flex: 1; flex-direction: column; overflow: hidden; height: 100%; }
+.tab { display: none; flex: 1; min-height: 0; flex-direction: column; overflow: hidden; height: 100%; }
 .tab.active { display: flex; animation: fadeIn 0.25s ease; }
 
 #learn { 
-  height: calc(100vh - 240px); 
+  flex: 1; 
   min-height: 0; 
   display: flex; 
   flex-direction: column; 
@@ -214,49 +216,67 @@ main {
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
+  gap: 6px; 
   margin-top: 4px; 
   flex-shrink: 0; 
 }
-.learn-controls button { 
+.learn-controls .grow { 
+  flex: 1; 
   background: var(--pill); 
-  padding: 10px 12px; 
+  padding: 10px 8px; 
   border-radius: 8px; 
   font-size: 0.85rem; 
   display: flex; 
   align-items: center; 
+  justify-content: center; 
   gap: 4px; 
   transition: transform 0.15s ease, opacity 0.2s ease;
 }
-.learn-controls button svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+.learn-controls .grow svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
 .known-btn { background: var(--text) !important; color: var(--bg) !important; }
-.reset-btn { position: fixed; bottom: 12px; left: 12px; font-size: 0.7rem; color: var(--muted); opacity: 0.5; background: none; border: none; z-index: 50; }
+.reset-btn {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+.reset-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+.reset-btn.arm { background: var(--text); color: var(--bg); border-color: var(--text); }
 
 .search-box { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font-size: 1rem; margin-bottom: 12px; flex-shrink: 0; }
 .emotion-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; flex-shrink: 0; }
 .emotion-chips button { background: var(--card-bg); border: 1px solid var(--border); padding: 6px 10px; border-radius: 16px; font-size: 0.8rem; transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease; }
 .emotion-chips button:active { transform: scale(0.95); }
 .emotion-chips button.active { background: var(--text); color: var(--bg); }
-.browse-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; overflow-y: auto; flex: 1; padding-bottom: 20px; }
+.browse-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; overflow-y: auto; flex: 1; min-height: 0; padding-bottom: 20px; }
 .browse-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; cursor: pointer; transition: transform 0.18s ease, opacity 0.2s ease; animation: popIn 0.25s ease; }
 .browse-card:active { transform: scale(0.97); }
 .browse-card h3 { font-size: 1rem; margin-bottom: 4px; }
 .browse-card p { font-size: 0.75rem; color: var(--muted); }
-.dict-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-top: 12px; overflow-y: auto; flex: 1; animation: fadeSlideIn 0.3s ease; }
+.dict-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-top: 12px; overflow-y: auto; flex: 1; min-height: 0; animation: fadeSlideIn 0.3s ease; }
 .dict-card h2 { margin-bottom: 8px; display: flex; align-items: center; gap: 12px; font-size: 1.5rem; }
 .dict-meaning { margin-bottom: 12px; }
 .dict-meaning h4 { font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; font-family: system-ui; }
 
 .quiz-header { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 0.9rem; color: var(--muted); flex-shrink: 0; }
 .quiz-question { font-size: 1.5rem; text-align: center; margin: 24px 0; font-family: Georgia, serif; flex-shrink: 0; animation: fadeSlideIn 0.3s ease; }
-.quiz-options { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; flex: 1; padding-bottom: 20px; }
+.quiz-options { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; flex: 1; min-height: 0; padding-bottom: 20px; }
 .quiz-opt { padding: 14px; border: 1px solid var(--border); border-radius: 8px; text-align: left; background: var(--card-bg); font-size: 0.95rem; transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease; animation: fadeSlideIn 0.3s ease; }
 .quiz-opt:active { transform: scale(0.98); }
 .quiz-opt.correct { background: #d4edda; border-color: #c3e6cb; color: #155724; }
 .quiz-opt.wrong { background: #f8d7da; border-color: #f5c6cb; color: #721c24; }
-.quiz-result { text-align: center; padding: 40px 20px; overflow-y: auto; flex: 1; animation: fadeIn 0.35s ease; }
+.quiz-result { text-align: center; padding: 40px 20px; overflow-y: auto; flex: 1; min-height: 0; animation: fadeIn 0.35s ease; }
 .quiz-result h2 { font-size: 2rem; margin-bottom: 16px; }
 
-.saved-list { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; flex: 1; padding-bottom: 20px; }
+.saved-list { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; flex: 1; min-height: 0; padding-bottom: 20px; }
 .saved-item { display: flex; justify-content: space-between; align-items: center; padding: 14px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: transform 0.18s ease; animation: fadeSlideIn 0.25s ease; }
 .saved-item:active { transform: scale(0.98); }
 .saved-item .remove { color: var(--muted); padding: 4px 8px; display: flex; }
@@ -318,15 +338,17 @@ main {
         </div>
       </div>
       <div class="learn-controls">
-        <button onclick="prevWord()">
+        <button class="reset-btn" id="reset-btn" onclick="confirmReset()" aria-label="Reset progress">
+          <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+        </button>
+        <button class="grow" onclick="prevWord()">
           <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Prev
         </button>
-        <button class="known-btn" id="known-btn" onclick="toggleKnown()">I know this</button>
-        <button onclick="nextWord()">
+        <button class="known-btn grow" id="known-btn" onclick="toggleKnown()">I know this</button>
+        <button class="grow" onclick="nextWord()">
           Next <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
       </div>
-      <button class="reset-btn" id="reset-btn" onclick="confirmReset()">Reset Progress</button>
     </section>
 
     <section id="browse" class="tab">
@@ -374,7 +396,7 @@ var RAW=[
 "Blissful|ˈblɪsfʊl|adjective|Happy|Extremely happy; full of joy.|They spent a blissful weekend at the countryside cabin.|joyful,serene",
 "Exuberant|ɪɡˈzuːbərənt|adjective|Excited|Filled with or characterized by a lively energy and excitement.|The exuberant children ran around the playground.|energetic,vivacious",
 "Ecstatic|ɪkˈstætɪk|adjective|Excited|Feeling or expressing overwhelming happiness or joyful excitement.|She was ecstatic about her promotion at work.|overjoyed,thrilled",
-"Ebullient|ɪˈbʊliənt|adjective|Excited|Cheerful and full of energy.|His ebullient personality made him the life of the party.|buoyant,exuberant",
+"Ebullient|ɪbʊliənt|adjective|Excited|Cheerful and full of energy.|His ebullient personality made him the life of the party.|buoyant,exuberant",
 "Mirth|mɜːθ|noun|Happy|Amusement especially as expressed in laughter.|The comedian's jokes filled the room with mirth.|glee,jollity",
 "Glee|ɡliː|noun|Happy|Great delight especially from one's own good fortune or another's misfortune.|He couldn't hide his glee when his rival made a mistake.|delight,joy",
 "Rapture|ˈræptʃə|noun|Happy|A feeling of intense pleasure or joy.|She listened to the symphony with absolute rapture.|ecstasy,bliss",
@@ -386,7 +408,7 @@ var RAW=[
 "Sorrow|ˈsɒrəʊ|noun|Sad|A feeling of deep distress caused by loss disappointment or other misfortune.|The sorrow of losing a loved one is profound.|grief,sadness",
 "Lugubrious|ləˈɡuːbriəs|adjective|Sad|Looking or sounding sad and dismal.|The lugubrious tone of the cello matched the rainy day.|mournful,doleful",
 "Doleful|ˈdəʊlfʊl|adjective|Sad|Expressing sorrow; mournful.|The doleful howl of the wind echoed through the valley.|mournful,melancholy",
-"Woeful|ˈwəʊfʊl|adjective|Sad|Characterized by expressive of or causing sorrow or misery.|The team's performance was truly woeful this season.|miserable,dismal",
+"Woeful|ˈwəfʊl|adjective|Sad|Characterized by expressive of or causing sorrow or misery.|The team's performance was truly woeful this season.|miserable,dismal",
 "Grief|ɡriːf|noun|Sad|Deep sorrow especially that caused by someone's death.|The family was overwhelmed by grief after the tragedy.|sorrow,mourning",
 "Anguish|ˈæŋɡwɪʃ|noun|Sad|Severe mental or physical pain or suffering.|She felt intense anguish when she heard the devastating news.|agony,torment",
 "Forlorn|fəˈlɔːn|adjective|Sad|Pitifully sad and abandoned or lonely.|The forlorn puppy waited by the door for its owner.|lonely,desolate",
@@ -395,10 +417,10 @@ var RAW=[
 "Bleak|bliːk|adjective|Sad|Lacking vegetation and exposed to the elements; cold and miserable.|The future of the company looks bleak without new investment.|grim,hopeless",
 "Mournful|ˈmɔːnfʊl|adjective|Sad|Feeling expressing or inducing sorrow or grief.|The mournful sound of the bagpipes filled the air.|sorrowful,grieving",
 "Dejected|dɪˈdʒɛktɪd|adjective|Sad|Sad and depressed; dispirited.|He looked dejected after being turned down for the job.|downcast,disheartened",
-"Wistful|ˈwɪstfʊl|adjective|Sad|Having or showing a feeling of vague or regretful longing.|She gave a wistful smile as she looked at the old photographs.|nostalgic,longing",
+"Wistful|ˈwɪstfl|adjective|Sad|Having or showing a feeling of vague or regretful longing.|She gave a wistful smile as she looked at the old photographs.|nostalgic,longing",
 "Furious|ˈfjʊəriəs|adjective|Angry|Extremely angry.|He was furious when he discovered the betrayal.|enraged,irate",
 "Irate|aɪˈreɪt|adjective|Angry|Feeling or characterized by great anger.|The irate customer demanded to speak to the manager.|furious,outraged",
-"Indignant|ɪnˈdɪɡnənt|adjective|Angry|Feeling or showing anger or annoyance at what is perceived as unfair treatment.|She was indignant at the false accusations.|outraged,resentful",
+"Indignant|ɪndɪɡnənt|adjective|Angry|Feeling or showing anger or annoyance at what is perceived as unfair treatment.|She was indignant at the false accusations.|outraged,resentful",
 "Wrath|rɒθ|noun|Angry|Extreme anger.|The king's wrath was feared by all in the kingdom.|fury,anger",
 "Incensed|ɪnˈsɛnst|adjective|Angry|Very angry; enraged.|The community was incensed by the proposed cuts to local services.|enraged,furious",
 "Livid|ˈlɪvɪd|adjective|Angry|Furiously angry.|She was livid when she found out they had lied to her.|furious,irate",
@@ -420,14 +442,14 @@ var RAW=[
 "Panicked|ˈpænɪkt|adjective|Fear|Feeling or showing sudden overwhelming fear or anxiety.|The panicked crowd rushed for the exits.|alarmed,frenzied",
 "Horrified|ˈhɒrɪfaɪd|adjective|Fear|Shocked and disgusted or fearful.|She was horrified by the gruesome scene.|shocked,appalled",
 "Daunted|dɔːntɪd|adjective|Fear|Made to feel intimidated or apprehensive.|He felt daunted by the sheer size of the project.|intimidated,discouraged",
-"Intimidated|ɪnˈtɪmɪdeɪtɪd|adjective|Fear|Frightened or overawed especially into doing something.|The new employee felt intimidated by the strict boss.|daunted,frightened",
+"Intimidated|ɪntɪmɪdeɪtɪd|adjective|Fear|Frightened or overawed especially into doing something.|The new employee felt intimidated by the strict boss.|daunted,frightened",
 "Spooked|spuːkt|adjective|Fear|Frightened or alarmed.|The horse was spooked by the sudden noise.|startled,frightened",
 "Terror|ˈtɛrə|noun|Fear|Extreme fear.|The explosion filled the neighborhood with terror.|dread,panic",
-"Alarm|əˈlɑːm|noun|Fear|An anxious awareness of danger.|The sudden drop in stock prices caused widespread alarm.|panic,concern",
+"Alarm|əˈlɑm|noun|Fear|An anxious awareness of danger.|The sudden drop in stock prices caused widespread alarm.|panic,concern",
 "Fright|fraɪt|noun|Fear|A sudden intense feeling of fear.|The loud bang gave her a terrible fright.|shock,scare",
 "Uneasy|ʌnˈiːzi|adjective|Fear|Causing or feeling anxiety; troubled or uncomfortable.|He felt uneasy walking home alone at night.|anxious,unsettled",
 "Serene|sɪˈriːn|adjective|Calm|Calm peaceful and untroubled; tranquil.|The serene lake reflected the mountains perfectly.|tranquil,peaceful",
-"Tranquil|ˈtræŋkwɪl|adjective|Calm|Free from disturbance; calm.|They found a tranquil spot in the garden to read.|serene,peaceful",
+"Tranquil|ˈtrækwɪl|adjective|Calm|Free from disturbance; calm.|They found a tranquil spot in the garden to read.|serene,peaceful",
 "Placid|ˈplasɪd|adjective|Calm|Not easily upset or excited; calm and peaceful.|The placid baby slept through the entire night.|calm,tranquil",
 "Composed|kəmˈpəʊzd|adjective|Calm|Having one's feelings and expression under control; calm.|She remained composed during the crisis.|calm,collected",
 "Equanimity|ˌɛkwəˈnɪmɪti|noun|Calm|Mental calmness composure and evenness of temper especially in a difficult situation.|He accepted the bad news with remarkable equanimity.|composure,poise",
@@ -448,7 +470,7 @@ var RAW=[
 "Amorous|ˈæmərəs|adjective|Love|Showing feeling or relating to sexual desire.|He sent her amorous letters every week.|romantic,passionate",
 "Tender|ˈtɛndə|adjective|Love|Showing gentleness and concern or sympathy.|She gave him a tender smile.|gentle,loving",
 "Fondness|ˈfɒndnəs|noun|Love|Affection or liking for someone or something.|He had a fondness for classical music.|affection,preference",
-"Endearment|ɪnˈdɪəmənt|noun|Love|A word or phrase expressing love or affection.|Darling is a common term of endearment.|affection,love",
+"Endearment|ɪndɪəmənt|noun|Love|A word or phrase expressing love or affection.|Darling is a common term of endearment.|affection,love",
 "Passion|ˈpæʃən|noun|Love|Strong and barely controllable emotion; intense desire.|She pursued her art with fierce passion.|desire,ardor",
 "Cherish|ˈtʃɛrɪʃ|verb|Love|Protect and care for someone lovingly.|He cherished the memories of his late wife.|treasure,value",
 "Enamored|ɪˈnæməd|adjective|Love|Filled with a feeling of love for.|She was enamored with the quaint little village.|captivated,smitten",
@@ -458,16 +480,16 @@ var RAW=[
 "Empathy|ˈɛmpəθi|noun|Love|The ability to understand and share the feelings of another.|His empathy made him an excellent counselor.|compassion,understanding",
 "Astonished|əˈstɒnɪʃt|adjective|Surprised|Greatly surprised or impressed; amazed.|She was astonished by the magnitude of the gift.|amazed,astounded",
 "Astounded|əˈstaʊndɪd|adjective|Surprised|Shocked or greatly surprised.|He was astounded by the complexity of the puzzle.|astonished,flabbergasted",
-"Flabbergasted|ˈflæbəɡɑːstɪd|adjective|Surprised|Surprised someone greatly; astonish.|I was absolutely flabbergasted by the news.|astounded,shocked",
+"Flabbergasted|ˈflæbəɡɑːstd|adjective|Surprised|Surprised someone greatly; astonish.|I was absolutely flabbergasted by the news.|astounded,shocked",
 "Stupefied|ˈstjuːpɪfaɪd|adjective|Surprised|Astonished and shocked into a state of near-unconsciousness or inability to think clearly.|The audience was stupefied by the magician's trick.|dumbfounded,amazed",
 "Dumbfounded|dʌmˈfaʊndɪd|adjective|Surprised|Greatly astonished or amazed.|She was dumbfounded when she won the lottery.|astounded,shocked",
-"Startled|ˈstɑːtəld|adjective|Surprised|Feeling or showing sudden shock or alarm.|The loud noise startled the sleeping cat.|surprised,alarmed",
+"Startled|ˈstɑtəld|adjective|Surprised|Feeling or showing sudden shock or alarm.|The loud noise startled the sleeping cat.|surprised,alarmed",
 "Bewildered|bɪˈwɪldəd|adjective|Surprised|Perplexed and confused; very puzzled.|He was bewildered by the complex instructions.|confused,perplexed",
 "Perplexed|pəˈplɛkst|adjective|Surprised|Completely baffled; very puzzled.|The detective was perplexed by the lack of evidence.|confused,baffled",
 "Stunned|stʌnd|adjective|Surprised|So shocked that one is temporarily unable to react; astonished.|The crowd was stunned by the sudden announcement.|shocked,amazed",
 "Dumbstruck|ˈdʌmstrʌk|adjective|Surprised|So shocked or surprised as to be unable to speak.|He was dumbstruck by the sheer beauty of the landscape.|dumbfounded,speechless",
 "Thunderstruck|ˈθʌndəstrʌk|adjective|Surprised|Extremely surprised or shocked.|She was thunderstruck by the sudden turn of events.|astounded,shocked",
-"Agape|əˈɡeɪp|adjective|Surprised|Of a person's mouth wide open typically in amazement or wonder.|He stood agape as the magic trick unfolded.|open-mouthed,astonished",
+"Agape|əˈɡep|adjective|Surprised|Of a person's mouth wide open typically in amazement or wonder.|He stood agape as the magic trick unfolded.|open-mouthed,astonished",
 "Jolt|dʒəʊlt|noun|Surprised|A sudden rough movement or shock.|The news came as a severe jolt to the community.|shock,surprise",
 "Disbelief|ˌdɪsbɪˈliːf|noun|Surprised|Inability or refusal to accept that something is true or real.|She stared at the screen in utter disbelief.|incredulity,doubt",
 "Aghast|əˈɡɑːst|adjective|Surprised|Filled with horror or shock.|They were aghast at the terrible conditions in the factory.|horrified,appalled",
@@ -490,7 +512,7 @@ var RAW=[
 "Resilient|rɪˈzɪliənt|adjective|Calm|Able to withstand or recover quickly from difficult conditions.|Children are often more resilient than adults.|tough,adaptable",
 "Apathy|ˈæpəθi|noun|Sad|Lack of interest enthusiasm or concern.|Voter apathy is a growing concern in modern democracies.|indifference,lethargy",
 "Ennui|ɒnˈwiː|noun|Sad|A feeling of listlessness and dissatisfaction arising from a lack of occupation or excitement.|The long summer holiday was filled with ennui.|boredom,lethargy",
-"Catharsis|kəˈθɑːsɪs|noun|Happy|The process of releasing and thereby providing relief from strong or repressed emotions.|Writing in her journal provided a much-needed catharsis.|release,relief",
+"Catharsis|kəˈθɑsɪs|noun|Happy|The process of releasing and thereby providing relief from strong or repressed emotions.|Writing in her journal provided a much-needed catharsis.|release,relief",
 "Thrilled|θrɪld|adjective|Excited|Feeling a sudden surge of excitement and pleasure.|She was thrilled to receive the award.|excited,elated",
 "Elated|ɪˈleɪtɪd|adjective|Excited|Ecstatically happy.|He was elated after passing his driving test.|overjoyed,thrilled",
 "Exhilarated|ɪɡˈzɪləreɪtɪd|adjective|Excited|Feeling very happy and excited.|The riders were exhilarated by the roller coaster.|thrilled,elated",
@@ -501,9 +523,9 @@ var RAW=[
 "Buoyant|ˈbɔɪənt|adjective|Excited|Cheerful and optimistic.|He remained buoyant despite the challenging circumstances.|cheerful,optimistic",
 "Effervescent|ˌɛfəˈvɛsənt|adjective|Excited|Vivacious and enthusiastic.|The effervescent host kept the guests entertained all night.|vivacious,enthusiastic",
 "Zealous|ˈzɛləs|adjective|Excited|Having or showing great energy or enthusiasm in pursuit of a cause.|The zealous volunteers worked tirelessly to clean the beach.|passionate,fervent",
-"Fervent|ˈfɜːvənt|adjective|Excited|Having or displaying a passionate intensity.|He made a fervent plea for peace.|passionate,ardent",
+"Fervent|ˈfɜvənt|adjective|Excited|Having or displaying a passionate intensity.|He made a fervent plea for peace.|passionate,ardent",
 "Ardent|ˈɑːdənt|adjective|Excited|Enthusiastic or passionate.|She was an ardent supporter of the environmental campaign.|passionate,zealous",
-"Impassioned|ɪmˈpæʃənd|adjective|Excited|Filled with or showing great emotion.|The lawyer delivered an impassioned closing statement.|passionate,fervent",
+"Impassioned|ɪmpæʃənd|adjective|Excited|Filled with or showing great emotion.|The lawyer delivered an impassioned closing statement.|passionate,fervent",
 "Enthusiastic|ɪnˌθjuːziˈæstɪk|adjective|Excited|Having or showing intense and eager enjoyment interest or approval.|The enthusiastic crowd cheered loudly.|eager,passionate",
 "Eager|ˈiːɡə|adjective|Excited|Strongly wanting to do or have something.|The eager students raised their hands to answer.|keen,enthusiastic",
 "Keen|kiːn|adjective|Excited|Having or showing eagerness or enthusiasm.|He has a keen interest in ancient history.|eager,enthusiastic",
@@ -511,12 +533,12 @@ var RAW=[
 "Rapturous|ˈræptʃərəs|adjective|Excited|Characterized by feeling or expressing full of delight or ecstasy.|The play received rapturous applause from the audience.|ecstatic,delighted",
 "Rhapsodic|ræpˈsɒdɪk|adjective|Excited|Enthusiastically extravagantly expressive.|He was rhapsodic in his praise of the new restaurant.|enthusiastic,ecstatic",
 "Intoxicated|ɪnˈtɒksɪkeɪtɪd|adjective|Excited|Overcome with a particular emotion especially excitement or happiness.|She was intoxicated with joy when she heard the news.|elated,thrilled",
-"Electrified|ɪˈlɛktrɪfaɪd|adjective|Excited|Suddenly filled with excitement or shock.|The audience was electrified by the singer's performance.|thrilled,excited",
+"Electrified|ɪlɛktrɪfaɪd|adjective|Excited|Suddenly filled with excitement or shock.|The audience was electrified by the singer's performance.|thrilled,excited",
 "Galvanized|ˈɡælvənaɪzd|adjective|Excited|Shocked or excited into taking action.|The community was galvanized into action by the local crisis.|motivated,stimulated",
 "Invigorated|ɪnˈvɪɡəreɪtɪd|adjective|Excited|Given new energy or strength.|He felt invigorated after his morning run in the crisp air.|energized,refreshed",
 "Exultant|ɪɡˈzʌltənt|adjective|Excited|Triumphantly happy.|The exultant team celebrated their championship win.|triumphant,jubilant",
 "Amazed|əˈmeɪzd|adjective|Surprised|Greatly surprised; astonished.|She was amazed by the beautiful view from the top.|astonished,astounded",
-"Shocked|ʃɒkt|adjective|Surprised|Surprised and upset; horrified.|He was shocked to see the mess in the kitchen.|surprised,appalled",
+"Shocked|ʃkt|adjective|Surprised|Surprised and upset; horrified.|He was shocked to see the mess in the kitchen.|surprised,appalled",
 "Speechless|ˈspiːtʃlɪs|adjective|Surprised|Unable to speak especially due to shock or emotion.|She was speechless when she received the unexpected gift.|dumbfounded,astonished",
 "Gobsmacked|ˈɡɒbsmækt|adjective|Surprised|Utterly astonished; astounded.|I was absolutely gobsmacked by the news of his resignation.|astonished,flabbergasted",
 "Nonplussed|nɒnˈplʌst|adjective|Surprised|Surprised and confused so much that one is unsure how to react.|He was completely nonplussed by her strange question.|bewildered,baffled",
@@ -525,26 +547,26 @@ var RAW=[
 "Confounded|kənˈfaʊndɪd|adjective|Surprised|Surprised and confused; bewildered.|The teacher was confounded by the student's unusual answer.|baffled,perplexed",
 "Puzzled|ˈpʌzəld|adjective|Surprised|Unable to understand or explain something.|He looked puzzled when he read the complicated instructions.|confused,baffled",
 "Staggered|ˈstæɡəd|adjective|Surprised|Deeply shocked or astonished.|She was staggered by the sheer cost of the repairs.|shocked,astounded",
-"Awestruck|ˈɔːstrʌk|adjective|Surprised|Filled with awe and wonder.|The children were awestruck by the massive dinosaur skeleton.|amazed,astonished",
+"Awestruck|ˈɔstrʌk|adjective|Surprised|Filled with awe and wonder.|The children were awestruck by the massive dinosaur skeleton.|amazed,astonished",
 "Wonderstruck|ˈwʌndəstrʌk|adjective|Surprised|Filled with amazement and wonder.|He stood wonderstruck before the magnificent painting.|amazed,awestruck",
 "Flustered|ˈflʌstəd|adjective|Surprised|Agitated or confused.|He became flustered when asked a difficult question on the spot.|confused,agitated",
 "Disconcerted|ˌdɪskənˈsɜːtɪd|adjective|Surprised|Annoyed or unsettled; surprised in an uncomfortable way.|She was disconcerted by his blunt remarks.|unsettled,unnerved",
 "Unnerved|ˌʌnˈnɜːvd|adjective|Surprised|Deprived of courage or self-confidence; made anxious.|The strange noise unnerved him as he walked alone.|anxious,unsettled",
 "Taken aback|teɪkən əˈbæk|adjective|Surprised|Surprised or shocked often in a way that causes one to pause.|He was taken aback by her sudden change of mood.|surprised,shocked",
-"Caught off guard|kɔːt ɒf ɡɑːd|adjective|Surprised|Surprised because one was not expecting something.|The question caught her completely off guard.|surprised,unprepared",
+"Caught off guard|kɔt ɒf ɡɑːd|adjective|Surprised|Surprised because one was not expecting something.|The question caught her completely off guard.|surprised,unprepared",
 "Jaw-dropping|ˈdʒɔːˌdrɒpɪŋ|adjective|Surprised|Extremely surprising or impressive.|The view from the penthouse was simply jaw-dropping.|astonishing,amazing",
 "Mind-boggling|ˈmaɪndˌbɒɡlɪŋ|adjective|Surprised|Impossible to understand or comprehend; astonishing.|The amount of data processed was mind-boggling.|astonishing,astounding",
 "Unbelievable|ˌʌnbɪˈliːvəbəl|adjective|Surprised|Not able to be believed; incredible.|The story of his survival was unbelievable.|incredible,astonishing",
 "Incredible|ɪnˈkrɛdɪbəl|adjective|Surprised|Impossible or very difficult to believe; amazing.|The athlete made an incredible comeback after his injury.|amazing,astonishing",
 "Phenomenal|fɪˈnɒmɪnəl|adjective|Surprised|Very remarkable; extraordinary.|She has a phenomenal memory for faces.|extraordinary,remarkable",
-"Extraordinary|ɪkˈstrɔːdnri|adjective|Surprised|Very unusual or remarkable.|The detective solved an extraordinary number of cases.|remarkable,unusual",
+"Extraordinary|ɪkstrɔdnri|adjective|Surprised|Very unusual or remarkable.|The detective solved an extraordinary number of cases.|remarkable,unusual",
 "Remarkable|rɪˈmɑːkəbəl|adjective|Surprised|Worthy of attention; striking.|She made a remarkable recovery from the illness.|striking,extraordinary",
 "Striking|ˈstraɪkɪŋ|adjective|Surprised|Attracting attention or notice; unusual or noticeable.|He has striking blue eyes.|noticeable,remarkable",
 "Disgusted|dɪsˈɡʌstɪd|adjective|Disgusted|Feeling a strong revulsion or profound disapproval.|She was disgusted by the lack of cleanliness in the hotel.|revolted,repulsed",
 "Nauseated|ˈnɔːziˌeɪtɪd|adjective|Disgusted|Feeling sick or having the urge to vomit; disgusted.|The graphic violence in the movie left him feeling nauseated.|sickened,disgusted",
 "Sickened|ˈsɪkənd|adjective|Disgusted|Disgusted or horrified.|We were sickened by the reports of animal cruelty.|disgusted,horrified",
 "Repelled|rɪˈpɛld|adjective|Disgusted|Arousing intense distaste or disgust.|She was repelled by his arrogant behavior.|disgusted,repulsed",
-"Revolting|rɪˈvəʊltɪŋ|adjective|Disgusted|Causing intense disgust; repulsive.|The smell from the garbage was absolutely revolting.|disgusting,repulsive",
+"Revolting|rɪˈvəltɪŋ|adjective|Disgusted|Causing intense disgust; repulsive.|The smell from the garbage was absolutely revolting.|disgusting,repulsive",
 "Odious|ˈəʊdiəs|adjective|Disgusted|Extremely unpleasant; repulsive.|He was known for his odious behavior at parties.|repulsive,disgusting",
 "Repugnant|rɪˈpʌɡnənt|adjective|Disgusted|Extremely unacceptable; in conflict with.|The idea of cheating was completely repugnant to her.|repulsive,disgusting",
 "Vile|vaɪl|adjective|Disgusted|Extremely unpleasant; morally bad; wicked.|The criminal committed a vile and senseless act.|wicked,disgusting",
@@ -564,13 +586,13 @@ var RAW=[
 "Nauseating|ˈnɔːziˌeɪtɪŋ|adjective|Disgusted|Causing nausea; extremely unpleasant or disgusting.|The nauseating smell of the chemical spill filled the air.|disgusting,sickening",
 "Sickening|ˈsɪkənɪŋ|adjective|Disgusted|Causing disgust or nausea.|The sickening reality of the war was broadcast on the news.|disgusting,nauseating",
 "Distasteful|dɪsˈteɪstfʊl|adjective|Disgusted|Unpleasant or offensive.|He found the crude jokes highly distasteful.|unpleasant,offensive",
-"Unpalatable|ʌnˈpælətəbəl|adjective|Disgusted|Not pleasant to taste; difficult or unpleasant to accept.|The truth was unpalatable but it had to be faced.|unpleasant,offensive",
+"Unpalatable|ʌnpælətəbəl|adjective|Disgusted|Not pleasant to taste; difficult or unpleasant to accept.|The truth was unpalatable but it had to be faced.|unpleasant,offensive",
 "Embarrassed|ɪmˈbærəst|adjective|Ashamed|Feeling or showing embarrassment.|He was embarrassed when he forgot her name.|ashamed,humiliated",
-"Disgraceful|dɪsˈɡreɪsfʊl|adjective|Ashamed|Shameful; scandalous.|The players' disgraceful behavior led to their suspension.|shameful,scandalous",
+"Disgraceful|dɪsˈɡresfʊl|adjective|Ashamed|Shameful; scandalous.|The players' disgraceful behavior led to their suspension.|shameful,scandalous",
 "Shameful|ˈʃeɪmfʊl|adjective|Ashamed|Worthy of or causing shame; disgraceful.|It was a shameful way to treat a guest.|disgraceful,ignominious",
 "Ignominious|ˌɪɡnəˈmɪniəs|adjective|Ashamed|Deserving or causing public disgrace or shame.|The team suffered an ignominious defeat in the finals.|shameful,disgraceful",
 "Reprehensible|ˌrɛprɪˈhɛnsɪbəl|adjective|Ashamed|Deserving censure or condemnation.|His reprehensible actions were condemned by the public.|blameworthy,shameful",
-"Deplorable|dɪˈplɔːrəbəl|adjective|Ashamed|Deserving strong condemnation; shockingly bad.|The refugees were living in deplorable conditions.|shameful,appalling",
+"Deplorable|dɪˈplɔrəbəl|adjective|Ashamed|Deserving strong condemnation; shockingly bad.|The refugees were living in deplorable conditions.|shameful,appalling",
 "Lamentable|ˈlæməntəbəl|adjective|Ashamed|Bad; regrettable; deplorable.|The state of the roads is truly lamentable.|regrettable,deplorable",
 "Regrettable|rɪˈɡrɛtəbəl|adjective|Ashamed|Giving rise to regret; undesirable; unfortunate.|The incident was a regrettable mistake.|unfortunate,lamentable",
 "Unforgivable|ˌʌnfəˈɡɪvəbəl|adjective|Ashamed|Not able to be forgiven or excused.|His betrayal was an unforgivable offense.|inexcusable,shameful",
@@ -580,13 +602,13 @@ var RAW=[
 "Guilty|ˈɡɪlti|adjective|Ashamed|Culpable of or responsible for a specified wrongdoing.|He felt guilty for lying to his parents.|culpable,remorseful",
 "Remorseful|rɪˈmɔːsfʊl|adjective|Ashamed|Feeling or expressing deep regret or guilt.|The remorseful thief returned the stolen goods.|contrite,penitent",
 "Penitential|ˌpɛnɪˈtɛnʃəl|adjective|Ashamed|Relating to or expressing penitence or atonement.|The priest assigned a penitential prayer.|penitent,remorseful",
-"Sheepish|ˈʃiːpɪʃ|adjective|Ashamed|Showing embarrassment from shame or a lack of self-confidence.|He gave a sheepish grin when caught eating the last cookie.|embarrassed,ashamed",
+"Sheepish|ˈʃipɪʃ|adjective|Ashamed|Showing embarrassment from shame or a lack of self-confidence.|He gave a sheepish grin when caught eating the last cookie.|embarrassed,ashamed",
 "Flushed|flʌʃt|adjective|Ashamed|Having a red or hot face typically from embarrassment or exertion.|Her face was flushed with embarrassment after the mistake.|red,embarrassed",
 "Red-faced|ˈrɛdˌfeɪst|adjective|Ashamed|Embarrassed or ashamed.|He was left red-faced after his presentation failed.|embarrassed,ashamed",
 "Chastened|ˈtʃeɪsənd|adjective|Ashamed|Having been restrained or tamed by reproof or discipline; humbled.|He returned from the defeat a much chastened man.|humbled,penitent",
 "Humbled|ˈhʌmbəld|adjective|Ashamed|Having a low estimate of one's importance; feeling less proud or confident.|She was humbled by the overwhelming support from the community.|chastened,penitent",
 "Crestfallen|ˈkrɛstfɔːlən|adjective|Ashamed|Sad and disappointed.|He looked crestfallen after not getting the job.|disappointed,dejected",
-"Downcast|ˈdaʊnkɑːst|adjective|Ashamed|Sad and depressed.|She walked away with a downcast expression.|sad,dejected",
+"Downcast|ˈdaʊnkɑst|adjective|Ashamed|Sad and depressed.|She walked away with a downcast expression.|sad,dejected",
 "Disheartened|dɪsˈhɑːtənd|adjective|Ashamed|Having lost determination or confidence; discouraged.|The team was disheartened by the early loss.|discouraged,disappointed",
 "Dispirited|dɪˈspɪrɪtɪd|adjective|Ashamed|Without enthusiasm; depressed or discouraged.|The dispirited soldiers trudged through the mud.|depressed,disheartened",
 "Desolate|ˈdɛsələt|adjective|Ashamed|Feeling or showing misery unhappiness or loneliness.|She felt utterly desolate after the breakup.|lonely,miserable",
@@ -596,7 +618,7 @@ var RAW=[
 "Paradigm|ˈpærədaɪm|noun|Calm|A typical example or pattern of something; a model.|The internet created a new paradigm for communication.|model,pattern",
 "Ubiquitous|juːˈbɪkwɪtəs|adjective|Surprised|Present appearing or found everywhere.|Smartphones have become ubiquitous in modern society.|omnipresent,universal",
 "Eloquent|ˈɛləkwənt|adjective|Happy|Fluent or persuasive in speaking or writing.|The lawyer gave an eloquent closing argument.|articulate,expressive",
-"Pragmatic|præɡˈmætɪk|adjective|Calm|Dealing with things sensibly and realistically.|She took a pragmatic approach to solving the budget crisis.|practical,realistic",
+"Pragmatic|præɡˈmætk|adjective|Calm|Dealing with things sensibly and realistically.|She took a pragmatic approach to solving the budget crisis.|practical,realistic",
 "Meticulous|mɪˈtɪkjʊləs|adjective|Calm|Showing great attention to detail; very careful and precise.|He was meticulous in his research for the thesis.|thorough,precise",
 "Tenacious|tɪˈneɪʃəs|adjective|Excited|Tending to keep a firm hold of something; clinging or adhering closely.|The tenacious reporter refused to give up the story.|persistent,determined",
 "Altruistic|ˌæltruˈɪstɪk|adjective|Love|Showing a disinterested and selfless concern for the well-being of others.|Her altruistic nature led her to volunteer at the shelter.|selfless,charitable",
@@ -607,14 +629,15 @@ var RAW=[
 "Obsequious|əbˈsiːkwiəs|adjective|Ashamed|Obedient or attentive to an excessive or servile degree.|The obsequious waiter hovered over the VIP guests.|servile,sycophantic",
 "Magnanimous|mæɡˈnænɪməs|adjective|Love|Very generous or forgiving especially toward a rival or less powerful person.|The magnanimous victor offered help to the defeated army.|generous,forgiving",
 "Perspicacious|ˌpɜːspɪˈkeɪʃəs|adjective|Calm|Having a ready insight into and understanding of things.|The perspicacious detective solved the case quickly.|astute,shrewd",
-"Quixotic|kwɪkˈsɒtɪk|adjective|Excited|Extremely idealistic; unrealistic and impractical.|His quixotic plan to end all wars was admired but impractical.|idealistic,romantic",
+"Quixotic|kwɪksɒtɪk|adjective|Excited|Extremely idealistic; unrealistic and impractical.|His quixotic plan to end all wars was admired but impractical.|idealistic,romantic",
 "Sycophant|ˈsɪkəfænt|noun|Ashamed|A person who acts obsequiously toward someone important to gain advantage.|The king was surrounded by sycophants who agreed with everything he said.|flatterer,toady",
 "Taciturn|ˈtæsɪtɜːn|adjective|Sad|Reserved or uncommunicative in speech; saying little.|The taciturn old man rarely spoke to his neighbors.|reserved,quiet",
 "Vicarious|vɪˈkɛəriəs|adjective|Happy|Experienced in the imagination through the imaginative participation in another's experience.|She got a vicarious thrill from watching her daughter perform.|indirect,secondhand",
-"Bizarre|bɪˈzɑː|adjective|Surprised|Very strange or unusual.|The artist painted a bizarre landscape with purple skies.|strange,weird",
+"Bizarre|bɪˈzɑ|adjective|Surprised|Very strange or unusual.|The artist painted a bizarre landscape with purple skies.|strange,weird",
 "Zenith|ˈzɛnɪθ|noun|Happy|The time at which something is most powerful or successful.|The empire reached its zenith in the 15th century.|peak,apex",
 "Nadir|ˈneɪdɪə|noun|Sad|The lowest point in the fortunes of a person or organization.|The company's stock hit its nadir during the recession.|bottom,lowest",
-"Epiphany|ɪˈpɪfəni|noun|Surprised|A moment of sudden revelation or insight.|She had an epiphany that changed her career path.|revelation,insight"
+"Epiphany|ɪˈpɪfəni|noun|Surprised|A moment of sudden revelation or insight.|She had an epiphany that changed her career path.|revelation,insight",
+"Apathetic|ˌæpəˈθɛtɪk|adjective|Sad|Showing or feeling no interest enthusiasm or concern.|The apathetic voters stayed home on election day.|indifferent,uninterested"
 ];
 var EMOTIONS=[
   {
@@ -955,10 +978,10 @@ function confirmReset() {
 
   if (resetTap === 0) {
     resetTap = 1;
-    btn.innerHTML = "Tap again to confirm";
+    addClass(btn, "arm");
     setTimeout(function () {
       resetTap = 0;
-      btn.innerHTML = "Reset Progress";
+      removeClass(btn, "arm");
     }, 2000);
   } else {
     learned = [];
@@ -966,7 +989,7 @@ function confirmReset() {
     localStorage.setItem("lex_learned", "[]");
     localStorage.setItem("lex_saved", "[]");
     resetTap = 0;
-    btn.innerHTML = "Reset Progress";
+    removeClass(btn, "arm");
     currentIdx = 0;
     renderLearn();
     renderSaved();
