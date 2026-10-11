@@ -106,7 +106,7 @@ header {
 }
 .theme-toggle { padding: 6px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: transform 0.18s ease; }
 .theme-toggle:active { transform: scale(0.9); }
-.theme-toggle svg { width: 20px; height: 20px; stroke: var(--text); fill: none; stroke-width: 2; }
+.theme-toggle svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 nav { 
   display: flex; 
@@ -222,7 +222,7 @@ main {
 }
 .icon-btn:active { transform: scale(0.88); }
 .icon-btn.saved { color: var(--text); }
-.icon-btn svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
+.icon-btn svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .icon-btn.saved svg { fill: currentColor; }
 .def-text { font-size: 1.05rem; line-height: 1.4; margin-bottom: 12px; }
 .example-text { font-style: italic; color: var(--muted); margin-bottom: 12px; font-size: 0.95rem; }
@@ -257,7 +257,7 @@ main {
   gap: 4px; 
   transition: transform 0.15s ease, opacity 0.2s ease;
 }
-.learn-controls .grow svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+.learn-controls .grow svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .known-btn { background: var(--text) !important; color: var(--bg) !important; }
 .reset-btn {
   width: 42px;
@@ -273,7 +273,7 @@ main {
   justify-content: center;
   transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
-.reset-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+.reset-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .reset-btn.arm { background: var(--text); color: var(--bg); border-color: var(--text); }
 
 .search-box { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font-size: 1rem; margin-bottom: 12px; flex-shrink: 0; }
@@ -305,7 +305,7 @@ main {
 .saved-item { display: flex; justify-content: space-between; align-items: center; padding: 14px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: transform 0.18s ease; animation: fadeSlideIn 0.25s ease; }
 .saved-item:active { transform: scale(0.98); }
 .saved-item .remove { color: var(--muted); padding: 4px 8px; display: flex; }
-.saved-item .remove svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; }
+.saved-item .remove svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 </style>
 </head>
 <body>
@@ -324,7 +324,7 @@ main {
         <div class="tagline">learn the best</div>
       </div>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg id="theme-icon" viewBox="0 0 24 24"></svg>
       </button>
     </div>
     <nav>
@@ -415,6 +415,9 @@ var learned = JSON.parse(localStorage.getItem('lex_learned') || '[]');
 var saved = JSON.parse(localStorage.getItem('lex_saved') || '[]');
 var resetTap = 0;
 var quizState = { q: 0, score: 0, questions: [] };
+
+var sunIcon = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+var moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
 
 var RAW=[
 "Euphoria|juːˈfɔːriə|noun|Happy|A feeling or state of intense excitement and happiness.|The euphoria of winning the championship was unforgettable.|elation,bliss",
@@ -810,6 +813,9 @@ function initTheme() {
   var theme = localStorage.getItem("lex_theme");
   if (theme === "dark") {
     document.documentElement.setAttribute("data-theme", "dark");
+    byId("theme-icon").innerHTML = moonIcon;
+  } else {
+    byId("theme-icon").innerHTML = sunIcon;
   }
 }
 
@@ -818,9 +824,11 @@ function toggleTheme() {
   if (html.getAttribute("data-theme") === "dark") {
     html.removeAttribute("data-theme");
     localStorage.setItem("lex_theme", "light");
+    byId("theme-icon").innerHTML = sunIcon;
   } else {
     html.setAttribute("data-theme", "dark");
     localStorage.setItem("lex_theme", "dark");
+    byId("theme-icon").innerHTML = moonIcon;
   }
 }
 
